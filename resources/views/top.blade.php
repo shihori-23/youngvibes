@@ -33,7 +33,7 @@
       </header>
       <main>
         <div class="main_container">
-          <canvas id="canvas" width="" height=""></canvas>
+          <canvas id="canvas" width="100" height="100" style="border:1px solid #000"></canvas>
         </div>
         <!-- ストーリーをクリックしたときに表示されるモーダル -->
         <div class="modal">
