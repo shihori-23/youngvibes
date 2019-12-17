@@ -131,6 +131,7 @@
             area.setZoom(zoom / 100);
             $('#zoom').val(zoom + '%');
         }
+
     });
 
     </script>
