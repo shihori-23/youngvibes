@@ -8,7 +8,7 @@
     <!-- Google fontを使用する場合、下記にcdnを記述 -->
 
     <!-- reset.cssへのリンク -->
-    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="" />
@@ -49,7 +49,7 @@
     </div>
 
     <!-- jqueryの読み込み -->
-    <script src="jquery-2.1.3.min.js"></script>
+    <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <!-- jsファイルの読み込み -->
     <script src=""></script>
   </body>

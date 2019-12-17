@@ -8,7 +8,7 @@
     <!-- Google fontを使用する場合、下記にcdnを記述 -->
 
     <!-- reset.cssへのリンク -->
-    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="" />
@@ -58,7 +58,7 @@
     </div>
 
     <!-- jqueryの読み込み -->
-    <script src="jquery-2.1.3.min.js"></script>
+    <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.5.0/fabric.js"></script>
 
