@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+use Illuminate\Http\Request
+
+
 
 Route::get('/', function () {
     return view('top');
