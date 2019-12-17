@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\User;
-use Illuminate\Http\Request
+use Illuminate\Http\Request;
 
 
 
@@ -22,4 +23,3 @@ Route::get('/', function () {
 Route::get('/coma_create', function () {
     return view('coma_create');
 });
-
