@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('top');
 });
 
+Route::get('/coma_create', function () {
+    return view('coma_create');
+});
+

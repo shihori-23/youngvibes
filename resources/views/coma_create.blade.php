@@ -37,7 +37,7 @@
           <div class="content_flex">
             <!-- 前のコマを表示させるイメージ要素-->
             <img src="" alt="前のコマを表示" />
-            <!-- canvasの描画エリア　未知なのでcanvas要素のみです -->
+            <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
               width="700"
