@@ -68,8 +68,28 @@
 
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
+    <script src="{{asset('/js/fabric.js')}}"></script>
     <!-- js処理ここから-->
-    <script>
+    <script>  
+    const can = $("#canvas")[0];
+    const ctx = can.getContext("2d");
+    //fabricjs準備
+    $(function(){
+        let area = new fabric.Canvas('canvas');
+        area.add(
+        //テスト（四角を出す）
+        new fabric.Rect({
+            width: 100,
+            height: 200,
+            left: 100,
+            top: 100,
+            fill: 'red',
+        }));
+        fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
+        oImg.scaleToWidth(100);
+        area.add(oImg);
+        });
+    });
 
     </script>
   </body>
