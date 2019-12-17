@@ -76,19 +76,16 @@
     //fabricjs準備
     $(function(){
         let area = new fabric.Canvas('canvas');
-        area.add(
-        //テスト（四角を出す）
-        new fabric.Rect({
-            width: 100,
-            height: 200,
-            left: 100,
-            top: 100,
-            fill: 'red',
-        }));
-        fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
-        oImg.scaleToWidth(100);
-        area.add(oImg);
+        for(let i=0;i<10;i++){
+          fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
+            const imgLeft = Math.ceil(Math.random() * 1600); //小数点
+            const imgTop = Math.ceil(Math.random() * 866); //小数点
+            oImg.scaleToWidth(200);
+            oImg.set('left', imgLeft);
+            oImg.set('top', imgTop);
+            area.add(oImg);
         });
+        }
     });
 
     </script>
