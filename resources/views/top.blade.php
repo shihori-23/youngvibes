@@ -12,6 +12,24 @@
 
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="" />
+    <style>
+      body,html{
+        width:100%;
+        height:100%;
+      }
+    header{
+      width:100%;
+      height:100px;
+      background-color:rgb(252, 213, 95);
+    }
+    nav ul{
+      display:flex;
+    }
+    footer{
+      width:100%;
+      height:10px;
+    }
+    </style>
   </head>
 
   <body>
@@ -33,7 +51,7 @@
       </header>
       <main>
         <div class="main_container">
-          <canvas id="canvas" width="100" height="100" style="border:1px solid #000"></canvas>
+          <canvas id="canvas" width="1600" height="886" style="border:1px solid #000"></canvas>
         </div>
         <!-- ストーリーをクリックしたときに表示されるモーダル -->
         <div class="modal">
@@ -50,7 +68,9 @@
 
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
-    <!-- jsファイルの読み込み -->
-    <script src=""></script>
+    <!-- js処理ここから-->
+    <script>
+
+    </script>
   </body>
 </html>
