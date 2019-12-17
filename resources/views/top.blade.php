@@ -17,18 +17,35 @@
         width:100%;
         height:100%;
       }
-    header{
-      width:100%;
-      height:100px;
-      background-color:rgb(252, 213, 95);
+      header{
+        width:100%;
+        height:100px;
+        background-color:rgb(252, 213, 95);
+      }
+      nav ul{
+        display:flex;
+      }
+      footer{
+        width:100%;
+        height:10px;
+      }
+
+    /* ズームできるようにする */
+    /* .main_container{
+      border: 10px solid #999;
+      cursor:crosshair;
+      width:400px;
+      height:200px;
+      float:left;
+      overflow: hidden;
     }
-    nav ul{
-      display:flex;
-    }
-    footer{
-      width:100%;
-      height:10px;
-    }
+    #canvas{
+          -moz-transform-origin:0 0;
+          -ms-transform-origin:0 0;
+          -webkit-transform-origin:0 0;
+          transform-origin:0 0;
+    } */
+
     </style>
   </head>
 
@@ -47,6 +64,8 @@
             <li><a href="#">マイページ</a></li>
             <li><a href="#">ログアウト</a></li>
           </ul>
+          <button id="zoomIn">拡大</button>
+          <button id="zoomOut">縮小</button>
         </nav>
       </header>
       <main>
@@ -66,29 +85,52 @@
       <footer>(c)///////サービス名が入ります//////</footer>
     </div>
 
-    <!-- jqueryの読み込み -->
+    <!-- jquery/fabricjsの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
+
     <!-- js処理ここから-->
     <script>  
+    //canvas準備
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
-    //fabricjs準備
+
+    //fabricjsで画像表示
+    let area = new fabric.Canvas('canvas');
     $(function(){
-        let area = new fabric.Canvas('canvas');
-        area.add(
-        //テスト（四角を出す）
-        new fabric.Rect({
-            width: 100,
-            height: 200,
-            left: 100,
-            top: 100,
-            fill: 'red',
-        }));
-        fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
-        oImg.scaleToWidth(100);
-        area.add(oImg);
+        for(let i=0;i<10;i++){
+          fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
+            //画像をランダム位置で表示
+            const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
+            oImg.scaleToWidth(200);//画像の大きさ
+            oImg.set('left', imgLeft);//leftからの位置
+            oImg.set('top', imgTop);//topからの位置
+            oImg.set({hasRotatingPoint: false});//回転を制限
+            area.add(oImg);//追加
         });
+        }
+    });
+
+    //拡大・縮小
+    let zoom = 100;
+    let zoomStep = 10;
+
+    // 拡大
+    $('#zoomIn').click(function () {
+        if (zoom < 100) {
+            zoom += zoomStep;
+            area.setZoom(zoom / 100);
+            $('#zoom').val(zoom + '%');
+        }
+    });
+    // 縮小
+    $('#zoomOut').click(function () {
+        if (zoom > 50) {
+            zoom -= zoomStep;
+            area.setZoom(zoom / 100);
+            $('#zoom').val(zoom + '%');
+        }
     });
 
     </script>
