@@ -23,7 +23,7 @@ Route::get('/coma_create', function () {
 });
 
 //コマの作成
-Route::post('/coma_create','ImageController@save');
+Route::post('/coma_create','ComaCreateController@save');
 
 //topの画像一覧表示
 Route::get('','');
