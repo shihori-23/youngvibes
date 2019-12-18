@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ComaDisplay extends Model
+class ServiceContent extends Model
 {
     //
 }
