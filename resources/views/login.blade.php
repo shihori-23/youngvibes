@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
     <!-- cssファイルへのリンク -->
-    <link rel="stylesheet" href="" />
+    <!-- <link rel="stylesheet" href="" /> -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
 
   <body>
