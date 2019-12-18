@@ -66,9 +66,15 @@
           </ul>
           <button id="zoomIn">拡大</button>
           <button id="zoomOut">縮小</button>
+          @if (count($comas) > 0)
+          @foreach ( $comas as $coma)
+          <div><p id="comaCount">現在{{(count($comas))}}コマ</div>
+          @endforeach
+          @endif
         </nav>
       </header>
       <main>
+
         <div class="main_container">
           <canvas id="canvas" width="1600" height="886" style="border:1px solid #000"></canvas>
         </div>
