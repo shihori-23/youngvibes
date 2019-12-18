@@ -52,7 +52,7 @@ Route::get('/login', function () {
 Route::get('/', 'ServiceContentController@comaGet');
 
  //coma_create.blade.phpの前回のコマを表示する
-// Route::get('/coma_create', 'ServiceContentController@comaPev');
+Route::get('/coma_create', 'ServiceContentController@comaPev');
 
  //coma_create.blade.php コマ作成後に画像を保存
 Route::post('/coma_create/save', 'ServiceContentController@comaSave');
