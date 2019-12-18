@@ -59,3 +59,8 @@ header {
   margin-top: 20px;
   text-align: center;
 }
+
+/* 確認画面のモーダルの非表示 */
+.hidden {
+  display: none;
+}
