@@ -12,12 +12,15 @@
 */
 
 use App\User;
+use App\ServiceContent;
 use Illuminate\Http\Request;
 // use App\ServiceContent;
 
 Route::get('/', function () {
     return view('top');
 });
+
+Route::get('/', 'ServiceContentsController@index');
 
 Route::get('/mypage_story_all', function () {
     return view('mypage_story_all');
