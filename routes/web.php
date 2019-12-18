@@ -13,10 +13,6 @@
 
 use App\User;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 
 
 Route::get('/', function () {
