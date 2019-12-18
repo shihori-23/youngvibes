@@ -18,9 +18,6 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('top');
 });
-Route::get('/login', function () {
-    return view('login');
-});
 
 Route::get('/mypage_story_all', function () {
     return view('mypage_story_all');
@@ -29,7 +26,6 @@ Route::get('/mypage_story_all', function () {
 Route::get('/coma_create', function () {
     return view('coma_create');
 });
-
 
 
 
@@ -43,7 +39,7 @@ Route::get('/login', function () {
 });
 
 //全コマのデータをservice_contentsから取得する
-Route::get('/', 'ServiceContentController@comaGet');
+// Route::get('/', 'ServiceContentController@comaGet');
 
 Auth::routes();
 
