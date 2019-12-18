@@ -290,9 +290,9 @@ for (var i = 0, max = radios5.length; i < max; i++) {
 $("#download").click(function() {
   canvas = document.getElementById("canvas1");
   const base64 = canvas.toDataURL("image/jpeg");
-  console.log(base64);
   document.getElementById("download").href = base64;
-  return base64;
+  $("#modal").toggleClass("hidden");
+  $("#modal").toggleClass("hidden");
 });
 
 function setBgColor() {

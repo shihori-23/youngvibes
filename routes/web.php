@@ -22,11 +22,6 @@ Route::get('/coma_create', function () {
     return view('coma_create');
 });
 
-//コマの作成
-// Route::post('/coma_create','ComaCreateController@save');
-
-//topの画像一覧表示
-
 
 
 

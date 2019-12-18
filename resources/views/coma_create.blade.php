@@ -46,43 +46,6 @@
             ></canvas>
           </div>
           <div class="toolvar">
-      <div id="text-wrapper" ng-show="getText()">
-        <!-- <button onclick="Addstamp()">女の子</button> -->
-        <!-- <button id="test"></button> -->
-        <p class="stamp">スタンプ</p>
-        <img src="onna.png" id="my_image1" style="width:70px" />
-        <img src="otoko.png" id="my_image2" style="width:65px" />
-        <img src="hand1.png" id="my_image3" style="width:70px" />
-        <img src="hand2.png" id="my_image4" style="width:70px" />
-        <br />
-
-        <img src="juce.png" id="my_image5" style="width:70px" />
-        <img src="soda.png" id="my_image6" style="width:70px" />
-        <img src="beeru.png" id="my_image7" style="width:70px" />
-        <img src="sibahu.png" id="my_image8" style="width:70px" />
-        <br />
-
-        <img src="gyoza.png" id="my_image9" style="width:70px" />
-        <img src="gohan.png" id="my_image10" style="width:70px" />
-        <img src="momo.png" id="my_image11" style="width:70px" />
-        <img src="suika.png" id="my_image12" style="width:70px" />
-
-        <br />
-        <img src="hanabi.png" id="my_image13" style="width:70px" />
-        <img src="umi.png" id="my_image14" style="width:70px" />
-        <img src="kumo.png" id="my_image15" style="width:70px" />
-        <img src="sandal.png" id="my_image16" style="width:70px" />
-
-        <br />
-      </div>
-      <!-- <option value="Meiryo">メイリオ</option>
-            <option value="Hiragino Kaku Gothic ProN" selected
-              >ヒラギノ角</option
-            >
-            <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
-            <option value="Wawati SC" selected>Wawati SC</option>
-            <option value="Andale Mono">Andale Mono</option>
-            <option value="Bradley Hand" selected>BradleyHand</option> -->
 
       <!-- テキスト編集 -->
       <div class="text">
@@ -191,13 +154,19 @@
     Overline -->
         </div>
       </div>
-      <!-- <input type="button" value="画像に変換" onclick="chgImg()" /> -->
-      <form action="" method="POST">
-        <input type="hidden" value="">
-        <button id="download">保存</button>
-      </form>
-    </div>
-        </div>
+
+      <button id="download">編集完了</button>
+
+    <!-- 編集完了後の確認画面モーダル -->
+      <div class="hidden" id="modal">
+        <form action ="" method="POST">
+          <img src="" alt="確認画面">
+          <input id="modal"type="hidden" name="data" value="">
+        </from>
+      </div>
+
+     </div>
+     </div>
       </main>
       <footer>(c)///////サービス名が入ります//////</footer>
     </div>
