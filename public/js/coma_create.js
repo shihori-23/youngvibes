@@ -291,10 +291,10 @@ $("#download").click(function() {
   canvas = document.getElementById("canvas1");
   const base64 = canvas.toDataURL("image/jpeg");
   document.getElementById("download").href = base64;
-  $("#modalData").value(base64);
-  $("#cofimg").value(base64);
-
-  $("#modal").toggleClass("hidden");
+  console.log(base64);
+  // $("#modal").toggleClass("hidden");
+  $("#modalData").val(base64);
+  $("#cofimg").attr("src", base64);
 });
 
 function setBgColor() {
