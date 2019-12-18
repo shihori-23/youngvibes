@@ -273,28 +273,15 @@ for (var i = 0, max = radios5.length; i < max; i++) {
   };
 }
 
-// function downloadimage(){
-//   html2canvas(document.getElementById("canvas1"),{
-//   onrendered: function(canvas){
-//   var dataURI = canvas.toDataURL();
-//   var pdf = new jsPDF();
-//   var width = pdf.internal.pageSize.width;
-//   pdf.addimage(canvas,'JPEG',0,0,width,0);
-//   pdf.save('test.pdf')
-//   console.log(dataURI);
-// }
-// })
-// }
-
 //   canvasを画像で保存;
 $("#download").click(function() {
   canvas = document.getElementById("canvas1");
-  const base64 = canvas.toDataURL("image/jpeg");
-  document.getElementById("download").href = base64;
+  //base64に変換
+  const base64 = canvas.toDataURL();
   console.log(base64);
-  // $("#modal").toggleClass("hidden");
+  // $("#modal").toggleClass("hidden");//確認画面のモーダルを表示
   $("#modalData").val(base64);
-  $("#cofimg").attr("src", base64);
+  $("#cofimg").attr("src", base64); //イメージタグへの表示
 });
 
 function setBgColor() {
