@@ -35,3 +35,9 @@ Route::get('/mypage', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+//全コマのデータをservice_contentsから取得する
+Route::get('/', 'ComaDisplayController@comaGet');
+
+//コマ作成後、画像ファイルとして保存
+Route::post('/coma_create/save', 'ComaCreateController@comaSave');
