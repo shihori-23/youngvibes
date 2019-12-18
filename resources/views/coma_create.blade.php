@@ -9,9 +9,9 @@
 
     <!-- reset.cssへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
-
     <!-- cssファイルへのリンク -->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="{{asset('/css/coma_create.css')}}" />
+
   </head>
 
   <body>
@@ -39,19 +39,164 @@
             <img src="" alt="前のコマを表示" />
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
-              id="canvas"
+              id="canvas1"
               width="700"
               height="500"
               style="border: black solid 1px;"
             ></canvas>
-            <img
-              src="img/a.jpg"
-              id="my-image"
-              class="hidden"
-              width="50px"
-              height="50px"
+          </div>
+          <div class="toolvar">
+      <div id="text-wrapper" ng-show="getText()">
+        <!-- <button onclick="Addstamp()">女の子</button> -->
+        <!-- <button id="test"></button> -->
+        <p class="stamp">スタンプ</p>
+        <img src="onna.png" id="my_image1" style="width:70px" />
+        <img src="otoko.png" id="my_image2" style="width:65px" />
+        <img src="hand1.png" id="my_image3" style="width:70px" />
+        <img src="hand2.png" id="my_image4" style="width:70px" />
+        <br />
+
+        <img src="juce.png" id="my_image5" style="width:70px" />
+        <img src="soda.png" id="my_image6" style="width:70px" />
+        <img src="beeru.png" id="my_image7" style="width:70px" />
+        <img src="sibahu.png" id="my_image8" style="width:70px" />
+        <br />
+
+        <img src="gyoza.png" id="my_image9" style="width:70px" />
+        <img src="gohan.png" id="my_image10" style="width:70px" />
+        <img src="momo.png" id="my_image11" style="width:70px" />
+        <img src="suika.png" id="my_image12" style="width:70px" />
+
+        <br />
+        <img src="hanabi.png" id="my_image13" style="width:70px" />
+        <img src="umi.png" id="my_image14" style="width:70px" />
+        <img src="kumo.png" id="my_image15" style="width:70px" />
+        <img src="sandal.png" id="my_image16" style="width:70px" />
+
+        <br />
+      </div>
+      <!-- <option value="Meiryo">メイリオ</option>
+            <option value="Hiragino Kaku Gothic ProN" selected
+              >ヒラギノ角</option
+            >
+            <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
+            <option value="Wawati SC" selected>Wawati SC</option>
+            <option value="Andale Mono">Andale Mono</option>
+            <option value="Bradley Hand" selected>BradleyHand</option> -->
+
+      <!-- テキスト編集 -->
+      <div class="text">
+        <p class="moji">文字編集</p>
+        <button onclick="Addtext()">テキスト追加</button>
+        <div id="text-controls">
+          文字の色:
+          <input type="color" value="" id="text-color" size="10" />
+          <br />
+          <div>
+            <label for="canvas-bg-color">背景の色:</label>
+            <input type="color" value="" id="canvas-bg-color" size="10" />
+          </div>
+
+          <label for="font-family" style="display:inline-block"
+            >フォント:</label
+          >
+          <select id="font-family">
+            <option value="Meiryo">メイリオ</option>
+            <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
+            <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
+            <option value="Wawati SC" selected>Wawati SC</option>
+            <option value="Andale Mono">Andale Mono</option>
+            <option value="Bradley Hand" selected>BradleyHand</option>
+            <option value="arial">Arial</option>
+            <option value="helvetica" selected>Helvetica</option>
+            <option value="myriad pro">Myriad Pro</option>
+            <option value="delicious">Delicious</option>
+            <option value="verdana">Verdana</option>
+            <option value="georgia">Georgia</option>
+            <option value="courier">Courier</option>
+            <option value="comic sans ms">Comic Sans MS</option>
+            <option value="impact">Impact</option>
+            <option value="monaco">Monaco</option>
+            <option value="optima">Optima</option>
+            <option value="hoefler text">Hoefler Text</option>
+            <option value="plaster">Plaster</option>
+            <option value="engagement">Engagement</option>
+          </select>
+          <br />
+          <label for="text-align" style="display:inline-block">整列: </label>
+          <select id="text-align">
+            <option value="left">左寄せ</option>
+            <option value="center">中央</option>
+            <option value="right">右寄せ</option>
+          </select>
+          <!-- <div>
+            <label for="text-bg-color">オブジェクト背景:</label>
+            <input type="color" value="" id="text-bg-color" size="10" />
+          </div> -->
+          <div>
+            <label for="text-lines-bg-color">文字背景:</label>
+            <input type="color" value="" id="text-lines-bg-color" size="10" />
+          </div>
+          <div>
+            <label for="text-stroke-color">文字枠色:</label>
+            <input type="color" value="" id="text-stroke-color" />
+          </div>
+          <div>
+            <label for="text-stroke-width">枠の太さ:</label>
+            <input
+              type="range"
+              value="1"
+              min="1"
+              max="5"
+              id="text-stroke-width"
             />
           </div>
+          <div>
+            <label for="text-font-size">文字サイズ:</label>
+            <input
+              type="range"
+              value=""
+              min="1"
+              max="120"
+              step="1"
+              id="text-font-size"
+            />
+          </div>
+          <div>
+            <label for="text-line-height">段落間隔:</label>
+            <input
+              type="range"
+              value=""
+              min="0"
+              max="10"
+              step="0.1"
+              id="text-line-height"
+            />
+          </div>
+        </div>
+        <div id="text-controls-additional">
+          <input type="checkbox" name="fonttype" id="text-cmd-bold" />
+          太字
+
+          <input type="checkbox" name="fonttype" id="text-cmd-italic" />
+          斜体
+
+          <input type="checkbox" name="fonttype" id="text-cmd-underline" />
+          下線
+
+          <input type="checkbox" name="fonttype" id="text-cmd-linethrough" />
+          取消線
+
+          <!-- <input type='checkbox' name='fonttype'  id="text-cmd-overline" >
+    Overline -->
+        </div>
+      </div>
+      <!-- <input type="button" value="画像に変換" onclick="chgImg()" /> -->
+      <form action="" method="POST">
+        <input type="hidden" value="">
+        <button id="download">保存</button>
+      </form>
+    </div>
         </div>
       </main>
       <footer>(c)///////サービス名が入ります//////</footer>
@@ -59,39 +204,8 @@
 
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
-    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.5.0/fabric.js"></script>
-
-    <!-- jsファイルの読み込み -->
-    <script>
-      // create a wrapper around native canvas element (with id="c")
-      const canvas = new fabric.Canvas("canvas");
-
-      // create a rectangle object
-      const rect = new fabric.Rect({
-        left: 100,
-        top: 100,
-        fill: "red",
-        width: 20,
-        height: 20
-      });
-      // "add" rectangle onto canvas
-      canvas.add(rect);
-
-      var imgElement = document.getElementById("my-image");
-      var imgInstance = new fabric.Image(imgElement, {
-        left: 100,
-        top: 100,
-        // angle: 30,
-        opacity: 0.85
-      });
-      canvas.add(imgInstance);
-    </script>
+    <script src="{{asset('/js/fabric.js')}}"></script>
+    <script src="{{asset('/js/coma_create.js')}}"></script>
+  
   </body>
-
-  <style>
-    .hidden {
-      display: none;
-    }
-  </style>
 </html>

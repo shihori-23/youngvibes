@@ -11,8 +11,7 @@
 |
 */
 use App\User;
-use Illuminate\Http\Request
-
+use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
@@ -22,4 +21,9 @@ Route::get('/', function () {
 Route::get('/coma_create', function () {
     return view('coma_create');
 });
+
+Route::post('/coma_create','ImageController@save');
+
+
+
 
