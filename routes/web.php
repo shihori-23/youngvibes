@@ -31,7 +31,6 @@ Route::get('/coma_create', function () {
 });
 
 
-<<<<<<< Updated upstream
 
 
 
@@ -46,10 +45,7 @@ Route::get('/login', function () {
 //全コマのデータをservice_contentsから取得する
 Route::get('/', 'ServiceContentController@comaGet');
 
-//コマ作成後、画像ファイルとして保存
-Route::post('/coma_create/save', 'ComaCreateController@comaSave');
-=======
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> Stashed changes
+
