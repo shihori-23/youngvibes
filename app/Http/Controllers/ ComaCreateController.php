@@ -16,14 +16,14 @@ class ImageController extends BaseController
     //画像の保存とアップロード
     public function save(Request $request) {
 
-        $img = $_POST['data'];
-        $img = str_replace('data:image/png;base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $fileData = base64_decode($img);
-        //saving
-        $dir = 'public/img/';
-        $fileName = 'photo.png';
-        file_put_contents($fileName, $fileData);
+        // $img = $_POST['data'];
+        // $img = str_replace('data:image/png;base64,', '', $img);
+        // $img = str_replace(' ', '+', $img);
+        // $fileData = base64_decode($img);
+        // //saving
+        // $dir = 'public/img/';
+        // $fileName = 'photo.png';
+        // file_put_contents($fileName, $fileData);
        
     }
 
