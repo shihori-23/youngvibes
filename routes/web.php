@@ -10,12 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\User;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 
 
 Route::get('/', function () {
     return view('top');
+});
+
+Route::get('/mypage_story_all', function () {
+    return view('mypage_story_all');
 });
 
 Route::get('/coma_create', function () {
@@ -26,3 +35,10 @@ Route::get('/coma_create', function () {
 
 
 
+Route::get('/mypage', function () {
+    return view('mypage');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
