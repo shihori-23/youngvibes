@@ -29,23 +29,6 @@
         width:100%;
         height:10px;
       }
-
-    /* ズームできるようにする */
-    /* .main_container{
-      border: 10px solid #999;
-      cursor:crosshair;
-      width:400px;
-      height:200px;
-      float:left;
-      overflow: hidden;
-    }
-    #canvas{
-          -moz-transform-origin:0 0;
-          -ms-transform-origin:0 0;
-          -webkit-transform-origin:0 0;
-          transform-origin:0 0;
-    } */
-
     </style>
   </head>
 
@@ -66,9 +49,10 @@
           </ul>
           <button id="zoomIn">拡大</button>
           <button id="zoomOut">縮小</button>
+          <!-- DBからコマ数を取得 -->
           @if (count($comas) > 0)
           @foreach ( $comas as $coma)
-          <div><p id="comaCount">現在{{(count($comas))}}コマ</div>
+          <div>現在<p id="comaCount">{{(count($comas))}}</p>コマ</div>
           @endforeach
           @endif
         </nav>
@@ -101,11 +85,14 @@
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
 
-    //fabricjsで画像表示
-    let area = new fabric.Canvas('canvas');
+    //fabricjsで全コマ表示
+    const comaCount = $("#comaCount").text();//コマ数をhtmlより取得
+    console.log(comaCount);
+    let area = new fabric.Canvas('canvas');//canvasにfabricjsを準備
+    //全コマをフォルダから取得してcanvasに表示
     $(function(){
-        for(let i=0;i<10;i++){
-          fabric.Image.fromURL('{{asset('/img/test.jpeg')}}', function(oImg) {
+        for(let i=1;i<=comaCount;i++){
+          fabric.Image.fromURL(`{{asset('/img/${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
