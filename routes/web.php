@@ -18,6 +18,9 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('top');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 
 Route::get('/mypage_story_all', function () {
     return view('mypage_story_all');
@@ -28,6 +31,7 @@ Route::get('/coma_create', function () {
 });
 
 
+<<<<<<< Updated upstream
 
 
 
@@ -44,3 +48,8 @@ Route::get('/', 'ServiceContentController@comaGet');
 
 //コマ作成後、画像ファイルとして保存
 Route::post('/coma_create/save', 'ComaCreateController@comaSave');
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> Stashed changes
