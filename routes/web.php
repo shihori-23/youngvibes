@@ -15,7 +15,6 @@ use App\User;
 use Illuminate\Http\Request;
 
 
-
 Route::get('/', function () {
     return view('top');
 });
@@ -27,6 +26,10 @@ Route::get('/mypage_story_all', function () {
 Route::get('/coma_create', function () {
     return view('coma_create');
 });
+
+
+
+
 
 Route::get('/mypage', function () {
     return view('mypage');
