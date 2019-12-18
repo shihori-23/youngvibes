@@ -48,7 +48,12 @@ Route::get('/login', function () {
 //     'service_contents' => $service_contents ]);
 // });
 
+//コマの画像をTOPに表示
 Route::get('/', 'ServiceContentController@comaGet');
+
+//コマの作成後に画像を保存
+// Route::get('/coma_create/save', 'ServiceContentController@comaSave');
+Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
 
