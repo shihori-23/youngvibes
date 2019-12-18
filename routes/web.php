@@ -13,7 +13,7 @@
 
 use App\User;
 use Illuminate\Http\Request;
-
+// use App\ServiceContent;
 
 Route::get('/', function () {
     return view('top');
@@ -39,7 +39,13 @@ Route::get('/login', function () {
 });
 
 //全コマのデータをservice_contentsから取得する
-// Route::get('/', 'ServiceContentController@comaGet');
+// Route::get('/', function () {
+//     $service_contents = ServiceContent::all(); 
+//     return view('service_contents', [
+//     'service_contents' => $service_contents ]);
+// });
+
+Route::get('/', 'ServiceContentController@comaGet');
 
 Auth::routes();
 
