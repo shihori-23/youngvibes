@@ -51,13 +51,19 @@ Route::get('/login', function () {
 //コマの画像をTOPに表示
 Route::get('/', 'ServiceContentController@comaGet');
 
- //coma_create.blade.phpの前回のコマを表示する
+//coma_create.blade.phpの前回のコマを表示する
 Route::get('/coma_create', 'ServiceContentController@comaPev');
 
- //coma_create.blade.php コマ作成後に画像を保存
+//coma_create.blade.php コマ作成後に画像を保存
 Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/long_story', function () {
+    $service_contents = ServiceContent::orderBy('c_id', 'asc')->get();
+    return view('long_story', [
+        'service_contents' => $service_contents
+    ]);
+});
