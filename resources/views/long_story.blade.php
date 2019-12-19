@@ -33,7 +33,10 @@
       </header>
       <main>
         <div class="main_container">
-          <canvas id="canvas" width="" height=""></canvas>
+          {{-- <canvas id="canvas" width="" height=""></canvas> --}}
+          @foreach($service_contents as $service_content)
+            <div><img src='img/<?= $service_content['img_file'] ?>' alt=""></div>
+          @endforeach
         </div>
         <!-- ストーリーをクリックしたときに表示されるモーダル -->
         <div class="modal">
