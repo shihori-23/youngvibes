@@ -11,7 +11,31 @@
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/coma_create.css')}}" />
+    <style>
+      header {
+        width: 100%;
+        height: 100px;
+        background: #f0e68c;
+      }
 
+      ul{
+        display:flex;
+      }
+      .content_flex{
+        display:flex;
+        margin-top:50px;
+      }
+      .content_flex img{
+        width:300px;
+        height:300px;
+        border:1px solid #000;
+        margin-right:50px;
+      }
+      /* 確認画面のモーダルの非表示 */
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -41,7 +65,7 @@
             <canvas
               id="canvas1"
               width="700"
-              height="500"
+              height="700"
               style="border: black solid 1px;"
             ></canvas>
           </div>
