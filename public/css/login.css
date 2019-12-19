@@ -1,5 +1,6 @@
 .form-group{
-   color:red;
+   color:rgb(94, 90, 90);
+
 }
 
 .container{
@@ -9,19 +10,21 @@
 
 .row{
    padding-left:20px;
+
 }
 
 .panel-default{
    width: 500px;
    height: 50vh;
+   /* display:none; */
 
 }
 
 .panel{
-   background-color:greenyellow;
+   background-color:rgb(213, 214, 210);
    }
 
-   .box{
+   /* .box{
 
       animation-name:fade-in3;
       animation-duration:2s; 
@@ -30,7 +33,7 @@
       animation-iteration-count:1;
       animation-direction:normal;
       animation-fill-mode: forwards; 
-   }
+   } */
 
    @keyframes fade-in3 {
       0% {opacity: 0; transform: translate3d(0,20px,0);}
@@ -40,8 +43,70 @@
 
    .box{
       font-size: 14px;
-      text-align: center;
-      width:400px;
+      text-align: left;
+      width:450px;
+      
+   }
+
+   .title{
+      font-weight: bold;
+      font-size:20px;
+      margin-bottom:20px;
+   }
+
+   .first{
+      margin:10px 10px;
+   }
+
+   .second{
+      margin:10px 10px;
+
+   }
+   
+   .second2{
+      margin:10px 10px;
+
    }
 
 
+   .third{
+      margin:15px 15px;
+   }
+
+   .forth{
+      margin:15px 15px;
+   }
+
+   .fifth{
+      margin:15px 15px;
+
+   }
+
+   .six{
+      margin:20px;
+      font-size:20px;
+   }
+
+   .start {
+      background: #FFF;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      z-index: 9000;
+   }
+   .inner{
+      width: 50%;
+      margin: 0 auto;
+      display: none;
+   }
+   .start p {
+      /* position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 9999;
+      width: 280px; */
+   }
