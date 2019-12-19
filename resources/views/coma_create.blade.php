@@ -111,9 +111,7 @@
           <!-- <img src="../public/img/test.jpeg" alt="確認画面" id="cofimg"> -->
           <img src="" alt="確認画面" id="cofimg" height="100px" width="100px;">
           <input id="modalData" type="hidden" name="data" value="">
- 
           <input type="hidden" name="imgNamePev" value="{{ $comas->c_id }}">
-  
           <input type="submit" value="これでOK">
         </from>
       </div>
