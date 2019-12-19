@@ -69,113 +69,28 @@
               style="border: black solid 1px;"
             ></canvas>
           </div>
-          <div class="toolvar">
 
-      <!-- テキスト編集 -->
-      <div class="text">
-        <p class="moji">文字編集</p>
-        <button onclick="Addtext()">テキスト追加</button>
-        <div id="text-controls">
-          文字の色:
-          <input type="color" value="" id="text-color" size="10" />
-          <br />
-          <div>
-            <label for="canvas-bg-color">背景の色:</label>
-            <input type="color" value="" id="canvas-bg-color" size="10" />
+
+        <div class="toolvar">
+        <!-- テキスト編集 -->
+          <div class="text">
+            <p class="moji">文字編集</p>
+            <!-- <button onclick="Addtext()">テキスト追加</button> -->
+                <label for="canvas-bg-color">背景の色:</label>
+                <input type="color" value="" id="canvas-bg-color" size="10" />
           </div>
 
-          <label for="font-family" style="display:inline-block"
-            >フォント:</label
-          >
-          <select id="font-family">
-            <option value="Meiryo">メイリオ</option>
-            <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
-            <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
-            <option value="Wawati SC" selected>Wawati SC</option>
-            <option value="Andale Mono">Andale Mono</option>
-            <option value="Bradley Hand" selected>BradleyHand</option>
-            <option value="arial">Arial</option>
-            <option value="helvetica" selected>Helvetica</option>
-            <option value="myriad pro">Myriad Pro</option>
-            <option value="delicious">Delicious</option>
-            <option value="verdana">Verdana</option>
-            <option value="georgia">Georgia</option>
-            <option value="courier">Courier</option>
-            <option value="comic sans ms">Comic Sans MS</option>
-            <option value="impact">Impact</option>
-            <option value="monaco">Monaco</option>
-            <option value="optima">Optima</option>
-            <option value="hoefler text">Hoefler Text</option>
-            <option value="plaster">Plaster</option>
-            <option value="engagement">Engagement</option>
-          </select>
-          <br />
-          <label for="text-align" style="display:inline-block">整列: </label>
-          <select id="text-align">
-            <option value="left">左寄せ</option>
-            <option value="center">中央</option>
-            <option value="right">右寄せ</option>
-          </select>
-          <!-- <div>
-            <label for="text-bg-color">オブジェクト背景:</label>
-            <input type="color" value="" id="text-bg-color" size="10" />
-          </div> -->
-          <div>
-            <label for="text-lines-bg-color">文字背景:</label>
-            <input type="color" value="" id="text-lines-bg-color" size="10" />
+          <div> 
+          <!-- 色を選択できるカラーパレットを用意する。 -->
+          <span id="color-palette"></span>
           </div>
           <div>
-            <label for="text-stroke-color">文字枠色:</label>
-            <input type="color" value="" id="text-stroke-color" />
+            <button id="clear-button">全消し</button>
           </div>
           <div>
-            <label for="text-stroke-width">枠の太さ:</label>
-            <input
-              type="range"
-              value="1"
-              min="1"
-              max="5"
-              id="text-stroke-width"
-            />
+            <button id="eraser-button">消しゴムモード</button>
           </div>
-          <div>
-            <label for="text-font-size">文字サイズ:</label>
-            <input
-              type="range"
-              value=""
-              min="1"
-              max="120"
-              step="1"
-              id="text-font-size"
-            />
-          </div>
-          <div>
-            <label for="text-line-height">段落間隔:</label>
-            <input
-              type="range"
-              value=""
-              min="0"
-              max="10"
-              step="0.1"
-              id="text-line-height"
-            />
-          </div>
-        </div>
-        <div id="text-controls-additional">
-          <input type="checkbox" name="fonttype" id="text-cmd-bold" />
-          太字
-
-          <input type="checkbox" name="fonttype" id="text-cmd-italic" />
-          斜体
-
-          <input type="checkbox" name="fonttype" id="text-cmd-underline" />
-          下線
-
-          <input type="checkbox" name="fonttype" id="text-cmd-linethrough" />
-          取消線
-
-          <!-- <input type='checkbox' name='fonttype'  id="text-cmd-overline" >
-    Overline -->
+          
         </div>
       </div>
 
