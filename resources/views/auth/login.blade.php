@@ -100,7 +100,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    ログイン
+                                    Login
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -117,6 +117,22 @@
     
 </div>
 
+</div>
+    
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
     <!-- <script>
     $(function() {
 	setTimeout(function(){
@@ -129,6 +145,16 @@
 	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！
     });
     </script> -->
+    <script>
+        //画面の高さに合わせてheightを可変的に設定
+        const realHeight = window.innerHeight;
+        $(function() {
+            $("body").css("height", realHeight);
 
+            const outsideCircle = $(".outside-circle").width();
+            $(".outside-circle").css("height", outsideCircle);
+            console.log(outsideCircle);
+        });
+        </script>
 
 @endsection

@@ -1,10 +1,15 @@
 .form-group{
-   color: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));;
+   color:rgb(248, 252, 252);
+   
+   /* color: linear-gradient(150deg, #7783a1, rgb(179, 205, 238));; */
 
 }
 
 body{
-   background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));
+   background: rgb(248, 252, 252);
+
+   height: max-content;
+
 }
 
 .container{
@@ -21,15 +26,13 @@ body{
    width: 500px;
    height: 50vh;
    /* display:none; */
-   background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));
+   background: rgb(248, 252, 252);
 }
 
 
 
-
-
 .panel{
-   background-color:rgb(213, 214, 210);
+   background-color:rgb(248, 252, 252);
    }
 
 
@@ -52,7 +55,7 @@ body{
 
    .start{
       font-size: 14px;
-      color:whitesmoke;
+      color:rgb(57, 58, 63);
       text-align: left;
       width:450px;
       
@@ -128,4 +131,30 @@ body{
 
    .control-label{
       color:whitesmoke;
+   }
+
+   .btn-primary{
+      font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+
+      display: inline-block;
+      max-width: 180px;
+      text-align: left;
+      border: 2px solid #b2b4b0;
+      font-size: 16px;
+      color: #9c9e98;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: .4s;
+      background-color: whitesmoke;
+   }
+
+   
+   .btn-primary:hover {
+      background-color: #dbdf12;
+      border-color: #f7fa67;
+      color: #FFF;
    }
