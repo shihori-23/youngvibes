@@ -51,8 +51,10 @@ Route::get('/login', function () {
 //コマの画像をTOPに表示
 Route::get('/', 'ServiceContentController@comaGet');
 
-//コマの作成後に画像を保存
-// Route::get('/coma_create/save', 'ServiceContentController@comaSave');
+ //coma_create.blade.phpの前回のコマを表示する
+Route::get('/coma_create', 'ServiceContentController@comaPev');
+
+ //coma_create.blade.php コマ作成後に画像を保存
 Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
