@@ -5,6 +5,51 @@
 <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script> -->
 
 <div class="container">
+
+    <div class="start">
+        <!-- <div class="inner"> -->
+        <p class="title">
+        つくることは、つむぐこと。
+        </p>
+        <p class = "first">    
+        Chumuguは、つくることを楽しむ場です。<br>
+        </p>
+
+        <p class="second">
+        まずは目の前に広がる他の作者の作品を、<br>
+        見て楽しむことから始まります。<br>
+        </p>
+
+        <p class="second2">
+        そして、今度はあなたが、文章・イラスト・写真で、<br>
+        頭の中にあるアイディアを自分なりに表現してみましょう。<br>
+        それは「1コマ」という形で1つの作品になります。<br>
+        </p>
+        <p class="third">
+        さらにそこから、他の人が形にした作品と自分の作品を並べて、<br>
+        1つの物語を組み立てることができます。<br>
+        その組み立てた物語は、コラージュとして<br>
+        新しい「作品」に生まれ変わります。<br>
+        </p>
+
+        <p class="forth">
+        あなたと同じように、他の誰かもあなたの作品を選んで<br>
+        物語を組み立てることができるので、<br>
+        自分の作った作品がどのような物語に加わるかも、<br>
+        同時に楽しむことができます。<br>
+        </p>
+
+        <p class="fifth">
+        最後、あなたの作った作品は、<br>
+        他の作者が作ったすべての作品とつながり、<br>
+        1つの大きなストーリーをつむぐことになります。<br>
+        </p>
+        <p class="six">
+        さあ、つくることを楽しみましょう！
+        </p>
+        <!-- </div> -->
+        </div>
+        
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -68,66 +113,22 @@
             </div>
         </div>
     </div>
+
+    
 </div>
 
-
-
-    <div class="start">
-        <div class="inner">
-    <p class="title">
-    つくることは、つむぐこと。
-    </p>
-    <p class = "first">    
-    Chumuguは、つくることを楽しむ場です。<br>
-    </p>
-
-    <p class="second">
-    まずは目の前に広がる他の作者の作品を、<br>
-    見て楽しむことから始まります。<br>
-    </p>
-
-    <p class="second2">
-    そして、今度はあなたが、文章・イラスト・写真で、<br>
-    頭の中にあるアイディアを自分なりに表現してみましょう。<br>
-    それは「1コマ」という形で1つの作品になります。<br>
-    </p>
-    <p class="third">
-    さらにそこから、他の人が形にした作品と自分の作品を並べて、<br>
-    1つの物語を組み立てることができます。<br>
-    その組み立てた物語は、コラージュとして<br>
-    新しい「作品」に生まれ変わります。<br>
-    </p>
-
-    <p class="forth">
-    あなたと同じように、他の誰かもあなたの作品を選んで<br>
-    物語を組み立てることができるので、<br>
-    自分の作った作品がどのような物語に加わるかも、<br>
-    同時に楽しむことができます。<br>
-    </p>
-
-    <p class="fifth">
-    最後、あなたの作った作品は、<br>
-    他の作者が作ったすべての作品とつながり、<br>
-    1つの大きなストーリーをつむぐことになります。<br>
-    </p>
-    <p class="six">
-    さあ、つくることを楽しみましょう！
-    </p>
-    </div>
-</div>
-
-    <script>
+    <!-- <script>
     $(function() {
 	setTimeout(function(){
         $('.start').fadeIn(1600);
-        $('.inner').fadeIn(400);
-	},500); //0.5秒後にロゴをフェードイン!
+        $('.inner').fadeIn(400); -->
+	<!-- },500); //0.5秒後にロゴをフェードイン!
 	setTimeout(function(){
 		$('.start').fadeOut(500);
 		$('.inner').fadeOut(500);
 	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！
     });
-    </script>
+    </script> -->
 
 
 @endsection
