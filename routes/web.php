@@ -62,7 +62,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/long_story', function () {
-    $service_contents = ServiceContent::orderBy('c_id', 'asc')->get();
+    $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('long_story', [
         'service_contents' => $service_contents
     ]);
