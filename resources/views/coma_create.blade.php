@@ -23,6 +23,9 @@
       ul{
         display:flex;
       }
+      .main_container{
+        display:flex;
+      }
       .content_flex{
         display:flex;
         margin-top:50px;
@@ -83,12 +86,13 @@
           </div>
 
           <div> 
-          <!-- 色を選択できるカラーパレットを用意する。【未実装】 -->
+          <!-- 色を選択できるカラーパレットを用意する。 -->
           <span id="color-palette"></span>
           </div>
           <div>
             <button id="draw-button">線を引く</button>
             <button id="text-button">テキストを挿入</button>
+            <button id="bgcolor-button">背景色を変える</button>
             <button id="pev-button">戻る</button>
             <button id="next-button">すすむ</button>
             <button id="clear-button">全消し</button>
