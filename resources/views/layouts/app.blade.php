@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="{{ asset('/js/jquery-2.1.3.min.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -55,7 +57,7 @@
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                            document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
