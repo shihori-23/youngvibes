@@ -79,9 +79,7 @@
         <div class="toolvar">
         <!-- テキスト編集 -->
           <div class="text">
-            <p class="moji">文字編集</p>
-            <!-- <button onclick="Addtext()">テキスト追加</button> -->
-                <label for="canvas-bg-color">背景の色:</label>
+                <label for="canvas-bg-color">選択中の色:</label>
                 <input type="color" value="" id="canvas-bg-color" size="10" />
           </div>
 

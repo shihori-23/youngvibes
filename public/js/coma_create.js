@@ -114,6 +114,7 @@ function initColorPalette() {
     // draw関数の手前で定義されている、線の色を保持する変数に代入して色情報を変更する
     currentColor = color.hex();
     canvas.freeDrawingBrush.color = currentColor; //色
+    $("#canvas-bg-color").val(currentColor);
   });
 }
 
