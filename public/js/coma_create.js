@@ -42,11 +42,17 @@ $("#draw-button").click(function() {
   });
 
 //テキストを挿入
+let font = $("#font-family").val();
+$("#font-family").change(function(){
+  font = $('option:selected').val();
+  console.log(font)
+})
+
 $("#text-button").click(function() {
   canvas.isDrawingMode = false;
   undoBuffer.push(canvas.toDatalessJSON());
   let text = new fabric.IText("なんか書いてね", {
-    fontFamily: "Fredoka One", //フォント指定
+    fontFamily: font, //フォント指定
     top: 100, //位置
     left: 100, //位置
     fontSize: 20, //サイズ
@@ -89,6 +95,7 @@ $("#clear-button").click(function() {
 });
 
 
+
 // カラーパレットの設置を行う
 function initColorPalette() {
   const joe = colorjoe.rgb("color-palette", currentColor);
@@ -111,7 +118,7 @@ function initColorPalette() {
 initColorPalette();
 
 
-//   canvasを画像で保存;
+//canvasを画像で保存;
 $("#download").click(function() {
   canvas = document.getElementById("canvas");
   //base64に変換

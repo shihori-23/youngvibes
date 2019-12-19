@@ -94,6 +94,79 @@
             <button id="pev-button">戻る</button>
             <button id="next-button">すすむ</button>
             <button id="clear-button">全消し</button>
+
+            <!-- 以下未実装 -->
+            <label for="font-family" style="display:inline-block">フォント:</label>
+            <select id="font-family">
+              <option value="Meiryo">メイリオ</option>
+              <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
+              <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
+              <option value="Wawati SC" selected>Wawati SC</option>
+              <option value="Andale Mono">Andale Mono</option>
+              <option value="Bradley Hand" selected>BradleyHand</option>
+              <option value="arial">Arial</option>
+              <option value="helvetica" selected>Helvetica</option>
+              <option value="myriad pro">Myriad Pro</option>
+              <option value="delicious">Delicious</option>
+              <option value="verdana">Verdana</option>
+              <option value="georgia">Georgia</option>
+              <option value="courier">Courier</option>
+              <option value="comic sans ms">Comic Sans MS</option>
+              <option value="impact">Impact</option>
+              <option value="monaco">Monaco</option>
+              <option value="optima">Optima</option>
+              <option value="hoefler text">Hoefler Text</option>
+              <option value="plaster">Plaster</option>
+              <option value="engagement">Engagement</option>
+            </select>
+          <label for="text-lines-bg-color">文字背景:</label>
+          <input type="color" value="" id="text-lines-bg-color" size="10" />
+
+          <label for="text-stroke-color">文字枠色:</label>
+          <input type="color" value="" id="text-stroke-color" />
+
+          <label for="text-stroke-width">枠の太さ:</label>
+            <input
+              type="range"
+              value="1"
+              min="1"
+              max="5"
+              id="text-stroke-width"
+            />
+
+            <label for="text-font-size">文字サイズ:</label>
+            <input
+              type="range"
+              value=""
+              min="1"
+              max="120"
+              step="1"
+              id="text-font-size"
+            />
+          
+            <label for="text-font-size">線の太さ:</label>
+            <input
+              type="range"
+              value=""
+              min="1"
+              max="120"
+              step="1"
+              id="text-font-size"
+            />
+
+            <input type="checkbox" name="fonttype" id="text-cmd-bold" />
+          太字
+​
+          <input type="checkbox" name="fonttype" id="text-cmd-italic" />
+          斜体
+​
+          <input type="checkbox" name="fonttype" id="text-cmd-underline" />
+          下線
+​
+          <input type="checkbox" name="fonttype" id="text-cmd-linethrough" />
+          取消線
+
+          <!-- 未実装ここまで -->
           </div>
           <div>
             <button id="eraser-button">消しゴムモード</button>
