@@ -29,7 +29,9 @@
           <div class="outside-circle">
             <div class="inner-circle">
               <div class="user-profile">
-                <h1 class="user-name">Yooooo Aoky</h1>
+                {{-- データベースにユーザー情報が入り次第下記に変える --}}
+                <h1 class="user-name">Yooooo Aoky</h1>                 
+                {{-- <h1 class="user-name">{{$user->name}}</h1> --}}              
                 <ul class="profile-menu">
                   <li>Logout</li>
                   <li>Update Profile</li>
