@@ -19,7 +19,7 @@ class ServiceContentController extends Controller
     //coma_create.blade.phpの前回のコマを表示する
     public function comaPev(){
         // コマのデータを降順で１レコード取得
-        $comas = ServiceContent::orderBy('c_id','dec')->first();
+        $comas = ServiceContent::orderBy('id','dec')->first();
         return view('coma_create',[
         'comas' => $comas
         ]);
