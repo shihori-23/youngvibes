@@ -1,277 +1,121 @@
-fabric.Object.prototype.transparentCorners = false;
-fabric.Object.prototype.padding = 5;
+// fabric.Object.prototype.transparentCorners = false;
+// fabric.Object.prototype.padding = 5;
 
-// var $ = function(id) {
-//   return document.getElementById(id);
-// };
+// const canvas = (this.__canvas = new fabric.Canvas("canvas1"));
 
-var canvas = (this.__canvas = new fabric.Canvas("canvas1"));
-canvas.setHeight(400);
-canvas.setWidth(300);
+window.addEventListener("load", () => {
+  const canvas = document.querySelector("#draw-area");
+  const context = canvas.getContext("2d");
+  const lastPosition = { x: null, y: null };
+  let isDrag = false;
 
-var imgElement1 = document.getElementById("my_image1");
-$("#my_image1").click(function() {
-  var imgInstance1 = new fabric.Image(imgElement1, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance1);
+  // 現在の線の色を保持する変数(デフォルトは黒(#000000)とする)
+  let currentColor = "#000000";
+
+  function draw(x, y) {
+    if (!isDrag) {
+      return;
+    }
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.lineWidth = 5;
+    context.strokeStyle = currentColor;
+    if (lastPosition.x === null || lastPosition.y === null) {
+      context.moveTo(x, y);
+    } else {
+      context.moveTo(lastPosition.x, lastPosition.y);
+    }
+    context.lineTo(x, y);
+    context.stroke();
+
+    lastPosition.x = x;
+    lastPosition.y = y;
+  }
+
+  function clear() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function dragStart(event) {
+    context.beginPath();
+
+    isDrag = true;
+  }
+
+  function dragEnd(event) {
+    context.closePath();
+    isDrag = false;
+    lastPosition.x = null;
+    lastPosition.y = null;
+  }
+
+  function initEventHandler() {
+    const clearButton = document.querySelector("#clear-button");
+    clearButton.addEventListener("click", clear);
+
+    // 消しゴムモードを選択したときの挙動
+    const eraserButton = document.querySelector("#eraser-button");
+    eraserButton.addEventListener("click", () => {
+      // 消しゴムと同等の機能を実装したい場合は現在選択している線の色を
+      // 白(#FFFFFF)に変更するだけでよい
+      currentColor = "#FFFFFF";
+    });
+
+    canvas.addEventListener("mousedown", dragStart);
+    canvas.addEventListener("mouseup", dragEnd);
+    canvas.addEventListener("mouseout", dragEnd);
+    canvas.addEventListener("mousemove", event => {
+      draw(event.layerX, event.layerY);
+    });
+  }
+
+  // カラーパレットの設置を行う
+  function initColorPalette() {
+    const joe = colorjoe.rgb("color-palette", currentColor);
+
+    // 'done'イベントは、カラーパレットから色を選択した時に呼ばれるイベント
+    // ドキュメント: https://github.com/bebraw/colorjoe#event-handling
+    joe.on("done", color => {
+      // コールバック関数の引数からcolorオブジェクトを受け取り、
+      // このcolorオブジェクト経由で選択した色情報を取得する
+
+      // color.hex()を実行すると '#FF0000' のような形式で色情報を16進数の形式で受け取れる
+      // draw関数の手前で定義されている、線の色を保持する変数に代入して色情報を変更する
+      currentColor = color.hex();
+    });
+  }
+
+  initEventHandler();
+
+  // カラーパレット情報を初期化する
+  initColorPalette();
 });
 
-var imgElement2 = document.getElementById("my_image2");
-$("#my_image2").click(function() {
-  var imgInstance2 = new fabric.Image(imgElement2, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance2);
-});
-
-var imgElement3 = document.getElementById("my_image3");
-$("#my_image3").click(function() {
-  var imgInstance3 = new fabric.Image(imgElement3, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance3);
-});
-
-var imgElement4 = document.getElementById("my_image4");
-$("#my_image4").click(function() {
-  var imgInstance4 = new fabric.Image(imgElement4, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance4);
-});
-
-var imgElement5 = document.getElementById("my_image5");
-$("#my_image5").click(function() {
-  var imgInstance5 = new fabric.Image(imgElement5, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance5);
-});
-
-var imgElement6 = document.getElementById("my_image6");
-$("#my_image6").click(function() {
-  var imgInstance6 = new fabric.Image(imgElement6, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance6);
-});
-
-var imgElement7 = document.getElementById("my_image7");
-$("#my_image7").click(function() {
-  var imgInstance7 = new fabric.Image(imgElement7, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance7);
-});
-
-var imgElement8 = document.getElementById("my_image8");
-$("#my_image8").click(function() {
-  var imgInstance8 = new fabric.Image(imgElement8, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance8);
-});
-
-var imgElement9 = document.getElementById("my_image9");
-$("#my_image9").click(function() {
-  var imgInstance9 = new fabric.Image(imgElement9, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance9);
-});
-
-var imgElement10 = document.getElementById("my_image10");
-$("#my_image10").click(function() {
-  var imgInstance10 = new fabric.Image(imgElement10, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance10);
-});
-
-var imgElement11 = document.getElementById("my_image11");
-$("#my_image11").click(function() {
-  var imgInstance11 = new fabric.Image(imgElement11, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance11);
-});
-
-var imgElement12 = document.getElementById("my_image12");
-$("#my_image12").click(function() {
-  var imgInstance12 = new fabric.Image(imgElement12, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance12);
-});
-
-var imgElement13 = document.getElementById("my_image13");
-$("#my_image13").click(function() {
-  var imgInstance13 = new fabric.Image(imgElement13, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance13);
-});
-
-var imgElement14 = document.getElementById("my_image14");
-$("#my_image14").click(function() {
-  var imgInstance14 = new fabric.Image(imgElement14, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance14);
-});
-
-var imgElement15 = document.getElementById("my_image15");
-$("#my_image15").click(function() {
-  var imgInstance15 = new fabric.Image(imgElement15, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance15);
-});
-
-var imgElement16 = document.getElementById("my_image16");
-$("#my_image16").click(function() {
-  var imgInstance16 = new fabric.Image(imgElement16, {
-    left: 0,
-    top: 0
-  });
-  canvas.add(imgInstance16);
-});
-
-function Addtext() {
-  canvas.add(
-    new fabric.IText("Tap して編集", {
-      left: 50,
-      top: 100,
-      fontFamily: "arial black",
-      fill: "#333",
-      fontSize: 35
-    })
-  );
-}
-// function Addstamp(){
+// 川邊ゾーンです
+//テキスト追加のクリックイベント
+// function Addtext() {
 //   canvas.add(
-//     new fabric.Image.fromURL('../php/onna.png',function(oImg) {
-// canvas.add(oImg)
+//     new fabric.IText("Tap して編集", {
+//       left: 50,
+//       top: 100,
+//       fontFamily: "arial black",
+//       fill: "#333",
+//       fontSize: 35
 //     })
 //   );
 // }
-// $(function(){
-//   var canvas =new fabric.Canvas('canvas1');
-//   new fabric.Image.fromURL('onna.png',function(oImg){
-//     oImg.scale(0.5);
-//     canvas.add(oImg);
-//   });
-// });
 
-// document.getElementById('text-color').onchange = function() {
-//     canvas.getActiveObject().setFill(this.value);
-//     canvas.renderAll();
-// };
+//テキストの色を変更（動きません）
 document.getElementById("text-color").onchange = function() {
   canvas.getActiveObject().setFill(this.value);
   canvas.renderAll();
 };
 
+//背景の色を変更
 document.getElementById("canvas-bg-color").onchange = function() {
   canvas.setBackgroundColor(this.value);
   canvas.renderAll();
 };
-
-// document.getElementById("text-bg-color").onchange = function() {
-//   canvas.getActiveObject().setBackgroundColor(this.value);
-//   canvas.renderAll();
-// };
-
-document.getElementById("text-lines-bg-color").onchange = function() {
-  canvas.getActiveObject().setTextBackgroundColor(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("text-stroke-color").onchange = function() {
-  canvas.getActiveObject().setStroke(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("text-stroke-width").onchange = function() {
-  canvas.getActiveObject().setStrokeWidth(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("font-family").onchange = function() {
-  canvas.getActiveObject().setFontFamily(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("text-font-size").onchange = function() {
-  canvas.getActiveObject().setFontSize(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("text-line-height").onchange = function() {
-  canvas.getActiveObject().setLineHeight(this.value);
-  canvas.renderAll();
-};
-
-document.getElementById("text-align").onchange = function() {
-  canvas.getActiveObject().setTextAlign(this.value);
-  canvas.renderAll();
-};
-
-radios5 = document.getElementsByName("fonttype"); // wijzig naar button
-for (var i = 0, max = radios5.length; i < max; i++) {
-  radios5[i].onclick = function() {
-    if (document.getElementById(this.id).checked == true) {
-      if (this.id == "text-cmd-bold") {
-        canvas.getActiveObject().set("fontWeight", "bold");
-      }
-      if (this.id == "text-cmd-italic") {
-        canvas.getActiveObject().set("fontStyle", "italic");
-      }
-      if (this.id == "text-cmd-underline") {
-        canvas.getActiveObject().set("textDecoration", "underline");
-      }
-      if (this.id == "text-cmd-linethrough") {
-        canvas.getActiveObject().set("textDecoration", "line-through");
-      }
-      if (this.id == "text-cmd-overline") {
-        canvas.getActiveObject().set("textDecoration", "overline");
-      }
-    } else {
-      if (this.id == "text-cmd-bold") {
-        canvas.getActiveObject().set("fontWeight", "");
-      }
-      if (this.id == "text-cmd-italic") {
-        canvas.getActiveObject().set("fontStyle", "");
-      }
-      if (this.id == "text-cmd-underline") {
-        canvas.getActiveObject().set("textDecoration", "");
-      }
-      if (this.id == "text-cmd-linethrough") {
-        canvas.getActiveObject().set("textDecoration", "");
-      }
-      if (this.id == "text-cmd-overline") {
-        canvas.getActiveObject().set("textDecoration", "");
-      }
-    }
-    canvas.renderAll();
-  };
-}
 
 //   canvasを画像で保存;
 $("#download").click(function() {
