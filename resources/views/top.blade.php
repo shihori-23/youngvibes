@@ -50,7 +50,11 @@
           <button id="zoomIn">拡大</button>
           <button id="zoomOut">縮小</button>
           <!-- DBからコマ数を取得 -->
-          <p id="comaCount">現在@if (count($comas) > 0){{(count($comas))}}@endifコマ</p>
+          現在
+          @if (count($comas) > 0)
+          <p id="comaCount">{{(count($comas))}}</p>
+          @endif
+          コマ
         </nav>
       </header>
       <main>
@@ -98,7 +102,7 @@
             oImg.set({hasRotatingPoint: false});//回転を制限
             area.add(oImg);//追加
         });
-        }
+        };
     });
 
     //拡大・縮小
