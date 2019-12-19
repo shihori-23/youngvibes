@@ -63,7 +63,7 @@
             <img src="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
-              id="canvas1"
+              id="canvas"
               width="700"
               height="700"
               style="border: black solid 1px;"
@@ -81,10 +81,12 @@
           </div>
 
           <div> 
-          <!-- 色を選択できるカラーパレットを用意する。 -->
+          <!-- 色を選択できるカラーパレットを用意する。【未実装】 -->
           <span id="color-palette"></span>
           </div>
           <div>
+            <button id="draw-button">線を引く</button>
+            <button id="text-button">テキストを挿入</button>
             <button id="clear-button">全消し</button>
           </div>
           <div>
