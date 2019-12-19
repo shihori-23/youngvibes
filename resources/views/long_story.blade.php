@@ -9,13 +9,14 @@
 
     <!-- reset.cssへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
+    <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
 
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="" />
   </head>
 
   <body>
-    <div id="wapper">
+    {{-- <div id="wapper">
       <header>
         <a href="#" class="logo">
           <img src="" alt="logo" width="180" height="100" />
@@ -31,7 +32,8 @@
           </ul>
         </nav>
       </header>
-      <main>
+      <main> --}}
+        @include('header')
         <div class="main_container">
           {{-- <canvas id="canvas" width="" height=""></canvas> --}}
           @foreach($service_contents as $service_content)
