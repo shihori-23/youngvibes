@@ -67,3 +67,7 @@ Route::get('/long_story', function () {
         'service_contents' => $service_contents
     ]);
 });
+
+Route::get('/header', function () {
+    return view('header');
+});
