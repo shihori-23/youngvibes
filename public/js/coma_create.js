@@ -1,16 +1,20 @@
+// 現在の色を保持する変数(デフォルトは黒(#000000)とする)
+let currentColor = "#000000";//線の色
+let bgColor = "#fff";//背景色
+
 //fabricjs用のcanvasを定義
 const canvas = new fabric.Canvas("canvas", {
   isDrawingMode: false,
   selection: true,
-  stateful: true
+  stateful: true,
+  backgroundColor: bgColor//背景色
 });
 let ctx = canvas.getContext("2d");
 var undoBuffer = [];
 
 //テスト中(いろいろ設定できるみたい)
 canvas.freeDrawingBrush = new fabric.PencilBrush(canvas); //ブラシ
-// 現在の線の色を保持する変数(デフォルトは黒(#000000)とする)
-let currentColor = "#000000";
+
 canvas.freeDrawingBrush.color = currentColor; //色
 canvas.freeDrawingBrush.width = 5; //太さ
 canvas.freeDrawingBrush.shadowBlur = 0; //影
@@ -21,15 +25,27 @@ $("#draw-button").click(function() {
   canvas.isDrawingMode = true; //ここでbloomを切り替える
 });
 
-//マウスアップの際にundoBuffer保存
-$("canvas").mouseup(function() {
-  undoBuffer.push(canvas.toDatalessJSON());
-});
 
-//マウスが離れた際にundoBuffer保存
-$("canvas").mouseleave(function() {
-  undoBuffer.push(canvas.toDatalessJSON());
-});
+//マウスアップの際にundoBuffer保存
+  $("canvas").mouseup(function() {
+    if(canvas.isDrawingMode == true){
+    undoBuffer.push(canvas.toDatalessJSON());
+  }
+  });
+
+
+  canvas.observe("object:moved", function () {
+    undoBuffer.push(canvas.toDatalessJSON());
+    console.log(undoBuffer)
+  });
+  
+  //マウスが離れた際にundoBuffer保存
+  // $("canvas").mouseleave(function() {
+  //   if(canvas.isDrawingMode == true){
+  //   undoBuffer.push(canvas.toDatalessJSON());
+  //   }
+  // });
+
 
 // //マウスダウンの際にundoBuffer保存
 // $("canvas").mousedown(function() {
@@ -44,6 +60,7 @@ $("canvas").mouseleave(function() {
 //テキストを挿入
 $("#text-button").click(function() {
   canvas.isDrawingMode = false;
+  undoBuffer.push(canvas.toDatalessJSON());
   let text = new fabric.IText("なんか書いてね", {
     fontFamily: "Fredoka One", //フォント指定
     top: 100, //位置
@@ -54,6 +71,15 @@ $("#text-button").click(function() {
   canvas.add(text);
   undoBuffer.push(canvas.toDatalessJSON());
   canvas.renderAll;
+});
+
+//背景色変更ボタン
+$("#bgcolor-button").click(function() {
+  // canvas.isDrawingMode = true;
+  undoBuffer.push(canvas.toDatalessJSON());
+  bgColor = currentColor;
+  canvas.backgroundColor = bgColor;
+  canvas.renderAll();
 });
 
 //全消しボタン
@@ -73,104 +99,6 @@ $("#pev-button").click(function() {
   console.log(undoBuffer);
 });
 
-//戻る
-
-//進む
-
-// this.canvas.on('object:added', (e) => {
-//   const object = e.target;
-//   if (!this.isRedoing) {
-//     this.canvasHistory = [];
-//   }
-//   this.isRedoing = false;
-// });
-
-// // 戻る
-// undo() {
-//   if (this.canvas._objects.length > 0) {
-//     const undoObject = this.canvas._objects.pop();
-//     this.canvasHistory.push(undoObject);
-//     this.canvas.renderAll();
-//   }
-// }
-
-// // 進む
-// redo() {
-//   if (this.canvasHistory.length > 0) {
-//     this.isRedoing = true;
-//     const redoObject = this.canvasHistory.pop();
-//     this.canvas.add(redoObject);
-//   }
-// }
-
-//-------以下favric未使用のためコメントアウト---------//
-
-// window.addEventListener("load", () => {
-//   const canvas = document.querySelector("#draw-area");
-//   const context = canvas.getContext("2d");
-//   const lastPosition = { x: null, y: null };
-//   let isDrag = false;
-
-//   // 現在の線の色を保持する変数(デフォルトは黒(#000000)とする)
-//   let currentColor = "#000000";
-
-//   function draw(x, y) {
-//     if (!isDrag) {
-//       return;
-//     }
-//     context.lineCap = "round";
-//     context.lineJoin = "round";
-//     context.lineWidth = 5;
-//     context.strokeStyle = currentColor;
-//     if (lastPosition.x === null || lastPosition.y === null) {
-//       context.moveTo(x, y);
-//     } else {
-//       context.moveTo(lastPosition.x, lastPosition.y);
-//     }
-//     context.lineTo(x, y);
-//     context.stroke();
-
-//     lastPosition.x = x;
-//     lastPosition.y = y;
-//   }
-
-// function clear() {
-//   context.clearRect(0, 0, canvas.width, canvas.height);
-// }
-
-//   function dragStart(event) {
-//     context.beginPath();
-
-//     isDrag = true;
-//   }
-
-//   function dragEnd(event) {
-//     context.closePath();
-//     isDrag = false;
-//     lastPosition.x = null;
-//     lastPosition.y = null;
-//   }
-
-// function initEventHandler() {
-//   const clearButton = document.querySelector("#clear-button");
-//   clearButton.addEventListener("click", clear);
-// }
-
-//     // 消しゴムモードを選択したときの挙動
-//     const eraserButton = document.querySelector("#eraser-button");
-//     eraserButton.addEventListener("click", () => {
-//       // 消しゴムと同等の機能を実装したい場合は現在選択している線の色を
-//       // 白(#FFFFFF)に変更するだけでよい
-//       currentColor = "#FFFFFF";
-//     });
-
-//     canvas.addEventListener("mousedown", dragStart);
-//     canvas.addEventListener("mouseup", dragEnd);
-//     canvas.addEventListener("mouseout", dragEnd);
-//     canvas.addEventListener("mousemove", event => {
-//       draw(event.layerX, event.layerY);
-//     });
-//   }
 
 // カラーパレットの設置を行う
 function initColorPalette() {
@@ -189,38 +117,9 @@ function initColorPalette() {
   });
 }
 
-// initEventHandler();
-
 // カラーパレット情報を初期化する
 initColorPalette();
 
-// 川邊ゾーンです
-//テキスト追加のクリックイベント
-// function Addtext() {
-//   canvas.add(
-//     new fabric.IText("Tap して編集", {
-//       left: 50,
-//       top: 100,
-//       fontFamily: "arial black",
-//       fill: "#333",
-//       fontSize: 35
-//     })
-//   );
-// }
-
-//-------以下favric未使用のためコメントアウト--------//
-
-//テキストの色を変更（動きません）
-// document.getElementById("text-color").onchange = function() {
-//   canvas.getActiveObject().setFill(this.value);
-//   canvas.renderAll();
-// };
-
-// //背景の色を変更
-// document.getElementById("canvas-bg-color").onchange = function() {
-//   canvas.setBackgroundColor(this.value);
-//   canvas.renderAll();
-// };
 
 //   canvasを画像で保存;
 $("#download").click(function() {
