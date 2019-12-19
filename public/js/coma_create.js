@@ -3,26 +3,28 @@ let currentColor = "#000000";//線の色
 let bgColor = "#fff";//背景色
 
 //fabricjs用のcanvasを定義
-const canvas = new fabric.Canvas("canvas", {
+let canvas = new fabric.Canvas("canvas", {
   isDrawingMode: false,
   selection: true,
   stateful: true,
   backgroundColor: bgColor//背景色
 });
 let ctx = canvas.getContext("2d");
-var undoBuffer = [];
 
-//テスト中(いろいろ設定できるみたい)
-canvas.freeDrawingBrush = new fabric.PencilBrush(canvas); //ブラシ
+//戻るボタン用のbuffer
+let undoBuffer = [];
 
-canvas.freeDrawingBrush.color = currentColor; //色
-canvas.freeDrawingBrush.width = 5; //太さ
-canvas.freeDrawingBrush.shadowBlur = 0; //影
-canvas.hoverCursor = "move"; //分からん
+
 
 //線を引くボタン
 $("#draw-button").click(function() {
   canvas.isDrawingMode = true; //ここでbloomを切り替える
+  //書き込み線設定
+  canvas.freeDrawingBrush = new fabric.PencilBrush(canvas); //ブラシ
+  canvas.freeDrawingBrush.color = currentColor; //色
+  canvas.freeDrawingBrush.width = 5; //太さ
+  canvas.freeDrawingBrush.shadowBlur = 0; //影
+  canvas.hoverCursor = "move"; //分からん
 });
 
 
@@ -33,29 +35,11 @@ $("#draw-button").click(function() {
   }
   });
 
-
+//オブジェクトが移動されたらundoBuffer保存
   canvas.observe("object:moved", function () {
     undoBuffer.push(canvas.toDatalessJSON());
     console.log(undoBuffer)
   });
-  
-  //マウスが離れた際にundoBuffer保存
-  // $("canvas").mouseleave(function() {
-  //   if(canvas.isDrawingMode == true){
-  //   undoBuffer.push(canvas.toDatalessJSON());
-  //   }
-  // });
-
-
-// //マウスダウンの際にundoBuffer保存
-// $("canvas").mousedown(function() {
-//   undoBuffer.push(canvas.toDatalessJSON());
-// });
-
-// //マウスが離れた際にundoBuffer保存
-// $("canvas").mousemove(function() {
-//   undoBuffer.push(canvas.toDatalessJSON());
-// });
 
 //テキストを挿入
 $("#text-button").click(function() {
@@ -84,17 +68,22 @@ $("#bgcolor-button").click(function() {
 
 //全消しボタン
 $("#clear-button").click(function() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
+  ret = confirm('canvasの内容を削除します。');
+  // アラートで「OK」を選んだ時
+  if (ret == true){
+    undoBuffer = [];
+    canvas.clear();
+  }
+  });
 
-//消しゴムモード
-$("#eraser-button").click(function() {
-  canvas.isDrawingMode = true;
-  canvas.freeDrawingBrush.color = "white"; //白にするだけ
-});
+  //消しゴムモード
+  $("#eraser-button").click(function() {
+    canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.color = "white"; //白にするだけ
+  });
 
-//戻る
-$("#pev-button").click(function() {
+  //戻る
+  $("#pev-button").click(function() {
   canvas.loadFromJSON(undoBuffer.pop()).renderAll();
   console.log(undoBuffer);
 });
