@@ -50,11 +50,7 @@
           <button id="zoomIn">拡大</button>
           <button id="zoomOut">縮小</button>
           <!-- DBからコマ数を取得 -->
-          @if (count($comas) > 0)
-          @foreach ( $comas as $coma)
-          <div>現在<p id="comaCount">{{(count($comas))}}</p>コマ</div>
-          @endforeach
-          @endif
+          <p id="comaCount">現在@if (count($comas) > 0){{(count($comas))}}@endifコマ</p>
         </nav>
       </header>
       <main>
