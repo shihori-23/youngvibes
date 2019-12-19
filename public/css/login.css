@@ -1,6 +1,10 @@
 .form-group{
-   color:rgb(93, 90, 90);
+   color: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));;
 
+}
+
+body{
+   background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));
 }
 
 .container{
@@ -17,14 +21,19 @@
    width: 500px;
    height: 50vh;
    /* display:none; */
-
+   background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204));
 }
+
+
+
+
 
 .panel{
    background-color:rgb(213, 214, 210);
    }
 
-   /* .box{
+
+.start{
 
       animation-name:fade-in3;
       animation-duration:2s; 
@@ -33,7 +42,7 @@
       animation-iteration-count:1;
       animation-direction:normal;
       animation-fill-mode: forwards; 
-   } */
+   }
 
    @keyframes fade-in3 {
       0% {opacity: 0; transform: translate3d(0,20px,0);}
@@ -41,8 +50,9 @@
 
    }
 
-   .box{
+   .start{
       font-size: 14px;
+      color:whitesmoke;
       text-align: left;
       width:450px;
       
@@ -87,15 +97,15 @@
       font-size:20px;
    }
 
-   .start {
+   /* .start {
       background: #FFF;
       position: fixed;
       top: 0;
       left: 0;
       height: 100vh;
       width: 100%;
-      z-index: 9000;
-   }
+      z-index: 9000; */
+   /* } */
    .inner{
       width: 50%;
       margin: 0 auto;
@@ -109,4 +119,13 @@
       display: none;
       z-index: 9999;
       width: 280px; */
+   }
+
+
+   .btn-link{
+      color:whitesmoke;
+   }
+
+   .control-label{
+      color:whitesmoke;
    }
