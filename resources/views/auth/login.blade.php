@@ -7,6 +7,7 @@
 <div class="container">
 
     <div class="start">
+        <img class="logo" src="{{ asset('img/logo/Chumugu_logo.png') }}" alt="logo" height="80px" width="auto">
         <!-- <div class="inner"> -->
         <p class="title">
         つくることは、つむぐこと。
@@ -101,7 +102,7 @@
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Login
-                                </button>
+                                </button><br>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     パスワードを忘れましたか?
@@ -118,8 +119,8 @@
 </div>
 
 </div>
-    
-    <ul class="bg-bubbles">
+    <!-- 背景にコマを飛ばすためのリスト -->
+    <!-- <ul class="bg-bubbles">
         <li></li>
         <li></li>
         <li></li>
@@ -130,7 +131,7 @@
         <li></li>
         <li></li>
         <li></li>
-    </ul>
+    </ul> -->
 </div>
 
     <!-- <script>
