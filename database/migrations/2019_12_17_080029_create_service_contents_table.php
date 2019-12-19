@@ -16,8 +16,8 @@ class CreateServiceContentsTable extends Migration
         // Schemaファサードでservice_contentsテーブルの作成
         Schema::create('service_contents', function (Blueprint $table) {
             // カラムを作成してゆくぅ〜！
-            $table->increments('c_id');
-            $table->string('u_id');
+            $table->increments('id');
+            $table->string('email');
             $table->string('img_file')->unique();
         });
     }
