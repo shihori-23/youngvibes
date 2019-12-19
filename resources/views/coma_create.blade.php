@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/coma_create.css')}}" />
+    <!-- cssファイルへのリンク -->
+    <link rel="stylesheet" href="{{asset('/css/colorjoe.css')}}" />
     <style>
       header {
         width: 100%;
@@ -87,6 +89,8 @@
           <div>
             <button id="draw-button">線を引く</button>
             <button id="text-button">テキストを挿入</button>
+            <button id="pev-button">戻る</button>
+            <button id="next-button">すすむ</button>
             <button id="clear-button">全消し</button>
           </div>
           <div>
@@ -120,6 +124,7 @@
 
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
+    <script src="{{asset('/js/colorjoe.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
     <script src="{{asset('/js/coma_create.js')}}"></script>
   
