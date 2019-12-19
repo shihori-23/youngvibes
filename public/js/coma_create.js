@@ -42,17 +42,35 @@ $("#draw-button").click(function() {
   });
 
 //テキストを挿入
-let font = $("#font-family").val();
+let font = $("#font-family").val();//初期値
 $("#font-family").change(function(){
   font = $('option:selected').val();
   console.log(font)
 })
 
+//テキストの背景色変更
+let textBgColor = 'white';//初期値
+$("#text-bgcolor-button").click(function() {
+  textBgColor = currentColor;
+  $("#t-bgColor").css("color",textBgColor);
+  canvas.renderAll();
+});
+
+//テキストカラーを変更
+let textColor = 'black';//初期値
+$("#text-color-button").click(function() {
+  textColor = currentColor;
+  $("#t-color").css("color",textColor);
+  canvas.renderAll();
+});
+
+//テキストを挿入ボタン
 $("#text-button").click(function() {
   canvas.isDrawingMode = false;
   undoBuffer.push(canvas.toDatalessJSON());
   let text = new fabric.IText("なんか書いてね", {
     fontFamily: font, //フォント指定
+    textBackgroundColor:textBgColor ,//フォント背景色
     top: 100, //位置
     left: 100, //位置
     fontSize: 20, //サイズ
@@ -69,8 +87,10 @@ $("#bgcolor-button").click(function() {
   undoBuffer.push(canvas.toDatalessJSON());
   bgColor = currentColor;
   canvas.backgroundColor = bgColor;
+  $("#bgcolor").css("color",bgColor);
   canvas.renderAll();
 });
+
 
 //全消しボタン
 $("#clear-button").click(function() {

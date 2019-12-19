@@ -89,13 +89,13 @@
           </div>
           <div>
             <button id="draw-button">線を引く</button>
-            <button id="text-button">テキストを挿入</button>
+            <div id="bgcolor">
             <button id="bgcolor-button">背景色を変える</button>
-            <button id="pev-button">戻る</button>
-            <button id="next-button">すすむ</button>
-            <button id="clear-button">全消し</button>
+            <p>■</p>
+            </div>
 
-            <!-- 以下未実装 -->
+            <button id="text-button">テキストを挿入</button>
+            <!-- バグあります -->
             <label for="font-family" style="display:inline-block">フォント:</label>
             <select id="font-family">
               <option value="Meiryo">メイリオ</option>
@@ -119,22 +119,22 @@
               <option value="plaster">Plaster</option>
               <option value="engagement">Engagement</option>
             </select>
-          <label for="text-lines-bg-color">文字背景:</label>
-          <input type="color" value="" id="text-lines-bg-color" size="10" />
+            <!-- 以上バグあり -->
+            
+          <div id="t-bgColor">
+          <button id="text-bgcolor-button">文字背景を変更</button>
+          <p>■</p>
+            </div>
+          <div id="t-color">
+          <button id="text-color-button">文字の色を変更</button>
+          <p>■</p>
+            </div>
+            <button id="pev-button">戻る</button>
+            <button id="next-button">すすむ</button>
+            <button id="clear-button">全消し</button>
 
-          <label for="text-stroke-color">文字枠色:</label>
-          <input type="color" value="" id="text-stroke-color" />
-
-          <label for="text-stroke-width">枠の太さ:</label>
-            <input
-              type="range"
-              value="1"
-              min="1"
-              max="5"
-              id="text-stroke-width"
-            />
-
-            <label for="text-font-size">文字サイズ:</label>
+            <!-- 以下未実装 -->
+            <!-- <label for="text-font-size">文字サイズ:</label>
             <input
               type="range"
               value=""
@@ -164,7 +164,7 @@
           下線
 ​
           <input type="checkbox" name="fonttype" id="text-cmd-linethrough" />
-          取消線
+          取消線 -->
 
           <!-- 未実装ここまで -->
           </div>
