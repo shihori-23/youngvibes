@@ -174,7 +174,7 @@
           <input type="hidden" name="imgEmail" value="{{ Auth::user()->email }}">
           <input type="hidden" name="imgNamePev" value="{{ $comas->id }}">
           <input type="submit" value="これでOK">
-        </from>
+        </form>
       </div>
       <!-- <footer>(c)///////サービス名が入ります//////</footer> -->
     </div>

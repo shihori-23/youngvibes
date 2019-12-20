@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', function () {
+Route::get('/top', function () {
     if (Auth::check()) {
         return view('top');
     } else {
@@ -25,7 +25,7 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/', 'ServiceContentsController@index');
+Route::get('/top', 'ServiceContentsController@index');
 
 Route::get('/mypage_story_all', function () {
     return view('mypage_story_all');
@@ -45,8 +45,8 @@ Route::get('/mypage', function () {
     ]);
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function () {
+    return view('auth/login');
 });
 
 //全コマのデータをservice_contentsから取得する
@@ -57,7 +57,7 @@ Route::get('/login', function () {
 // });
 
 //コマの画像をTOPに表示
-Route::get('/', 'ServiceContentController@comaGet');
+Route::get('/top', 'ServiceContentController@comaGet');
 
 //coma_create.blade.phpの前回のコマを表示する
 Route::get('/coma_create', 'ServiceContentController@comaPev');
@@ -67,7 +67,7 @@ Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/long_story', function () {
     $service_contents = ServiceContent::orderBy('id', 'asc')->get();
