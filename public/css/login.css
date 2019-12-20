@@ -15,9 +15,10 @@ body {
   color: #001e43;
 }
 
-.navbar-nav > li > a:hover {
+/* .navbar-nav > li > a:hover {
   color: #dbdf12;
-}
+  border-bottom: 2px solid #001e43;
+} */
 
 .nav > li,
 .nav > li > a {
@@ -27,11 +28,13 @@ body {
 
 .account_btn {
   position: fixed;
+  padding-bottom: 10px;
   right: 60px;
 }
 
 .account_btn:hover {
   color: #dbdf12;
+  border-bottom: 2px solid #001e43;
 }
 
 .container {
@@ -70,15 +73,21 @@ body {
     transform: translate3d(0, 0, 0);
   }
 } */
+.start_content {
+  margin-top: 100px;
+  /* display: inline-block; */
+  /* vertical-align: middle; */
+}
 
 .title {
   font-weight: bold;
   font-size: 20px;
+  padding-top: 30px;
   margin-bottom: 20px;
 }
 
 .first {
-  margin: 10px 10px;
+  margin: 10px 20px;
 }
 
 .second {
@@ -124,18 +133,11 @@ body {
 
 /* ログインフォーム */
 
-.row {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .panel-default {
   width: 500px;
   height: 50vh;
   border: none;
-  /* position: fixed;
-  top: 200px;
-  right: 100px; */
+  margin-top: 100px;
 }
 
 .panel {
@@ -174,6 +176,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   padding: 8px 25px;
+  margin-bottom: 20px;
   border-radius: 4px;
   transition: 0.4s;
   background-color: #001e43;
@@ -187,10 +190,19 @@ body {
 
 .btn-link {
   color: #001e43;
-  display: inline-block;
-  text-align: center;
+  padding-bottom: 10px;
+  width: 200px;
+  display: block;
+  margin: 20px auto 0;
 }
 
 .btn-link:hover {
-  color: #dbdf12;
+  color: #001e43;
+  text-decoration: none;
+  border-bottom: 2px solid #001e43;
+}
+
+/* レジスター用css */
+.form_container {
+  margin: 0 auto;
 }
