@@ -39,7 +39,10 @@ Route::get('/coma_create', function () {
 
 
 Route::get('/mypage', function () {
-    return view('mypage');
+    $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+    return view('mypage', [
+        'service_contents' => $service_contents
+    ]);
 });
 
 Route::get('/login', function () {
