@@ -52,7 +52,7 @@
           <!-- 前のコマとcanvas描画エリアを横並びに表示するdiv -->
           <div class="content_flex">
             <!-- 前のコマを表示させるイメージ要素-->
-            <img src="img/coma{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+            <img src="img/coma/{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
