@@ -11,19 +11,14 @@
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
     <!-- cssファイルへのリンク -->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="{{asset('/css/top.css')}}" />
+
+    <!-- cssファイルへのリンク -->
+    <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
     <style>
       body,html{
         width:100%;
         height:100%;
-      }
-      header{
-        width:100%;
-        height:100px;
-        background-color:rgb(252, 213, 95);
-      }
-      nav ul{
-        display:flex;
       }
       footer{
         width:100%;
@@ -34,45 +29,34 @@
 
   <body>
     <div id="wapper">
-      <header>
-        <a href="#" class="logo">
-          <img src="" alt="logo" width="180" height="100" />
-        </a>
-        <nav>
-          <ul class="nav_flex">
-            <li><a href="#">トップ（コマ一覧）</a></li>
-            <li><a href="#">作品を見る</a></li>
-            <li><a href="#">作品を作る</a></li>
-            <li><a href="#">コマを作る</a></li>
-            <li><a href="#">マイページ</a></li>
-            <li><a href="#">ログアウト</a></li>
-          </ul>
-          <button id="zoomIn">拡大</button>
-          <button id="zoomOut">縮小</button>
-          <!-- DBからコマ数を取得 -->
-          現在
-          @if (count($comas) > 0)
-          <p id="comaCount">{{(count($comas))}}</p>
-          @endif
-          コマ
-        </nav>
-      </header>
+      @include('header')
+
       <main>
+        <div class="zoom_container">
+          <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
+          <button id="zoomOut"><img class="zoomicon" src="{{asset('/img/logo/zoomout.png')}}" alt="zoomout"></button><br>
+          <!-- DBからコマ数を取得 -->
+          
+            @if (count($comas) > 0)
+            <span>現在</span><span id="comaCount">{{(count($comas))}}</span><span>コマ</span>
+            @endif
+            
+        </div>
 
         <div class="main_container">
-          <canvas id="canvas" width="1600" height="886" style="border:1px solid #000"></canvas>
+          <canvas id="canvas" width="1600" height="886"></canvas>
         </div>
-        <!-- ストーリーをクリックしたときに表示されるモーダル -->
-        <div class="modal">
+        <!-- ストーリーをクリックしたときに表示されるモーダル※一旦コメントアウト -->
+        <!-- <div class="modal">
           <div class="coma_img">
             <img src="" alt="コマの画像" />
           </div>
           <a href="">閉じる</a>
-        </div>
-        <!-- 全てのストーリーを見るボタン -->
-        <a href="" class="fixed_btn"></a>
+        </div> -->
+        <!-- 全てのストーリーを見るボタン※一旦コメントアウト -->
+        <!-- <a href="" class="fixed_btn"></a> -->
       </main>
-      <footer>(c)///////サービス名が入ります//////</footer>
+    <!-- @include('footer') -->
     </div>
 
     <!-- jquery/fabricjsの読み込み -->
