@@ -82,9 +82,13 @@
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
-            oImg.set('left', imgLeft);//leftからの位置
-            oImg.set('top', imgTop);//topからの位置
-            oImg.set({hasRotatingPoint: false});//回転を制限
+            oImg.set({
+              left:imgLeft,//leftからの位置
+              top:imgTop,//topからの位置
+              strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
+              hasRotatingPoint: false,//回転を制限
+              hasControls: false//拡大縮小を制限
+            });
             area.add(oImg);//追加
         });
         };
