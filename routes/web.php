@@ -14,10 +14,15 @@
 use App\User;
 use App\ServiceContent;
 use Illuminate\Http\Request;
-// use App\ServiceContent;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', function () {
-    return view('top');
+    if (Auth::check()) {
+        return view('top');
+    } else {
+        return route('login');
+    }
 });
 
 Route::get('/', 'ServiceContentsController@index');
@@ -76,4 +81,3 @@ Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'user.logout'
 ]);
-
