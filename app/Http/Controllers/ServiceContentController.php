@@ -10,7 +10,7 @@ class ServiceContentController extends Controller
 {
     //コマデータ取得
     public function comaGet(){
-            $comas = ServiceContent::all();
+            $comas = ServiceContent::orderBy('id','dec')->get();
             return view('top',[
                 'comas' => $comas
             ]);
