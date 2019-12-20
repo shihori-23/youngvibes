@@ -1,3 +1,6 @@
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+
+
 body {
   font-family: "Noto Sans JP", "游ゴシック体", "Yu Gothic", "YuGothic",
     "メイリオ", "Meiryo", verdana, "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3",
@@ -7,23 +10,28 @@ body {
   /* display: table-cell;
   vertical-align: middle; */
   /* margin: auto; */
+  background:  #f8f4e6;
+
 }
 
 header {
   width: 100%;
   height: 100px;
-  background: #f0e68c;
+  background: #b6b5b1;
 }
 
 ​ canvas {
   border: 1px solid #a4cdff;
   height: 380px;
   width: 300px;
+  
   /* position: 0 auto; */
 }
 ​ .canvas-container {
   margin: auto;
   margin-top: 20px;
+  
+
 }
 
 ​ #text-wrapper {
@@ -42,6 +50,8 @@ header {
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  
+  
 }
 ​ .text {
   /* margin-top: 15px; */
@@ -55,12 +65,132 @@ header {
   border: double 5px #bae1f5;
   font-family: "Comic Sans MS";
 }
+
 ​ p {
   margin-top: 20px;
   text-align: center;
 }
 
+.toolvar{
+  padding-left: 30px;
+}
+  
+
+#draw-button {
+  color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+    font-family:comfortaa;font-weight:bold}
+    button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+    button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+    button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+    button:hover:before, button:hover:after {width:calc(100% + 12px);
+      height:calc(100% + 12px);border-color:#fff}
+    button:hover {color:#353535;background-color:#fff;border-color:#fff
+    }
+  
+  
+
+
+#bgcolor-button {
+  color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+    font-family:comfortaa;font-weight:bold}
+    button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+    button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+    button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+    button:hover:before, button:hover:after {width:calc(100% + 12px);
+      height:calc(100% + 12px);border-color:#fff}
+    button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+
+#text-button {
+  color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+    font-family:comfortaa;font-weight:bold}
+    button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+    button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+    button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+    button:hover:before, button:hover:after {width:calc(100% + 12px);
+      height:calc(100% + 12px);border-color:#fff}
+    button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+    #text-bgcolor-button{
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+
+    #text-color-button {
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+    
+
+    #pev-button {
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+    
+
+    #next-button {
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+    
+
+    #clear-button {
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+    
+    #eraser-button{
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+    #download{
+      color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
+        font-family:comfortaa;font-weight:bold}
+        button:before, button:after {content:'';display:block;position:absolute;border-color:#454545;box-sizing:border-box;border-style:solid;width:1em;height:1em;transition:all 0.3s ease-in-out}
+        button:before {top:-6px;left:-6px;border-width:2px 0 0 2px;z-index:5;}
+        button:after {bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+        button:hover:before, button:hover:after {width:calc(100% + 12px);
+          height:calc(100% + 12px);border-color:#fff}
+        button:hover {color:#353535;background-color:#fff;border-color:#fff}
+
+
+
 /* 確認画面のモーダルの非表示 */
 .hidden {
   display: none;
 }
+
+
