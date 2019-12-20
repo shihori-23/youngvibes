@@ -51,8 +51,8 @@
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
-              width="700"
-              height="700"
+              width="600px"
+              height="600px"
               style="border: black solid 1px;"
             ></canvas>
           </div>
@@ -164,20 +164,29 @@
      </div>
      </div>
       </main>
-      <!-- 編集完了後の確認画面モーダル -->
-      <div class="" id="modal">
+
+    </div>
+
+    <!-- 編集完了後の確認画面モーダル -->
+      <div class="modal_masc hidden"></div>
+      <div class="hidden" id="modal">
         <form action ="{{ url('coma_create/save') }}" method="POST">
           {{ csrf_field() }}
-          <!-- <img src="../public/img/test.jpeg" alt="確認画面" id="cofimg"> -->
-          <img src="" alt="確認画面" id="cofimg" height="100px" width="100px;">
-          <input id="modalData" type="hidden" name="data" value="">
-          <input type="hidden" name="imgEmail" value="{{ Auth::user()->email }}">
-          <input type="hidden" name="imgNamePev" value="{{ $comas->id }}">
-          <input type="submit" value="これでOK">
+          <div class="conf_contents">
+            <h1 class="conf_title">こちらの画像を保存しますか？</h1>
+            <div class="conf_img_container">
+              <img src="" alt="確認画面" id="cofimg" height="300px" width="300px;">
+            </div>
+            <input id="modalData" type="hidden" name="data" value="">
+            <input type="hidden" name="imgEmail" value="{{ Auth::user()->email }}">
+            <input type="hidden" name="imgNamePev" value="{{ $comas->id }}">
+            <div class="conf_btn">
+              <input type="submit" value="保存" class="submit_btn"><br>
+              <span class="rewrite" id="rewrite_btn">×</span>
+            </div>
+          </div>
         </form>
       </div>
-      <!-- <footer>(c)///////サービス名が入ります//////</footer> -->
-    </div>
 
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
