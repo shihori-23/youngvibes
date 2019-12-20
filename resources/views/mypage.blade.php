@@ -48,7 +48,7 @@
     <div class="scroll-contents">
       {{-- <img src="img/jain1.jpg" /> --}}
       @foreach($service_contents as $service_content)
-            <img src='img/<?= $service_content['img_file'] ?>' alt="">
+      <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
       @endforeach
       {{-- <img src="img/jain2.jpeg" />
       <img src="img/jain3.jpeg" />
@@ -62,7 +62,7 @@
     <div class="scroll-contents1">
       {{-- <img src="img/jain1.jpg" /> --}}
       @foreach($service_contents as $service_content)
-            <img src='img/<?= $service_content['img_file'] ?>' alt="">
+            <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
       @endforeach
     </div>
 
