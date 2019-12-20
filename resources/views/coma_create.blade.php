@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="{{asset('/css/coma_create.css')}}" />
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/colorjoe.css')}}" />
+    <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
     <style>
-      header {
+      /* header {
         width: 100%;
         height: 100px;
         background: #f0e68c;
-      }
+      } */
 
       ul{
         display:flex;
@@ -45,21 +46,7 @@
 
   <body>
     <div id="wapper">
-      <header>
-        <a href="#" class="logo">
-          <img src="" alt="logo" width="180" height="100" />
-        </a>
-        <nav>
-          <ul class="nav_flex">
-            <li><a href="#">トップ（コマ一覧）</a></li>
-            <li><a href="#">作品を見る</a></li>
-            <li><a href="#">作品を作る</a></li>
-            <li><a href="#">コマを作る</a></li>
-            <li><a href="#">マイページ</a></li>
-            <li><a href="#">ログアウト</a></li>
-          </ul>
-        </nav>
-      </header>
+      @include('header')
       <main>
         <div class="main_container">
           <!-- 前のコマとcanvas描画エリアを横並びに表示するdiv -->
@@ -192,7 +179,7 @@
      </div>
      </div>
       </main>
-      <footer>(c)///////サービス名が入ります//////</footer>
+      <!-- <footer>(c)///////サービス名が入ります//////</footer> -->
     </div>
 
     <!-- jqueryの読み込み -->
