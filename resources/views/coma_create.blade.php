@@ -15,11 +15,6 @@
     <link rel="stylesheet" href="{{asset('/css/colorjoe.css')}}" />
     <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
     <style>
-      /* header {
-        width: 100%;
-        height: 100px;
-        background: #f0e68c;
-      } */
 
       ul{
         display:flex;
@@ -72,14 +67,15 @@
 
           <div> 
           <!-- 色を選択できるカラーパレットを用意する。 -->
-          <span id="color-palette"></span>
+            <span id="color-palette"></span>
           </div>
+
           <div>
             <button id="draw-button">線を引く</button>
-            <div id="bgcolor">
-            <button id="bgcolor-button">背景色を変える</button>
-            <p>■</p>
-            </div>
+              <div id="bgcolor">
+                <button id="bgcolor-button">背景色を変える</button>
+                <p>■</p>
+              </div>
 
             <button id="text-button">テキストを挿入</button>
             <!-- バグあります -->
@@ -109,13 +105,15 @@
             <!-- 以上バグあり -->
             
           <div id="t-bgColor">
-          <button id="text-bgcolor-button">文字背景を変更</button>
-          <p>■</p>
-            </div>
+            <button id="text-bgcolor-button">文字背景を変更</button>
+            <p>■</p>
+          </div>
+
           <div id="t-color">
-          <button id="text-color-button">文字の色を変更</button>
-          <p>■</p>
-            </div>
+            <button id="text-color-button">文字の色を変更</button>
+            <p>■</p>
+          </div>
+
             <button id="pev-button">戻る</button>
             <button id="next-button">すすむ</button>
             <button id="clear-button">全消し</button>
@@ -163,8 +161,10 @@
       </div>
 
       <button id="download">編集完了</button>
-
-    <!-- 編集完了後の確認画面モーダル -->
+     </div>
+     </div>
+      </main>
+      <!-- 編集完了後の確認画面モーダル -->
       <div class="" id="modal">
         <form action ="{{ url('coma_create/save') }}" method="POST">
           {{ csrf_field() }}
@@ -176,10 +176,6 @@
           <input type="submit" value="これでOK">
         </from>
       </div>
-
-     </div>
-     </div>
-      </main>
       <!-- <footer>(c)///////サービス名が入ります//////</footer> -->
     </div>
 
