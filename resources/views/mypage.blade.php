@@ -30,10 +30,10 @@
             <div class="inner-circle">
               <div class="user-profile">
                 {{-- データベースにユーザー情報が入り次第下記に変える --}}
-                <h1 class="user-name">Yooooo Aoky</h1>                 
+                <h1 class="user-name">{{ Auth::user()->name }}</h1>                 
                 {{-- <h1 class="user-name">{{$user->name}}</h1> --}}              
                 <ul class="profile-menu">
-                  <li>Logout</li>
+                  <li><a href="{{ route('user.logout') }}">Logout</a></li>
                   <li>Update Profile</li>
                   <li>Your Story</li>
                   <li>Your History</li>

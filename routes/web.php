@@ -71,3 +71,9 @@ Route::get('/long_story', function () {
 Route::get('/header', function () {
     return view('header');
 });
+
+Route::get('/logout', [
+    'uses' => 'UserController@getLogout',
+    'as' => 'user.logout'
+]);
+
