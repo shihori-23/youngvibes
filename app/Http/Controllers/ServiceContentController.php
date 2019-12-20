@@ -48,7 +48,7 @@ class ServiceContentController extends Controller
                 'img_file' => $postImageName,
                 'email' => $imgEmail
              ]);
-        return redirect('/');     
+        return redirect('/top');     
     }
 
 }
