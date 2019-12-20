@@ -35,16 +35,14 @@
       <main> --}}
         @include('header')
         <div class="main_container">
-          {{-- <canvas id="canvas" width="" height=""></canvas> --}}
-          @foreach($service_contents as $service_content)
-            <div><img src='img/<?= $service_content['img_file'] ?>' alt=""></div>
-          @endforeach
-        </div>
-        <!-- ストーリーをクリックしたときに表示されるモーダル -->
-        <div class="modal">
-          <div class="coma_img">
-            <img src="" alt="コマの画像" />
-          </div>
+        @if (count($comas) > 0)
+          <span>現在</span><span>{{(count($comas))}}</span><span>コマ</span>
+          <input type="text" value = "{{($comas[0]->id)}}" id="comaCount">
+        @endif
+        
+        <canvas id="canvas" width="1600" height="886"></canvas>
+
+        <!-- 後で消すかも -->
           <a href="">閉じる</a>
         </div>
       </main>
@@ -54,6 +52,31 @@
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <!-- jsファイルの読み込み -->
-    <script src=""></script>
+    <script src="{{asset('/js/fabric.js')}}"></script>
+    <script>
+          //fabricjsで全コマ表示
+    const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
+    console.log(comaCount);
+    let area = new fabric.Canvas('canvas');//canvasにfabricjsを準備
+    //全コマをフォルダから取得してcanvasに表示
+    $(function(){
+        for(let i=1;i<=2;i++){
+          fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
+            //画像をランダム位置で表示
+            const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
+            oImg.scaleToWidth(200);//画像の大きさ
+            oImg.set({
+              left:imgLeft,//leftからの位置
+              top:imgTop,//topからの位置
+              strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
+              hasRotatingPoint: false,//回転を制限
+              hasControls: false//拡大縮小を制限
+            });
+            area.add(oImg);//追加
+        });
+        };
+    });
+    </script>
   </body>
 </html>

@@ -8,7 +8,7 @@ use Auth;
 
 class ServiceContentController extends Controller
 {
-    //コマデータ取得
+    //topページでコマデータ取得
     public function comaGet(){
             $comas = ServiceContent::orderBy('id','dec')->get();
             return view('top',[
@@ -16,7 +16,7 @@ class ServiceContentController extends Controller
             ]);
     }
 
-    //long_storyページにコマ情報を渡す
+    //long_storyページでコマデータ取得
     public function comaGetToLong(){
             $comas = ServiceContent::orderBy('id','dec')->get();
             return view('long_story',[

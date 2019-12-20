@@ -60,6 +60,7 @@ Route::get('/', function () {
 //コマの画像をTOPに表示
 Route::get('/top', 'ServiceContentController@comaGet');
 
+
 //coma_create.blade.phpの前回のコマを表示する
 Route::get('/coma_create', 'ServiceContentController@comaPev');
 
@@ -69,13 +70,8 @@ Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/long_story', function () {
-    $service_contents = ServiceContent::orderBy('id', 'asc')->get();
-    return view('long_story', [
-        'service_contents' => $service_contents
-    ]);
-});
+//コマの画像をlong_storyに表示
+Route::get('/long_story', 'ServiceContentController@comaGetToLong');
 
 Route::get('/header', function () {
     return view('header');
