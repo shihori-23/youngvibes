@@ -7,7 +7,10 @@
 <div class="container">
 
     <div class="start">
-        <img class="logo" src="{{ asset('img/logo/Chumugu_logo.png') }}" alt="logo" height="80px" width="auto">
+        <div class="start_content">
+        <div class="logo_img">
+            <img class="logo" src="{{ asset('img/logo/Chumugu_logo.png') }}" alt="logo" height="80px" width="auto">
+        </div>
         <!-- <div class="inner"> -->
         <p class="title">
         つくることは、つむぐこと。
@@ -17,39 +20,17 @@
         </p>
 
         <p class="second">
-        まずは目の前に広がる他の作者の作品を、<br>
-        見て楽しむことから始まります。<br>
+        あなたの「つくる」が、誰かの素敵なアイディアになる。<br>
+        誰かの「つくる」が、あなたの素敵なアイディアになる。<br>
         </p>
 
-        <p class="second2">
-        そして、今度はあなたが、文章・イラスト・写真で、<br>
-        頭の中にあるアイディアを自分なりに表現してみましょう。<br>
-        それは「1コマ」という形で1つの作品になります。<br>
-        </p>
         <p class="third">
-        さらにそこから、他の人が形にした作品と自分の作品を並べて、<br>
-        1つの物語を組み立てることができます。<br>
-        その組み立てた物語は、コラージュとして<br>
-        新しい「作品」に生まれ変わります。<br>
+        そして物語はつむがれる。<br>
+        さあ、つくることを楽しもう！<br>
         </p>
 
-        <p class="forth">
-        あなたと同じように、他の誰かもあなたの作品を選んで<br>
-        物語を組み立てることができるので、<br>
-        自分の作った作品がどのような物語に加わるかも、<br>
-        同時に楽しむことができます。<br>
-        </p>
-
-        <p class="fifth">
-        最後、あなたの作った作品は、<br>
-        他の作者が作ったすべての作品とつながり、<br>
-        1つの大きなストーリーをつむぐことになります。<br>
-        </p>
-        <p class="six">
-        さあ、つくることを楽しみましょう！
-        </p>
-        <!-- </div> -->
         </div>
+    </div>
         
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -103,11 +84,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button><br>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    パスワードを忘れましたか?
-                                </a>
                             </div>
+                                <a class="btn-link" href="{{ route('password.request') }}">
+                                    パスワードを忘れた方はこちら
+                                </a>
                         </div>
                     </form>
                 </div>
