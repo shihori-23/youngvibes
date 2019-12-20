@@ -141,6 +141,11 @@ body {
   font-size: 1.1rem;
 }
 
+.profile-menu a {
+  text-decoration: none;
+  color: #eee;
+}
+
 .profile-menu li {
   margin-bottom: 20%;
   padding-bottom: 10%;
