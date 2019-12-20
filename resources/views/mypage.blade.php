@@ -47,24 +47,23 @@
 
     <div class="scroll-contents">
       {{-- <img src="img/jain1.jpg" /> --}}
-      <img src="img/jain2.jpeg" />
+      @foreach($service_contents as $service_content)
+            <img src='img/<?= $service_content['img_file'] ?>' alt="">
+      @endforeach
+      {{-- <img src="img/jain2.jpeg" />
       <img src="img/jain3.jpeg" />
       <img src="img/jain4.jpeg" />
       <img src="img/jain5.jpeg" />
       <img src="img/jain6.jpeg" />
       <img src="img/jain7.jpeg" />
-      <img src="img/jain8.jpeg" />
+      <img src="img/jain8.jpeg" /> --}}
     </div>
 
     <div class="scroll-contents1">
       {{-- <img src="img/jain1.jpg" /> --}}
-      <img src="img/jain2.jpeg" />
-      <img src="img/jain3.jpeg" />
-      <img src="img/jain4.jpeg" />
-      <img src="img/jain5.jpeg" />
-      <img src="img/jain6.jpeg" />
-      <img src="img/jain7.jpeg" />
-      <img src="img/jain8.jpeg" />
+      @foreach($service_contents as $service_content)
+            <img src='img/<?= $service_content['img_file'] ?>' alt="">
+      @endforeach
     </div>
 
     <script>
