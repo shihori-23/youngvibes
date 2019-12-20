@@ -39,7 +39,8 @@ Route::get('/coma_create', function () {
 
 
 Route::get('/mypage', function () {
-    $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+    $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
+    // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('mypage', [
         'service_contents' => $service_contents
     ]);
