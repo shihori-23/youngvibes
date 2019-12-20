@@ -1,20 +1,18 @@
 // 現在の色を保持する変数(デフォルトは黒(#000000)とする)
-let currentColor = "#000000";//線の色
-let bgColor = "#fff";//背景色
+let currentColor = "#000000"; //線の色
+let bgColor = "#fff"; //背景色
 
 //fabricjs用のcanvasを定義
 let canvas = new fabric.Canvas("canvas", {
   isDrawingMode: false,
   selection: true,
   stateful: true,
-  backgroundColor: bgColor//背景色
+  backgroundColor: bgColor //背景色
 });
 let ctx = canvas.getContext("2d");
 
 //戻るボタン用のbuffer
 let undoBuffer = [];
-
-
 
 //線を引くボタン
 $("#draw-button").click(function() {
@@ -27,40 +25,39 @@ $("#draw-button").click(function() {
   canvas.hoverCursor = "move"; //分からん
 });
 
-
 //マウスアップの際にundoBuffer保存
-  $("canvas").mouseup(function() {
-    if(canvas.isDrawingMode == true){
+$("canvas").mouseup(function() {
+  if (canvas.isDrawingMode == true) {
     undoBuffer.push(canvas.toDatalessJSON());
   }
-  });
+});
 
 //オブジェクトが移動されたらundoBuffer保存
-  canvas.observe("object:moved", function () {
-    undoBuffer.push(canvas.toDatalessJSON());
-    console.log(undoBuffer)
-  });
+canvas.observe("object:moved", function() {
+  undoBuffer.push(canvas.toDatalessJSON());
+  console.log(undoBuffer);
+});
 
 //テキストを挿入
-let font = $("#font-family").val();//初期値
-$("#font-family").change(function(){
-  font = $('option:selected').val();
-  console.log(font)
-})
+let font = $("#font-family").val(); //初期値
+$("#font-family").change(function() {
+  font = $("option:selected").val();
+  console.log(font);
+});
 
 //テキストの背景色変更
-let textBgColor = 'white';//初期値
+let textBgColor = "white"; //初期値
 $("#text-bgcolor-button").click(function() {
   textBgColor = currentColor;
-  $("#t-bgColor").css("color",textBgColor);
+  $("#t-bgColor").css("color", textBgColor);
   canvas.renderAll();
 });
 
 //テキストカラーを変更
-let textColor = 'black';//初期値
+let textColor = "black"; //初期値
 $("#text-color-button").click(function() {
   textColor = currentColor;
-  $("#t-color").css("color",textColor);
+  $("#t-color").css("color", textColor);
   canvas.renderAll();
 });
 
@@ -70,7 +67,7 @@ $("#text-button").click(function() {
   undoBuffer.push(canvas.toDatalessJSON());
   let text = new fabric.IText("なんか書いてね", {
     fontFamily: font, //フォント指定
-    textBackgroundColor:textBgColor ,//フォント背景色
+    textBackgroundColor: textBgColor, //フォント背景色
     top: 100, //位置
     left: 100, //位置
     fontSize: 20, //サイズ
@@ -87,34 +84,31 @@ $("#bgcolor-button").click(function() {
   undoBuffer.push(canvas.toDatalessJSON());
   bgColor = currentColor;
   canvas.backgroundColor = bgColor;
-  $("#bgcolor").css("color",bgColor);
+  $("#bgcolor").css("color", bgColor);
   canvas.renderAll();
 });
 
-
 //全消しボタン
 $("#clear-button").click(function() {
-  ret = confirm('canvasの内容を削除します。');
+  ret = confirm("canvasの内容を削除します。");
   // アラートで「OK」を選んだ時
-  if (ret == true){
+  if (ret == true) {
     undoBuffer = [];
     canvas.clear();
   }
-  });
+});
 
-  //消しゴムモード
-  $("#eraser-button").click(function() {
-    canvas.isDrawingMode = true;
-    canvas.freeDrawingBrush.color = "white"; //白にするだけ
-  });
+//消しゴムモード
+$("#eraser-button").click(function() {
+  canvas.isDrawingMode = true;
+  canvas.freeDrawingBrush.color = "white"; //白にするだけ
+});
 
-  //戻る
-  $("#pev-button").click(function() {
+//戻る
+$("#pev-button").click(function() {
   canvas.loadFromJSON(undoBuffer.pop()).renderAll();
   console.log(undoBuffer);
 });
-
-
 
 // カラーパレットの設置を行う
 function initColorPalette() {
@@ -136,7 +130,6 @@ function initColorPalette() {
 
 // カラーパレット情報を初期化する
 initColorPalette();
-
 
 //canvasを画像で保存;
 $("#download").click(function() {

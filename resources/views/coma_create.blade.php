@@ -52,7 +52,7 @@
           <!-- 前のコマとcanvas描画エリアを横並びに表示するdiv -->
           <div class="content_flex">
             <!-- 前のコマを表示させるイメージ要素-->
-            <img src="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+            <img src="img/coma{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
@@ -171,7 +171,8 @@
           <!-- <img src="../public/img/test.jpeg" alt="確認画面" id="cofimg"> -->
           <img src="" alt="確認画面" id="cofimg" height="100px" width="100px;">
           <input id="modalData" type="hidden" name="data" value="">
-          <input type="hidden" name="imgNamePev" value="{{ $comas->c_id }}">
+          <input type="hidden" name="imgEmail" value="{{ Auth::user()->email }}">
+          <input type="hidden" name="imgNamePev" value="{{ $comas->id }}">
           <input type="submit" value="これでOK">
         </from>
       </div>
