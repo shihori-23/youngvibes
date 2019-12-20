@@ -31,20 +31,22 @@ class ServiceContentController extends Controller
         
         $img = $request->data; //画像データの取得
         $imgPevNum = $request->imgNamePev; // 前コマのc_idの取得
+        $imgEmail = $request->imgEmail; // 前コマのc_idの取得
         
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
         //画像保存ファイル名を前のコマのc_idから生成
         $imgNum = $imgPevNum + 1;
-        $fileName = 'img/'.$imgNum .'.png';
+        $fileName = 'img/coma/c_'.$imgNum .'.png';
         file_put_contents($fileName, $fileData);
 
         //DBにファイル名とユーザーIDをインサート
         $images = new ServiceContent;
+        $postImageName = 'c_'.$imgNum .'.png';
         $images->insert([
-                'img_file' => $fileName,
-                'email' => 'aaa'  //変更必要！！！！
+                'img_file' => $postImageName,
+                'email' => $imgEmail
              ]);
         return redirect('/');     
     }
