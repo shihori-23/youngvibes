@@ -133,11 +133,11 @@ initColorPalette();
 
 //canvasを画像で保存;
 $("#download").click(function() {
-  canvas = document.getElementById("canvas");
   //base64に変換
   const base64 = canvas.toDataURL();
-  console.log(base64);
-  // $("#modal").toggleClass("hidden");//確認画面のモーダルを表示
+  // console.log(base64);
+  $("#modal").toggleClass("hidden"); //確認画面のモーダルを表示
+  $(".modal_masc").toggleClass("hidden"); //確認画面のモーダルを表示
   $("#modalData").val(base64);
   $("#cofimg").attr("src", base64); //イメージタグへの表示
 });
@@ -147,3 +147,9 @@ function setBgColor() {
   ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, cnvWidth, cnvHeight);
 }
+
+//×ボタンが押されたらモーダルを閉じる
+$("#rewrite_btn").click(function() {
+  $("#modal").toggleClass("hidden");
+  $(".modal_masc").toggleClass("hidden");
+});
