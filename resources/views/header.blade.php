@@ -4,5 +4,6 @@
         <li><a href="/">作品をみる</a></li>
         <li><a href="/coma_create">作品を作る</a></li>
         <li><a href="/mypage">マイページ</a></li>
+        <li><a href="/logout">ログアウト</a></li>
       </ul>
     </header>
