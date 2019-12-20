@@ -16,6 +16,14 @@ class ServiceContentController extends Controller
             ]);
     }
 
+    //long_storyページにコマ情報を渡す
+    public function comaGetToLong(){
+            $comas = ServiceContent::orderBy('id','dec')->get();
+            return view('long_story',[
+                'comas' => $comas
+            ]);
+    }
+
     //coma_create.blade.phpの前回のコマを表示する
     public function comaPev(){
         // コマのデータを降順で１レコード取得
