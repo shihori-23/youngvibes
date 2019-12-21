@@ -15,7 +15,7 @@ class CreateServiceStoriesTable extends Migration
     {
         Schema::create('service_stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->string('img_file');
             $table->string('merge_img_file')->unique();
         });
     }
