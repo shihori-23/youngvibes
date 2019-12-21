@@ -13,6 +13,7 @@
 
 use App\User;
 use App\ServiceContent;
+use App\ServiceStory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,3 +82,22 @@ Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'user.logout'
 ]);
+
+
+//辻編集中※あとでリンク先を変更！
+Route::get('/test.create', function () {
+    return view('test_story_create');
+});
+
+Route::get('/test_story_create', function () {
+    $service_contents = ServiceContent::orderBy('id', 'des')->get();
+    $service_stories = ServiceStory::orderBy('id', 'des')->first();
+    return view('test_story_create', [
+        'service_contents' => $service_contents,
+        'service_stories' => $service_stories
+    ]);
+});
+
+//辻編集 ※あとでリンク先を変更！
+Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
+

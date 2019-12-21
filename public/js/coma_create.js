@@ -173,6 +173,7 @@ $("#stamp1").click(function() {
   undoBuffer.push(canvas.toDatalessJSON());
   canvas.renderAll();
 });
+
 //スタンプの挿入(吹き出しスタンプ2)：辻編集
 const stampImg2 = document.getElementById("stamp2");
 $("#stamp2").click(function() {

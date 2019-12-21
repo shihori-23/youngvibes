@@ -35,11 +35,10 @@ class ServiceContentController extends Controller
 
     //コマデータ取得
     public function comaSave(Request $request){
-
-        
+ 
         $img = $request->data; //画像データの取得
-        $imgPevNum = $request->imgNamePev; // 前コマのc_idの取得
-        $imgEmail = $request->imgEmail; // 前コマのc_idの取得
+        $imgPevNum = $request->imgNamePev; // 前コマのidの取得
+        $imgEmail = $request->imgEmail; // 前コマのemailの取得
         
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
@@ -59,4 +58,4 @@ class ServiceContentController extends Controller
         return redirect('/top');     
     }
 
-}
+    }
