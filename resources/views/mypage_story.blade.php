@@ -35,8 +35,8 @@
                 <ul class="profile-menu">
                   <li><a href="{{ route('user.logout') }}">Logout</a></li>
                   <li>Update Profile</li>
-                  <li>Your Story</li>
-                  <li>Your History</li>
+                  <li><a href="/mypage/story">Your Story</a></li>
+                  <li><a href="/mypage">Your History</a></li>
                 </ul>
               </div>
             </div>
@@ -45,20 +45,20 @@
       </div>
     </section>
 
-    <div class="scroll-contents">
-      {{-- <img src="img/jain1.jpg" /> --}}
-      @foreach($service_contents as $service_content)
-      <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
+    <div class="scroll-contents">   
+      @foreach($service_stories as $service_story)
+      <img src='img/coma/<?= $service_story['img_file'] ?>' alt="">
       @endforeach
     </div>
 
-    <div class="scroll-contents1">
-      {{-- <img src="img/jain1.jpg" /> --}}
-      @foreach($service_contents as $service_content)
-            <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
+    <div class="scroll-contents1">    
+      @foreach($service_stories as $service_story)
+          
+            <img src='img/story/<?= $service_story['img_file'] ?>' alt="">
       @endforeach
     </div>
 
+    
     <script>
       //画面の高さに合わせてheightを可変的に設定
       const realHeight = window.innerHeight;
