@@ -99,6 +99,7 @@ Route::get('/test.create', function () {
     return view('test_story_create');
 });
 
+//辻編集中※あとでリンク先を変更
 Route::get('/test_story_create', function () {
     $service_contents = ServiceContent::orderBy('id', 'des')->get();
     $service_stories = ServiceStory::orderBy('id', 'des')->first();
