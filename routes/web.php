@@ -37,8 +37,17 @@ Route::get('/coma_create', function () {
 
 
 
-
+//mypage
 Route::get('/mypage', function () {
+    $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
+    // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+    return view('mypage', [
+        'service_contents' => $service_contents
+    ]);
+});
+
+//mypage_my_story 自分のコマが使われているコラージュの表示
+Route::get('/mypage/story', function () {
     $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
     // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('mypage', [
