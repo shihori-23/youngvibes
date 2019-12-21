@@ -65,8 +65,27 @@
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
 
     //コマ数に応じてcanvasのwidthを指定
-    const canvastest = document.getElementById("c");
-    canvastest.width = 350*comaCount;
+    const can = document.getElementById("c");
+    const ctx = can.getContext("2d");
+    const canDiv = $("#canvas");
+    
+    // -----------テスト中----------- //
+    can.width = 500*comaCount;//350×コマ数をcanvasのwidthに指定
+    
+    //ロード時に右へスクロールさせる
+    autoScroll();
+    function autoScroll() {
+      let $scrollX = 0;
+      if(scrollX <= can.width - 2000) {
+        scrollX+= 1;
+        setTimeout( "scroll(scrollX,0)", 10 );
+        console.log(scrollX)
+        setTimeout( "autoScroll()", 1 );
+      }else{
+        return;
+      }
+    }
+
 
     //fabricjs準備
     const canvas = this.__canvas = new fabric.Canvas('c');
@@ -129,6 +148,7 @@
             });
         };
     });
+
     //-------テスト--------//
 
 
