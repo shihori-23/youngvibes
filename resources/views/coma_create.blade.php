@@ -156,6 +156,30 @@
           <div>
             <button id="eraser-button">消しゴムモード</button>
           </div>
+
+          <div>
+            <button id="circle-button">まるモード</button>
+          </div>
+
+          <div>
+            <button id="triangle-button">三角モード</button>
+          </div>
+
+          <div>
+            <button id="rect-button">四角モード</button>
+          </div>
+
+          <div>
+            <button id="select-button">選択</button>
+          </div>
+
+          <div class="stamp_container">
+            <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+          </div>
+          
           
         </div>
       </div>

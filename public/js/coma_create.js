@@ -75,7 +75,7 @@ $("#text-button").click(function() {
   });
   canvas.add(text);
   undoBuffer.push(canvas.toDatalessJSON());
-  canvas.renderAll;
+  canvas.renderAll();
 });
 
 //背景色変更ボタン
@@ -110,6 +110,108 @@ $("#pev-button").click(function() {
   console.log(undoBuffer);
 });
 
+//手書きモードの解除 辻編集
+$("#select-button").click(function() {
+  canvas.isDrawingMode = false; //
+});
+
+//図形の挿入（丸）：辻編集
+$("#circle-button").click(function() {
+  canvas.isDrawingMode = false;
+  undoBuffer.push(canvas.toDatalessJSON());
+  let circle = new fabric.Circle({
+    radius: 20,
+    top: 100, //位置
+    left: 100, //位置
+    fill: currentColor
+  });
+  canvas.add(circle);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//図形の挿入（三角）：辻編集
+$("#triangle-button").click(function() {
+  canvas.isDrawingMode = false;
+  undoBuffer.push(canvas.toDatalessJSON());
+  let triangle = new fabric.Triangle({
+    top: 100, //位置
+    left: 100, //位置
+    fill: currentColor
+  });
+  canvas.add(triangle);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//図形の挿入（四角）：辻編集
+$("#rect-button").click(function() {
+  canvas.isDrawingMode = false;
+  undoBuffer.push(canvas.toDatalessJSON());
+  let rect = new fabric.Rect({
+    top: 100, //位置
+    left: 100, //位置
+    width: 50,
+    height: 50,
+    fill: currentColor
+  });
+  canvas.add(rect);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//スタンプの挿入(吹き出しスタンプ１)：辻編集
+const stampImg1 = document.getElementById("stamp1");
+$("#stamp1").click(function() {
+  canvas.isDrawingMode = false;
+  undoBuffer.push(canvas.toDatalessJSON());
+  const stamp1 = new fabric.Image(stampImg1, {
+    left: 0,
+    top: 0
+  });
+  canvas.add(stamp1);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+//スタンプの挿入(吹き出しスタンプ2)：辻編集
+const stampImg2 = document.getElementById("stamp2");
+$("#stamp2").click(function() {
+  canvas.isDrawingMode = false;
+  const stamp2 = new fabric.Image(stampImg2, {
+    left: 0,
+    top: 0
+  });
+  canvas.add(stamp2);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//スタンプの挿入(吹き出しスタンプ3)：辻編集
+const stampImg3 = document.getElementById("stamp3");
+$("#stamp3").click(function() {
+  canvas.isDrawingMode = false;
+  const stamp3 = new fabric.Image(stampImg3, {
+    left: 0,
+    top: 0
+  });
+  canvas.add(stamp3);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//スタンプの挿入(吹き出しスタンプ4)：辻編集
+const stampImg4 = document.getElementById("stamp4");
+$("#stamp4").click(function() {
+  canvas.isDrawingMode = false;
+  const stamp4 = new fabric.Image(stampImg4, {
+    left: 0,
+    top: 0
+  });
+  canvas.add(stamp4);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
 // カラーパレットの設置を行う
 function initColorPalette() {
   const joe = colorjoe.rgb("color-palette", currentColor);
@@ -131,7 +233,7 @@ function initColorPalette() {
 // カラーパレット情報を初期化する
 initColorPalette();
 
-//canvasを画像で保存;
+//canvasを画像で保存
 $("#download").click(function() {
   //base64に変換
   const base64 = canvas.toDataURL();
