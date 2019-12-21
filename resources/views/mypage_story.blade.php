@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Mypage</title>
+    <title>My Story</title>
     <!-- reset.cssへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
@@ -18,14 +18,11 @@
     <section class="mypage">
       <div class="header">
         <div class="header-logo">Chumugu</div>
-        <a class="return-top" href="/top">
-          Return To Top
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
         </a>
-        {{-- <a class="menu-trigger" href="#">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a> --}}
       </div>
       <div class="main-contents">
         <div class="container">
@@ -38,8 +35,8 @@
                 <ul class="profile-menu">
                   <li><a href="{{ route('user.logout') }}">Logout</a></li>
                   <li>Update Profile</li>
-                  <li><a href="/mypage/story">Your Story</a></li>
-                  <li><a href="/mypage">Your History</a></li>
+                  <li>Your Story</li>
+                  <li>Your History</li>
                 </ul>
               </div>
             </div>
@@ -53,13 +50,6 @@
       @foreach($service_contents as $service_content)
       <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
       @endforeach
-      {{-- <img src="img/jain2.jpeg" />
-      <img src="img/jain3.jpeg" />
-      <img src="img/jain4.jpeg" />
-      <img src="img/jain5.jpeg" />
-      <img src="img/jain6.jpeg" />
-      <img src="img/jain7.jpeg" />
-      <img src="img/jain8.jpeg" /> --}}
     </div>
 
     <div class="scroll-contents1">
