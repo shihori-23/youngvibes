@@ -82,14 +82,37 @@
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
-            oImg.set({
-              left:imgLeft,//leftからの位置
-              top:imgTop,//topからの位置
+
+            //作成後のコマだけ目立つ（テスト）
+            // if(i == comaCount){
+            //   oImg.set({
+            //     left:800,//leftからの位置
+            //     top:400,//topからの位置
+            //     strokeWidth: 50, 
+            //     stroke: 'rgba(255,0,0,1)',
+            //     hasRotatingPoint: false,//回転を制限
+            //     hasControls: false//拡大縮小を制限
+            //   })
+            // }else{
+              oImg.set({
+              left:800,//leftからの位置
+              top:400,//topからの位置
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
               hasRotatingPoint: false,//回転を制限
               hasControls: false//拡大縮小を制限
             });
+            // }
+
             area.add(oImg);//追加
+            //-----アニメーションテスト--- //
+            oImg.animate('left',oImg.left === 300 ? 100 : imgLeft,{
+              duration: 1000,
+              onChange: area.renderAll.bind(area),
+            })
+            oImg.animate('top',oImg.left === 300 ? 100 : imgTop,{
+              duration: 1000,
+              onChange: area.renderAll.bind(area),
+            })
         });
         };
     });
