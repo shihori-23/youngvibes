@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Mypage</title>
+    <title>My Story</title>
     <!-- reset.cssへのリンク -->
     <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
 
@@ -18,14 +18,11 @@
     <section class="mypage">
       <div class="header">
         <div class="header-logo">Chumugu</div>
-        <a class="return-top" href="/top">
-          Return To Top
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
         </a>
-        {{-- <a class="menu-trigger" href="#">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a> --}}
       </div>
       <div class="main-contents">
         <div class="container">
@@ -48,27 +45,20 @@
       </div>
     </section>
 
-    <div class="scroll-contents">
-      {{-- <img src="img/jain1.jpg" /> --}}
-      @foreach($service_contents as $service_content)
-      <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
-      @endforeach
-      {{-- <img src="img/jain2.jpeg" />
-      <img src="img/jain3.jpeg" />
-      <img src="img/jain4.jpeg" />
-      <img src="img/jain5.jpeg" />
-      <img src="img/jain6.jpeg" />
-      <img src="img/jain7.jpeg" />
-      <img src="img/jain8.jpeg" /> --}}
-    </div>
-
-    <div class="scroll-contents1">
-      {{-- <img src="img/jain1.jpg" /> --}}
-      @foreach($service_contents as $service_content)
-            <img src='img/coma/<?= $service_content['img_file'] ?>' alt="">
+    <div class="scroll-contents">   
+      @foreach($service_stories as $service_story)
+      <img src='img/coma/<?= $service_story['img_file'] ?>' alt="">
       @endforeach
     </div>
 
+    <div class="scroll-contents1">    
+      @foreach($service_stories as $service_story)
+          
+            <img src='img/story/<?= $service_story['img_file'] ?>' alt="">
+      @endforeach
+    </div>
+
+    
     <script>
       //画面の高さに合わせてheightを可変的に設定
       const realHeight = window.innerHeight;

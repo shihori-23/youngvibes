@@ -38,12 +38,22 @@ Route::get('/coma_create', function () {
 
 
 
-
+//mypage
 Route::get('/mypage', function () {
     $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
     // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('mypage', [
         'service_contents' => $service_contents
+    ]);
+});
+
+//mypage_my_story 自分のコマが使われているコラージュの表示
+Route::get('/mypage/story', function () {
+    $service_stories = DB::table('service_stories')
+        ->join('service_contents', 'service_stories.img_file', '=', 'service_contents.img_file')->get();
+    // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+    return view('mypage_story', [
+        'service_stories' => $service_stories
     ]);
 });
 
@@ -89,7 +99,6 @@ Route::get('/test.create', function () {
     return view('test_story_create');
 });
 
-//辻編集中※あとでリンク先を変更！
 Route::get('/test_story_create', function () {
     $service_contents = ServiceContent::orderBy('id', 'des')->get();
     $service_stories = ServiceStory::orderBy('id', 'des')->first();
