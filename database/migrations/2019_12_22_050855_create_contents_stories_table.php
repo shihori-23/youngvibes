@@ -13,7 +13,7 @@ class CreateContentsStoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('contnets_stories', function (Blueprint $table) {
+        Schema::create('contents_stories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img_file');
             $table->string('merge_img_file');
@@ -28,6 +28,6 @@ class CreateContentsStoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contnets_stories');
+        Schema::dropIfExists('contents_stories');
     }
 }
