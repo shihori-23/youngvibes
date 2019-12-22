@@ -101,11 +101,12 @@ Route::get('/story_all', function () {
 
 
 //辻編集中※あとでリンク先を変更！
-Route::get('/test.create', function () {
+Route::get('/story_create', function () {
     return view('test_story_create');
 });
 
-Route::get('/test_story_create', function () {
+//辻編集中※あとでリンク先を変更！
+Route::get('/story_create', function () {
     $service_contents = ServiceContent::orderBy('id', 'des')->get();
     $service_stories = ServiceStory::orderBy('id', 'des')->first();
     return view('test_story_create', [
