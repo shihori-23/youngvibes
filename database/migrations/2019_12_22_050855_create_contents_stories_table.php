@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceStoriesTable extends Migration
+class CreateContentsStoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateServiceStoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_stories', function (Blueprint $table) {
+        Schema::create('contnets_stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('story_title');
-            $table->string('merge_img_file')->unique();
+            $table->string('img_file');
+            $table->string('merge_img_file');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateServiceStoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_stories');
+        Schema::dropIfExists('contnets_stories');
     }
 }
