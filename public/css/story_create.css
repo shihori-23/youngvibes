@@ -16,7 +16,7 @@ button {
 .zoom_container {
   position: fixed;
   top: 120px;
-  left: 50px;
+  left: 40px;
   z-index: 6000;
 }
 
@@ -63,6 +63,12 @@ button {
   color: #fff;
   font-size: 15px;
   display: block;
+  border: 2px solid #001e43;
+}
+
+#download:hover {
+  background: #ffffff;
+  color: #001e43;
 }
 
 /* モーダル */
