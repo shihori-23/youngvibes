@@ -1,5 +1,4 @@
 
-
 <div class="loading">
     <div class="logo-animation">
         <div class="spinner">
@@ -196,26 +195,26 @@
 
     <div class="start">
         <div class="start_content">
-        <div class="logo_img">
-            <img class="logo" src="{{ asset('img/logo/Chumugu_logo.png') }}" alt="logo" height="80px" width="auto">
-        </div>
+            <div class="logo_img">
+                <img class="logo" src="{{ asset('img/logo/Chumugu_logo.png') }}" alt="logo" height="80px" width="auto">
+            </div>
         <!-- <div class="inner"> -->
-        <p class="title">
-        つくることは、つむぐこと。
-        </p>
-        <p class = "first">    
-        Chumuguは、つくることを楽しむ場です。<br>
-        </p>
+            <p class="title">
+            つくることは、つむぐこと。
+            </p>
+            <p class = "first">    
+            Chumuguは、つくることを楽しむ場です。<br>
+            </p>
 
-        <p class="second">
-        あなたの「つくる」が、誰かの素敵なアイディアになる。<br>
-        誰かの「つくる」が、あなたの素敵なアイディアになる。<br>
-        </p>
+            <p class="second">
+            あなたの「つくる」が、誰かの素敵なアイディアになる。<br>
+            誰かの「つくる」が、あなたの素敵なアイディアになる。<br>
+            </p>
 
-        <p class="third">
-        そして物語はつむがれる。<br>
-        さあ、つくることを楽しもう！<br>
-        </p>
+            <p class="third">
+            そして物語はつむがれる。<br>
+            <p>さあ、つくることを楽しもう！</p><br>
+            </p>
 
         </div>
     </div>
@@ -282,11 +281,11 @@
             </div>
         </div>
     </div>
-
-    
+</div>
+<div class="wrap">
+    <button type="button"  onclick="location.href='/tutorial'" class="tutorialbtn" >Chumuguってなに？</button>
 </div>
 
-</div>
     <!-- 背景にコマを飛ばすためのリスト -->
     <!-- <ul class="bg-bubbles">
         <li></li>
@@ -300,7 +299,7 @@
         <li></li>
         <li></li>
     </ul> -->
-</div>
+
 
     <!-- <script>
     $(function() {
@@ -330,7 +329,16 @@
             console.log(outsideCircle);
         });
 
-        
+        $(function(){
+            var str = 'Chumuguってなに？';
+
+            // 1秒後に出力する
+            setTimeout(function(){
+            $('.tutorialbtn').fadeIn('slow');
+            }, 4000);
+            });
         </script>
+
+        
 
 @endsection
