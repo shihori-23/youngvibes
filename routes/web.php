@@ -93,6 +93,12 @@ Route::get('/logout', [
     'as' => 'user.logout'
 ]);
 
+//story_allにルート定義
+Route::get('/story_all', function () {
+    return view('story_all');
+});
+
+
 
 //辻編集中※あとでリンク先を変更！
 Route::get('/test.create', function () {
