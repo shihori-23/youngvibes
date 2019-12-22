@@ -32,7 +32,6 @@
           <!-- DBからコマ数を取得 -->
 
             @if (count($service_contents) > 0)
-            <span>現在</span><span>{{(count($service_contents))}}</span><span>コマ</span>
             <input type="hidden" value = "{{($service_contents[0]->id)}}" id="comaCount">
             @endif
             
@@ -51,7 +50,7 @@
                   style="border: black solid 1px;"
                 ></canvas>
 
-                <button id="download">送信</button>
+                <button id="download">確認する</button>
               </div>
             </div>
       
@@ -109,8 +108,8 @@
         for(let i=1;i<=comaCount;i++){
           fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 1000);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 800); //位置をランダムで指定
+            const imgLeft = Math.ceil(Math.random() * 940);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 900); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
             oImg.set({
               left:imgLeft,//leftからの位置
