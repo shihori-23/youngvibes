@@ -18,11 +18,14 @@
     <section class="mypage">
       <div class="header">
         <div class="header-logo">Chumugu</div>
-        <a class="menu-trigger" href="#">
-          <span></span>
-          <span></span>
-          <span></span>
+        <a class="return-top" href="/top">
+          Return To Top
         </a>
+        {{-- <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a> --}}
       </div>
       <div class="main-contents">
         <div class="container">
