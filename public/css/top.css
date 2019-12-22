@@ -13,6 +13,9 @@ button {
   appearance: none;
 }
 
+a {
+  text-decoration: none;
+}
 .zoom_container {
   position: fixed;
   top: 120px;
@@ -36,4 +39,24 @@ button {
 #zoomIn:hover,
 #zoomOut:hover {
   opacity: 1;
+}
+
+#longStory_btn {
+  position: fixed;
+  top: 120px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #001e43;
+  vertical-align: middle;
+  opacity: 1;
+  z-index: 6000;
+  font-size: 15px;
+  color: #fff;
+}
+
+.btn_tx {
+  line-height: 100px;
+  padding-left: 10px;
 }
