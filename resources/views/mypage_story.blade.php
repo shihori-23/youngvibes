@@ -49,7 +49,7 @@
       
     </section>
 
-    
+    {{asset('/css/reset.css')}}
     <div class="scroll-contents">   
         @foreach($service_stories as $service_story)
         <img src='img/story/{{$service_story->merge_img_file}}' alt="">

@@ -187,8 +187,8 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-<script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script> -->
+<link rel="stylesheet" href="{{ asset('/assets/css/login.css',true)}}">
+<script src="{{ asset('/js/jquery-3.1.1.min.js',true) }}"></script>
 
 
 <div class="container">

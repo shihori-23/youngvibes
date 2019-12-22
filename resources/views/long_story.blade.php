@@ -8,8 +8,8 @@
     <!-- Google fontを使用する場合、下記にcdnを記述 -->
 
     <!-- reset.cssへのリンク -->
-    <link rel="stylesheet" href="{{asset('/css/reset.css')}}" />
-    <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/reset.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/header.css')}}" />
 
     <!-- cssファイルへのリンク -->
     <link rel="stylesheet" href="" />
@@ -260,6 +260,38 @@
       p.preline.path[1][4] = p.top;
     }
 }
+
+//ロングストーリーがフワフワするアニメーション
+(function animate() {
+    canvas.getObjects().concat().forEach(function(obj) {
+      setInterval(() => {
+        setTimeout(function(){
+        obj.left -= 1;
+        obj.top -= 1;
+        },3000)
+      setTimeout(function(){
+        obj.left += 1;
+        obj.top += 1;
+        },3000)
+    });
+      }, 500);
+
+    canvas.renderAll();
+    fabric.util.requestAnimFrame(animate)
+  })();
+
+  $(function () {
+      setTimeout('rect()'); //アニメーションを実行
+  });
+  
+  function rect() {
+      $('#rect').animate({
+          marginTop: '-=10px'
+      }, 800).animate({
+          marginTop: '+=10px'
+      }, 800);
+      setTimeout('rect()', 1600); //アニメーションを繰り返す間隔
+  }
 
     //-------テストここまで--------//
     //下記必要なさそうなのでコメントアウト中
