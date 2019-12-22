@@ -111,9 +111,12 @@
           if(i%2 == 0 && i != comaId_array.length-1){
             //つむぐ線を表示
             let line = lineDisplay(top,left,top-500,left+200,left+400,250);
-
-            //コマ表示(name:"p0")
-            let p1 = comaDisplay(comaId,"p0",left,top,line,"p1",null,preline);
+            //コマ表示
+            if(i ==0 ){//最初のコマだけname変える 
+              let p1 = comaDisplay(comaId,"p0_f",left,top,line,"p1",null,null);
+            }else{  
+              let p1 = comaDisplay(comaId,"p0",left,top,line,"p1",null,preline);
+            }
 
             console.log(preline)
               //前の線を取得してグローバル変数に格納
@@ -131,7 +134,7 @@
           else {
             //最後のコマを表示(線を続けないために分岐してる)
             //[TODO]ひとまずline部分はnull
-            let p1 = comaDisplay(comaId,"p0",left,top,null,"p1",null);
+            let p1 = comaDisplay(comaId,"p0_e",left,top,null,"p1",null,preline);
           }
         };//for文終わり
     });//関数終わり
@@ -197,8 +200,8 @@
       top: top,
       strokeWidth: 8,
       radius: 14,
-      fill: '#fff',
-      stroke: '#666'
+      fill: '',
+      stroke: ''
     });
 
     c.hasBorders = c.hasControls = false;
@@ -246,8 +249,17 @@
       // p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
       // p.line3 && p.line3.set({ 'x1': p.left, 'y1': p.top });
       // p.preline && p.preline.set({ 'x2': p.left, 'y2': p.top });
+    }else if(e.target.name == "p0_f") {
+      var p = e.target;
+      p.line1.path[0][1] = p.left;//start_left
+      p.line1.path[0][2] = p.top;//start_top
+      //[TODO]つながってる先の線も連動させる
+    }else if(e.target.name == "p0_e"){
+      var p = e.target;
+      p.preline.path[1][3] = p.left;
+      p.preline.path[1][4] = p.top;
     }
-  }
+}
 
     //-------テストここまで--------//
     //下記必要なさそうなのでコメントアウト中
