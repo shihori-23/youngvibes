@@ -49,8 +49,10 @@ Route::get('/mypage', function () {
 
 //mypage_my_story 自分のコマが使われているコラージュの表示
 Route::get('/mypage/story', function () {
-    $service_stories = DB::table('service_stories')
-        ->join('service_contents', 'service_stories.img_file', '=', 'service_contents.img_file')->get();
+    $service_stories = DB::table('service_contens')
+        ->join('contents_stories', 'service_contens.id', '=', 'contents_stories.img_file')
+        ->where('email', Auth::user()->email)
+        ->get();
     // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('mypage_story', [
         'service_stories' => $service_stories
@@ -120,4 +122,3 @@ Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
 Route::get('/long_story', function () {
     return view('long_story');
 });
-
