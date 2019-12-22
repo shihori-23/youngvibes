@@ -50,9 +50,10 @@ Route::get('/mypage', function () {
 
 //mypage_my_story 自分のコマが使われているコラージュの表示
 Route::get('/mypage/story', function () {
-    $service_stories = DB::table('service_contens')
-        ->join('contents_stories', 'service_contens.id', '=', 'contents_stories.img_file')
+    $service_stories = DB::table('service_contents')
+        ->join('contents_stories', 'service_contents.id', '=', 'contents_stories.img_file')
         ->where('email', Auth::user()->email)
+        ->select('contents_stories.merge_img_file')
         ->get();
     // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
     return view('mypage_story', [
