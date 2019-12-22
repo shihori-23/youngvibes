@@ -50,16 +50,17 @@
     </section>
 
     
-    <div class="scroll-contents">   
+    <div class="scroll-contents">
+        {{-- <p style="text-align: center">あなたのコマは{{$service_stories->count()}} 回使用されています</p>  --}}
         @foreach($service_stories as $service_story)
-        <img src='img/story/{{$service_story->merge_img_file}}' alt="">
+        <img src='/img/story/{{$service_story->merge_img_file}}' alt="">
         @endforeach
       </div>
   
       <div class="scroll-contents1">    
         @foreach($service_stories as $service_story)
             
-        <img src='img/story/{{$service_story->merge_img_file}}' alt="">
+        <img src='/img/story/{{$service_story->merge_img_file}}' alt="">
         @endforeach
       </div>
   
