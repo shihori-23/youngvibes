@@ -14,6 +14,7 @@
 use App\User;
 use App\ServiceContent;
 use App\ServiceStory;
+use App\ContentsStory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -114,10 +115,49 @@ Route::get('/story_create', function () {
 });
 
 //story_create.blade.phpからpostデータServiceStoriesControllerで処理する定義
-Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
+// Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
 
 //long_story.blade.phpのルート定義
 Route::get('/long_story', function () {
     return view('long_story');
+});
+
+//story_createからのpostデータを各テーブルに格納
+Route::post('/story_create/save', function (Request $request) {
+
+        $img = $request->data; //画像データの取得
+        $imgTitle = $request->title_data; // 前ストーリーのidの取得
+        $imgPevNum = $request->id_data; // タイトルの取得
+        $imgSelect = $request->coma_data; // 使用されてコマのidを取得
+        $imgSelectArray = explode(",",$imgSelect);//使用したコマid文字列を配列にブチ込む
+        $insertImgArray = [];//インサートするようの空の配列を用意 
+
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $fileData = base64_decode($img);
+        //画像保存ファイル名を前のコマのs_idから生成
+        $imgNum = $imgPevNum + 1;
+        $fileName = 'img/story/s_'.$imgNum .'.png';
+        file_put_contents($fileName, $fileData);
+        //DBに保存するためのファイル名を生成
+        $postImageName = 's_'.$imgNum .'.png';
+
+
+        //ServiceStoryテーブルにファイル名とタイトルを格納
+        $images = new ServiceStory;
+        $images->insert([
+            'story_title' => $imgTitle,
+            'merge_img_file' => $postImageName
+        ]);
+
+        // contents_storiesテーブルに使用されたコマのデータを格納
+        $stories = new ContentsStory;
+        //インサートするようの配列を作成
+        for($i = 0; $i < count($imgSelectArray); $i++){
+            array_push($insertImgArray,['merge_img_file'=>$postImageName,'img_file' => $imgSelectArray[$i]]);
+        }
+
+        $stories->insert($insertImgArray);
+        return redirect('/top');  
 });
 
