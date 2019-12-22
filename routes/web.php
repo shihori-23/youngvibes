@@ -88,7 +88,10 @@ Route::get('/coma_create', 'ServiceContentController@comaPev');
 Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
-
+//long_story.blade.phpのルート定義
+Route::get('/long_story', function () {
+    return view('long_story');
+});
 // Route::get('/home', 'HomeController@index')->name('home');
 //コマの画像をlong_storyに表示
 Route::get('/long_story', 'ServiceContentController@comaGetToLong');
@@ -125,10 +128,7 @@ Route::get('/story_create', function () {
 //story_create.blade.phpからpostデータServiceStoriesControllerで処理する定義
 // Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
 
-//long_story.blade.phpのルート定義
-Route::get('/long_story', function () {
-    return view('long_story');
-});
+
 
 
 //story_createからのpostデータを各テーブルに格納
