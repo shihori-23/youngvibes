@@ -61,6 +61,11 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/tutorial', function () {
+    return view('auth/tutorial');
+});
+
+
 //全コマのデータをservice_contentsから取得する
 // Route::get('/', function () {
 //     $service_contents = ServiceContent::all(); 

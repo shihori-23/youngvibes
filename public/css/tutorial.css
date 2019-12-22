@@ -35,15 +35,23 @@
    color: #fff;
    z-index: 100;
    text-align: center;
+   margin:0 auto;
+
 
 }
 
 .block-one h1{
    font-size: 40px;
    font-weight: 300;
+   padding-top:40px;
    margin-bottom:30px;
    font-size: 30px;
+   vertical-align: middle;
 
+}
+
+.logo{
+   padding-top:100px;
 }
 
 .block-one p{
@@ -60,6 +68,7 @@ h2{
    font-size: 50px;
    font-weight: bold;
 }
+
 
 
 .block-two {
@@ -250,7 +259,11 @@ ul{
 
 #page_top{
    display:none;
+   text-align: center;
+
 }
+
+
 
 
 
