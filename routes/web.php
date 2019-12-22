@@ -14,6 +14,7 @@
 use App\User;
 use App\ServiceContent;
 use App\ServiceStory;
+use App\ContentsStory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -116,7 +117,7 @@ Route::get('/story_create', function () {
 });
 
 //story_create.blade.phpからpostデータServiceStoriesControllerで処理する定義
-Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
+// Route::post('/story_create/save', 'ServiceStoriesController@comaImgSave');
 
 //long_story.blade.phpのルート定義
 Route::get('/long_story', function () {
