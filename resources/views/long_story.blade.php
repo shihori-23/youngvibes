@@ -73,7 +73,7 @@
     can.width = 500*comaCount;//350×コマ数をcanvasのwidthに指定
     
     //ロード時に右へスクロールさせる
-    autoScroll();
+    // autoScroll();
     function autoScroll() {
       let $scrollX = 0;
       if(scrollX <= can.width - 2000) {
@@ -85,163 +85,110 @@
         return;
       }
     }
+    // -----------テストここまで----------- //
+
 
 
     //fabricjs準備
     const canvas = this.__canvas = new fabric.Canvas('c');
     fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
-      
+
+    //イベントを取得して各関数を実行
+    canvas.on({
+    // 'object:selected': onObjectSelected,
+    'object:moving': onObjectMoving
+    // 'before:selection:cleared': onBeforeSelectionCleared
+    });
+
     //全コマをフォルダから取得してcanvasに表示
     const comaId_array = JSON.parse('<?= $comas; ?>').reverse();//コマのidを配列で取得して逆順にする
+    let preline = null;//コマの前につながってる線の情報をいれる用の変数
     $(function(){
-        for(let i=0,left =200,top=500;i<comaId_array.length;i++,left +=400){
-          
+        for(let i=0,left =200,top=500;i<comaId_array.length;i++,left +=400){//線の上下を判定するために条件分岐
+          const comaId = comaId_array[i].id;//コマのid取得
+
+          //奇数と偶数で分岐 + 最後のコマ以降に線を引かないようにする
           if(i%2 == 0 && i != comaId_array.length-1){
-            //------つむぐ線を表示-----//
-            var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '', stroke: 'rgb(25, 51, 82)',strokeWidth: 5, objectCaching: false });
-            //pathの座標
-            line.path[0][1] = left;//start_left
-            line.path[0][2] = top;//start_top
+            //つむぐ線を表示
+            let line = lineDisplay(top,left,top-500,left+200,left+400,250);
 
-            line.path[1][1] = left + 200;//curvepoint_left
-            line.path[1][2] = 100;//curvepoint_top
+            //コマ表示(name:"p0")
+            let p1 = comaDisplay(comaId,"p0",left,top,line,"p1",null,preline);
 
-            // line.path[1][3] = 500;//stop_left
-            // line.path[1][4] = 500;//stop_top
-            line.path[1][3] = left + 400;//stop_left
-            line.path[1][4] = top;//stop_top
-            line.selectable = false;
-            canvas.add(line);
-          }else if(i%2 == 1 && i != comaId_array.length-1){
-            //------つむぐ線を表示-----//
-            var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '',stroke: 'rgb(25, 51, 82)',strokeWidth: 5, objectCaching: false});
-            //pathの座標
-            line.path[0][1] = left;//start_left
-            line.path[0][2] = top;//start_top
-
-            line.path[1][1] = left + 200;//curvepoint_left
-            line.path[1][2] = 900;//curvepoint_top
-
-            // line.path[1][3] = 500;//stop_left
-            // line.path[1][4] = 500;//stop_top
-            line.path[1][3] = left + 400;//stop_left
-            line.path[1][4] = top;//stop_top
-            line.selectable = false;
-            canvas.add(line);
+            console.log(preline)
+              //前の線を取得してグローバル変数に格納
+              preline = line;
           }
-            //-------コマを表示--------// 
-            const comaId = comaId_array[i].id;
-            fabric.Image.fromURL(`{{asset('/img/coma/c_${comaId}.png')}}`, function(oImg) {
+          else if(i%2 == 1 && i != comaId_array.length-1){
+            //つむぐ線を表示
+            let line = lineDisplay(top,left,top+400,left+200,left+400,700);
+
+            //コマ表示(name:"p1")
+            let p2 = comaDisplay(comaId,"p2",left,top,null,"p1",line,preline);
+            //前の線を取得してグローバル変数に格納
+            preline = line;
+          }
+          else {
+            //最後のコマを表示(線を続けないために分岐してる)
+            //[TODO]ひとまずline部分はnull
+            let p1 = comaDisplay(comaId,"p0",left,top,null,"p1",null);
+          }
+        };//for文終わり
+    });//関数終わり
+
+    //表示するコマのパラメータ付与する関数
+    function comaDisplay(id,name,left,top,line1,line2,line3,preline){
+      fabric.Image.fromURL(`{{asset('/img/coma/c_${id}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
+            //パラメータをオブジェクトに格納
             oImg.scaleToWidth(200);//画像の大きさ
             oImg.set({
               left:left,//leftからの位置
               top:top,//topからの位置
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
-              selectable:false,
+              // selectable:false,
               hasRotatingPoint: false,//回転を制限
-              hasControls: false//拡大縮小を制限
+              hasControls: false,//拡大縮小を制限
+              name:name,
+              line1:line1,
+              line2:line2,
+              line3:line3,
+              preline:preline
             });
             canvas.add(oImg);//追加
+            return oImg;
+            // console.log(oImg);
             });
-        };
-    });
-
-    //-------テスト--------//
-
-
-  canvas.on({
-    'object:selected': onObjectSelected,
-    'object:moving': onObjectMoving,
-    'before:selection:cleared': onBeforeSelectionCleared
-  });
-    let img1 =[],img2 = [];
-    new fabric.Image.fromURL(`{{asset('/img/coma/c_1.png')}}`, 
-    function(oImg1) {
-            //画像をランダム位置で表示
-            // const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
-            // const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
-            oImg1.scaleToWidth(200);//画像の大きさ
-            oImg1.set({
-              left:100,//leftからの位置
-              top:100,//topからの位置
-              strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
-              hasRotatingPoint: false,//回転を制限
-              hasControls: false,//拡大縮小を制限
-              lockMovementX:true,
-              lockMovementY:true,
-              // パラメータ付与
-              line1:"line1",
-              line2:"line2",
-              line3:"line3",
-              name:"p0"
-            });
-            img1.push(oImg1.left,oImg1.top);//位置を配列に格納
-            // canvas.add(oImg1);//追加
-        });
-
-    new fabric.Image.fromURL(`{{asset('/img/coma/c_2.png')}}`,
-    function(oImg2) {
-            // 画像をランダム位置で表示
-            // const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
-            // const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
-            oImg2.scaleToWidth(200);//画像の大きさ
-            oImg2.set({
-              left:600,//leftからの位置
-              top:100,//topからの位置
-              strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
-              hasRotatingPoint: false,//回転を制限
-              hasControls: false,//拡大縮小を制限
-              lockMovementX:true,
-              // パラメータ付与
-              line1:"line1",
-              line2:"line2",
-              line3:"line3",
-              name:"p2"
-            });
-            img2.push(oImg2.left,oImg2.top);//位置を配列に格納
-            // canvas.add(oImg2);//追加
-        });
-
-        // console.log(img1)
-        // console.log(img2)
-
-var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '', stroke: 'black', objectCaching: false });
-//pathの座標
-line.path[0][1] = 100;//start_left
-line.path[0][2] = 100;//start_top
-
-line.path[1][1] = 200;//curvepoint_left
-line.path[1][2] = 200;//curvepoint_top
-
-// line.path[1][3] = 500;//stop_left
-// line.path[1][4] = 500;//stop_top
-line.path[1][3] = 600;//stop_left
-line.path[1][4] = 100;//stop_top
-
-line.selectable = false;
-// canvas.add(line);
-
-
-var p1 = makeCurvePoint(200, 200, null, line, null)
-    p1.name = "p1";
-    // canvas.add(p1);
-
-
-    //オブジェクトが選択されたら
-    function onObjectSelected(e) {
-    var activeObject = e.target;
-    console.log(activeObject);
-    if (activeObject.name == "p0" || activeObject.name == "p2") {
-      activeObject['line2'].animate('opacity', '1', {
-        duration: 200,
-        onChange: canvas.renderAll.bind(canvas),
-      });
-      activeObject.line2.selectable = true;
     }
-  }
+
+    //線を表示する関数(引数:start_top,start_left,curve_top,curve_left,stop_left,curve_point_top)
+    const lineObj = null;
+    function lineDisplay(top,left,c_top,c_left,s_left,c_p_top){
+      var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '',stroke: 'rgb(25, 51, 82)',strokeWidth: 5, objectCaching: false});
+            //pathの座標
+            line.path[0][1] = left;//start_left
+            line.path[0][2] = top;//start_top
+
+            line.path[1][1] = c_left;//curvepoint_left
+            line.path[1][2] = c_top;//curvepoint_top
+
+            line.path[1][3] = s_left;//stop_left
+            line.path[1][4] = top;//stop_top
+
+            line.selectable = false;
+            line.name = "line";
+            canvas.add(line);
+            //カーブポイント生成
+            let p1 = makeCurvePoint(line.path[1][1],c_p_top, null, line, null);
+            p1.name = "p1";
+            canvas.add(p1);
+            return line;
+            // console.log(line);
+            // console.log(lineObj);
+    }
+
 
   //カーブポイント生成
   function makeCurvePoint(left, top, line1, line2, line3) {
@@ -263,58 +210,77 @@ var p1 = makeCurvePoint(200, 200, null, line, null)
     return c;
   }
 
-
-  function onBeforeSelectionCleared(e) {
-    var activeObject = e.target;
-    if (activeObject.name == "p0" || activeObject.name == "p2") {
-      activeObject.line2.animate('opacity', '0', {
-        duration: 200,
-        onChange: canvas.renderAll.bind(canvas),
-      });
-      activeObject.line2.selectable = false;
-    }
-    else if (activeObject.name == "p1") {
-      activeObject.animate('opacity', '0', {
-        duration: 200,
-        onChange: canvas.renderAll.bind(canvas),
-      });
-      activeObject.selectable = false;
-    }
-  }
-
-  //オブジェクトが動いた時
+  //オブジェクトが動いた時に線と画像を移動に合わせて連携させる
   function onObjectMoving(e) {
     if (e.target.name == "p0" || e.target.name == "p2") {
       var p = e.target;
-
+      //[TODO]つながってる先の線も連動させる
       if (p.line1) {
-        p.line1.path[0][1] = p.left;
-        p.line1.path[0][2] = p.top;
+        console.log(p.preline)
+        p.line1.path[0][1] = p.left;//start_left
+        p.line1.path[0][2] = p.top;//start_top
+        p.preline.path[1][3] = p.left;
+        p.preline.path[1][4] = p.top;
+
         p.line1.path
       }
       else if (p.line3) {
-        p.line3.path[1][3] = p.left;
-        p.line3.path[1][4] = p.top;
+        p.line3.path[0][1] = p.left;
+        p.line3.path[0][2] = p.top;
+        p.preline.path[1][3] = p.left;
+        p.preline.path[1][4] = p.top;
       }
     }
     else if (e.target.name == "p1") {
       var p = e.target;
 
+      //移動後の位置をsetしてる?
       if (p.line2) {
         p.line2.path[1][1] = p.left;
-        p.line2.path[1][2] = p.top;
+        p.line2.path[1][2] = p.top - 200;
       }
     }
     else if (e.target.name == "p0" || e.target.name == "p2") {
       var p = e.target;
-
-      p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
-      p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
-      p.line3 && p.line3.set({ 'x1': p.left, 'y1': p.top });
-      p.line4 && p.line4.set({ 'x1': p.left, 'y1': p.top });
+      // p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
+      // p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
+      // p.line3 && p.line3.set({ 'x1': p.left, 'y1': p.top });
+      // p.preline && p.preline.set({ 'x2': p.left, 'y2': p.top });
     }
   }
 
+    //-------テストここまで--------//
+    //下記必要なさそうなのでコメントアウト中
+  // function onBeforeSelectionCleared(e) {
+  //   var activeObject = e.target;
+  //   if (activeObject.name == "p0" || activeObject.name == "p2") {
+  //     activeObject.line2.animate('opacity', '0', {
+  //       duration: 200,
+  //       onChange: canvas.renderAll.bind(canvas),
+  //     });
+  //     activeObject.line2.selectable = false;
+  //   }
+  //   else if (activeObject.name == "p1") {
+  //     activeObject.animate('opacity', '0', {
+  //       duration: 200,
+  //       onChange: canvas.renderAll.bind(canvas),
+  //     });
+  //     activeObject.selectable = false;
+  //   }
+  // }
+
+      //オブジェクトが選択されたら
+  //   function onObjectSelected(e) {
+  //   var activeObject = e.target;
+  //   console.log(activeObject);
+  //   if (activeObject.name == "p1" || activeObject.name == "p2") {
+  //     activeObject['line'].animate('opacity', '1', {
+  //       duration: 200,
+  //       onChange: canvas.renderAll.bind(canvas),
+  //     });
+  //     activeObject.line2.selectable = true;
+  //   }
+  // }
     </script>
   </body>
 </html>
