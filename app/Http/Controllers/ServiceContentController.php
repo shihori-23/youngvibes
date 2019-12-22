@@ -57,5 +57,5 @@ class ServiceContentController extends Controller
              ]);
         return redirect('/top');     
     }
-
+    
     }

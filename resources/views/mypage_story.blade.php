@@ -47,14 +47,14 @@
 
     <div class="scroll-contents">   
       @foreach($service_stories as $service_story)
-      <img src='img/coma/<?= $service_story['img_file'] ?>' alt="">
+      <img src='img/story/<?= $service_story['merge_img_file'] ?>' alt="">
       @endforeach
     </div>
 
     <div class="scroll-contents1">    
       @foreach($service_stories as $service_story)
           
-            <img src='img/story/<?= $service_story['img_file'] ?>' alt="">
+            <img src='img/story/<?= $service_story['merge_img_file'] ?>' alt="">
       @endforeach
     </div>
 

@@ -32,6 +32,9 @@
       @include('header')
 
       <main>
+        <div class="long_story_container">
+          <a href="/long_story" id="longStory_btn"><span class="btn_tx">ALL STORY</span></a>
+        </div>
         <div class="zoom_container">
           <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
           <button id="zoomOut"><img class="zoomicon" src="{{asset('/img/logo/zoomout.png')}}" alt="zoomout"></button><br>
@@ -39,7 +42,7 @@
 
             @if (count($comas) > 0)
             <span>現在</span><span>{{(count($comas))}}</span><span>コマ</span>
-            <input type="text" value = "{{($comas[0]->id)}}" id="comaCount">
+            <input type="hidden" value = "{{($comas[0]->id)}}" id="comaCount">
             @endif
             
         </div>
