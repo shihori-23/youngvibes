@@ -1,0 +1,62 @@
+body,
+html {
+  width: 100%;
+  font-family: sans-serif;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+}
+.zoom_container {
+  position: fixed;
+  top: 120px;
+  right: 50px;
+  z-index: 6000;
+}
+
+#comaCount {
+  padding-bottom: 20px;
+}
+
+.zoomicon {
+  width: 40px;
+  height: 40px;
+}
+
+#zoomIn,
+#zoomOut {
+  opacity: 0.5;
+}
+#zoomIn:hover,
+#zoomOut:hover {
+  opacity: 1;
+}
+
+#longStory_btn {
+  position: fixed;
+  top: 120px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #001e43;
+  vertical-align: middle;
+  opacity: 1;
+  z-index: 6000;
+  font-size: 15px;
+  color: #fff;
+}
+
+.btn_tx {
+  line-height: 100px;
+  padding-left: 10px;
+}

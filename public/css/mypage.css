@@ -1,0 +1,215 @@
+body {
+  width: 100%;
+}
+
+.mypage {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 1080px;
+  /* background-image: url("/img/mypage_background.png");
+  background-size: contain;
+  background-repeat: no-repeat; */
+  background: linear-gradient(150deg, #f8f4e6, rgb(204, 204, 204));
+  /* background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204)); */
+}
+
+.header {
+  height: 10%;
+  color: #001e43;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-logo {
+  font-size: 24px;
+  padding-left: 3%;
+}
+
+/* ハンバーガーメニューの挙動 */
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all 0.4s;
+  box-sizing: border-box;
+}
+
+.menu-trigger {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  margin-right: 3%;
+}
+
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #001e43;
+  border-radius: 4px;
+}
+
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+
+.menu-trigger span:nth-of-type(2) {
+  top: 10px;
+}
+
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+.menu-trigger:active span:nth-of-type(1) {
+  -webkit-transform: rotate(-45deg);
+  /* -webkit-transform: translateY(20px) rotate(-45deg); */
+  transform: rotate(-45deg);
+  /* transform: translateY(20px) rotate(-45deg); */
+
+  /* -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg); */
+}
+
+.menu-trigger:active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.menu-trigger:active span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  /* -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg); */
+}
+
+/* メイン部分のCSS */
+.main-contents {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outside-circle {
+  width: 30%;
+  border: 2px solid #001e43b0;
+  /* border: 2px solid rgba(255, 255, 255, 0.5); */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-circle {
+  width: 93%;
+  height: 93%;
+  border: 2px solid #001e436c;
+  /* border: 2px solid rgba(255, 255, 255, 0.5); */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #001e43;
+  padding-top: 15%;
+  padding-bottom: 15%;
+  font-size: 1.5rem;
+}
+
+.profile-menu {
+  text-align: center;
+  color: #001e43;
+  font-size: 1.1rem;
+}
+
+.profile-menu a {
+  text-decoration: none;
+  color: #001e43;
+}
+
+.profile-menu li {
+  margin-bottom: 10%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  transition: 0.3s all;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.profile-menu li:hover {
+  border-bottom: 2px solid #001e43;
+}
+
+.scroll-contents {
+  width: 12%;
+  /* margin: 0 auto; */
+  z-index: 999;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.scroll-contents1 {
+  width: 12%;
+  /* margin: 0 auto; */
+  z-index: 999;
+  position: absolute;
+  top: 200px;
+  right: 200px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.scroll-contents img {
+  width: 100%;
+  padding-bottom: 150px;
+  /* padding-right: 60%; */
+}
+
+.scroll-contents1 img {
+  width: 100%;
+  padding-bottom: 150px;
+  /* padding-right: 60%; */
+}
+
+.return-top {
+  text-decoration: none;
+  margin-right: 50px;
+  padding: 20px 10px;
+  color: #001e43;
+  border: 2px solid #001e4300;
+  transition: 0.4s all;
+}
+
+.return-top:hover {
+  opacity: 0.8;
+  border: 2px solid #001e43;
+}
