@@ -46,21 +46,26 @@
           </div>
         </div>
       </div>
+      
     </section>
 
+    
     <div class="scroll-contents">   
-      @foreach($service_stories as $service_story)
-      <img src='img/story/<?= $service_story['merge_img_file'] ?>' alt="">
-      @endforeach
-    </div>
-
-    <div class="scroll-contents1">    
-      @foreach($service_stories as $service_story)
-          
-            <img src='img/story/<?= $service_story['merge_img_file'] ?>' alt="">
-      @endforeach
-    </div>
-
+        @foreach($service_stories as $service_story)
+        <img src='img/story/{{$service_story->merge_img_file}}' alt="">
+        @endforeach
+      </div>
+  
+      <div class="scroll-contents1">    
+        @foreach($service_stories as $service_story)
+            
+        <img src='img/story/{{$service_story->merge_img_file}}' alt="">
+        @endforeach
+      </div>
+  
+    
+     
+    
     
     <script>
       //画面の高さに合わせてheightを可変的に設定
