@@ -19,7 +19,7 @@
       <div class="header">
         <div class="header-logo">Chumugu</div>
         <a class="return-top" href="/top">
-          Return To Top
+          トップに戻る
         </a>
         {{-- <a class="menu-trigger" href="#">
           <span></span>
@@ -31,17 +31,19 @@
         <div class="container">
           <div class="outside-circle">
             <div class="inner-circle">
-              <div class="user-profile">
-                {{-- データベースにユーザー情報が入り次第下記に変える --}}
-                <h1 class="user-name">{{ Auth::user()->name }}</h1>                 
-                {{-- <h1 class="user-name">{{$user->name}}</h1> --}}              
-                <ul class="profile-menu">
-                  <li><a href="{{ route('user.logout') }}">Logout</a></li>
-                  <li>Update Profile</li>
-                  <li><a href="/mypage/story">Your Story</a></li>
-                  <li><a href="/mypage">Your History</a></li>
-                </ul>
-              </div>
+                <div class="user-profile">
+                    {{-- データベースにユーザー情報が入り次第下記に変える --}}
+                    <div class="name-box">
+                      <h1 class="user-name">{{ Auth::user()->name }}</h1>                 
+                    </div>
+                    {{-- <h1 class="user-name">{{$user->name}}</h1> --}}              
+                    <ul class="profile-menu">
+                      <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
+                      <li>プロフィールを編集</li>
+                      <li><a href="/mypage/story">あなたのストーリーを見る</a></li>
+                      <li><a href="/mypage">あなたのコマを見る</a></li>
+                    </ul>
+                  </div>
             </div>
           </div>
         </div>
