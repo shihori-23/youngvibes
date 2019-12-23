@@ -43,14 +43,35 @@ Route::get('/mypage/story', function () {
             ->where('email', Auth::user()->email)
             ->select('contents_stories.merge_img_file')
             ->get();
-        // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+
+        $merge_files = [];
+        foreach ($service_stories as $service_story) {
+            array_push($merge_files, $service_story->merge_img_file);
+        }
+        $merge_files = array_unique($merge_files);
         return view('mypage_story', [
-            'service_stories' => $service_stories
+            'merge_files' => $merge_files
         ]);
     } else {
         return redirect('login');
     }
 });
+//mypage_my_story 自分のコマが使われているコラージュの表示
+// Route::get('/mypage/story', function () {
+//     if (Auth::check()) {
+//         $service_stories = DB::table('service_contents')
+//             ->join('contents_stories', 'service_contents.id', '=', 'contents_stories.img_file')
+//             ->where('email', Auth::user()->email)
+//             ->select('contents_stories.merge_img_file')
+//             ->get();
+
+//         return view('mypage_story', [
+//             'service_stories' => $service_stories
+//         ]);
+//     } else {
+//         return redirect('login');
+//     }
+// });
 
 Route::get('/', function () {
     return view('auth/login');
