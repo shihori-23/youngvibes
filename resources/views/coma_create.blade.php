@@ -30,7 +30,7 @@
         width:300px;
         height:300px;
         border:1px solid #000;
-        margin-right:50px;
+        margin-right:60px;
         position: relative;
       }
       /* 確認画面のモーダルの非表示 */
@@ -44,6 +44,13 @@
     <div id="wapper">
       @include('header')
       <main>
+        <!-- 前のコマにつむぐコメントを表示 -->
+        <div class="fukidashi_com">
+          <div class="balloon2-top">
+            <p class="fukidashi_p">こちらのコマの続きを<br>つむいでください</p>
+          </div>
+        </div>
+
         <div class="main_container">
           <!-- 前のコマとcanvas描画エリアを横並びに表示するdiv -->
           <div class="content_flex">
@@ -51,16 +58,16 @@
               <!-- 前のコマを表示させるイメージ要素-->
                 <img id="preComa" src="img/coma/{{ $comas->img_file }}" name="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
               <input type="hidden" id="preComaId" value="{{ $comas->id }}">
-              <!-- コマの追加が会った際のfeedin -->
-              <div id="changeAlert" style="margin-top:10%;display:none;">
-                <p>新たなストーリーがつむがれました</p>
-              </div>
+                <!-- コマの追加が会った際のfeedin -->
+                <div id="changeAlert" style="margin-top:10%;display:none;">
+                  <p>新たなストーリーがつむがれました</p>
+                </div>
             </div>
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
-              width="300px"
-              height="300px"
+              width="500px"
+              height="500px"
               style="border: black solid 1px;"
             ></canvas>
           </div>
@@ -239,6 +246,7 @@
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('/js/colorjoe.min.js')}}"></script>
+    <script src="{{asset('/js/leader-line.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
     <script src="{{asset('/js/coma_create.js')}}"></script>
 

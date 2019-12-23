@@ -325,13 +325,10 @@ $("#inversion-button").click(function() {
   console.log(activeObjects);
 });
 
-group.onclick = function() {
-  if (!canvas.getActiveObject()) {
-    return;
-  }
-  if (canvas.getActiveObject().type !== "activeSelection") {
-    return;
-  }
-  canvas.getActiveObject().toGroup();
-  canvas.requestRenderAll();
-};
+//コマ同士を繋ぐライン(leader-line.min.jsを使用)
+let startElement = document.getElementById("preComa");
+let endElement = document.getElementById("canvas");
+new LeaderLine(startElement, endElement, {
+  color: "#001e43",
+  endPlug: "behind"
+});
