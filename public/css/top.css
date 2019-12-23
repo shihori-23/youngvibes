@@ -32,9 +32,21 @@ a {
   height: 40px;
 }
 
+.now_chumugu {
+  font-size: 14px;
+  color: #001e43;
+  margin-bottom: 10px;
+}
+
+.icon_container {
+  width: 90px;
+  margin: 0 auto;
+}
+
 #zoomIn,
 #zoomOut {
   opacity: 0.5;
+  margin-bottom: 10px;
 }
 #zoomIn:hover,
 #zoomOut:hover {
