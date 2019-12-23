@@ -50,10 +50,10 @@
         <canvas id="c" height="886"></canvas>
         </div>
         <!-- 後で消すかも -->
-          <a href="">閉じる</a>
+          
         </div>
       </main>
-      <footer>(c)///////サービス名が入ります//////</footer>
+      
     </div>
 
     <!-- jqueryの読み込み -->
