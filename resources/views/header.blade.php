@@ -11,7 +11,7 @@
         <li class="menu">
           <a href="#" class="arrow-mark">Re:ストーリー</a>
           <ul class="menu-open">
-              <li><a href="/long_story">Re:ストーリーを見る</a></li>
+              <li><a href="/story_all">Re:ストーリーを見る</a></li>
               <li><a href="/story_create">Re:ストーリーを作る</a></li>
           </ul>
         </li>
