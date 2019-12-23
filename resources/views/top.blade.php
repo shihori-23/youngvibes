@@ -40,7 +40,7 @@
       <main>
         <div class="long_story_container">
           <a href="/long_story" id="longStory_btn"><img class="cc_logo-btn" id="cc_logoBtn" src="{{asset('/img/logo/cc_logo.png')}}" alt="cc_logo" width="100px" height="100px"></a>
-          <p class="btn_tx">つむがれた物語をみる</p>
+          <p class="btn_tx">ストーリーをみる</p>
         </div>
         <div class="zoom_container">
           <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
