@@ -114,6 +114,12 @@ Route::get('/story_all', function () {
     return view('story_all');
 });
 
+// Route::get('/coma_create/{testcode}', 'ServiceContentController@indextest');
+Route::get('/get_count', function () {
+    return view('get_count');
+});
+
+
 //story_create.blade.phpのルート定義
 // Route::get('/story_create', function () {
 //     return view('story_create');

@@ -68,9 +68,27 @@ class ServiceContentController extends Controller
         $images = new ServiceContent;
         $postImageName = 'c_' . $imgNum . '.png';
         $images->insert([
-            'img_file' => $postImageName,
-            'email' => $imgEmail
-        ]);
-        return redirect('/top');
+
+                'img_file' => $postImageName,
+                'email' => $imgEmail
+             ]);
+        return redirect('/top');     
     }
+
+
+    public function indextest(Request $request)
+    {
+        $comas = ServiceContent::orderBy('id','dec')->first();
+        return Response::json('coma_create',[
+        'comas' => $comas
+        ]);
+        // return view('coma_create',[
+        // 'comas' => $comas
+        // ]);
+        // $response = array();
+        // $response["status"] = "OK";
+        // $response["message"] = $request;
+        // return Response::json($request);
+    }
+    
 }

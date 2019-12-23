@@ -46,8 +46,15 @@
         <div class="main_container">
           <!-- 前のコマとcanvas描画エリアを横並びに表示するdiv -->
           <div class="content_flex">
-            <!-- 前のコマを表示させるイメージ要素-->
-            <img src="img/coma/{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+            <div>
+              <!-- 前のコマを表示させるイメージ要素-->
+              <img id="preComa" src="img/coma/{{ $comas->img_file }}" name="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+              <input type="hidden" id="preComaId" value="{{ $comas->id }}">
+              <!-- コマの追加が会った際のfeedin -->
+              <div id="changeAlert" style="margin-top:10%;display:none;">
+                <p>新たなストーリーがつむがれました</p>
+              </div>
+            </div>
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
@@ -217,11 +224,53 @@
         </form>
       </div>
 
+
+
     <!-- jqueryの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('/js/colorjoe.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
     <script src="{{asset('/js/coma_create.js')}}"></script>
-  
+
+  <script>
+  //前のコマが更新された場合にimgを変更するエフェクト関数
+      function changeAlert(){
+        $("#changeAlert").fadeIn(3000);
+        $("#changeAlert").fadeOut(3000);
+      }
+
+  //ajaxでservece_contentsテーブルの最新idを取得する関数
+  function getComaCount(){
+    let preComaId = $("#preComaId").val();//前のコマのIDをbuttonに隠して取得
+    // console.log(preComaId);
+    $(function(){
+      $.ajax({
+        type: 'get',
+        datatype: 'json',
+        url: '{{asset('get_count')}}',
+        })
+        .done(function(data){ //ajaxの通信に成功した場合
+          let id = JSON.parse(data).slice(-1)[0].id;//配列の末尾(最新の追加コマのid)を取得
+          if(preComaId !== id){
+            //前のコマのIDを更新
+            $("#preComaId").val(id);
+            //imgのsrc部分を作成
+            const src = `img/coma/c_${id}.png`;
+            //↑を挿入してimgタグを変更
+            $("#preComa").attr('src',src);
+            //文字表示
+            changeAlert();
+          }
+        })
+        .fail(function(data){ //ajaxの通信に失敗した場合
+        // alert("error!");
+        console.log("error!")
+      });
+    });
+
+  }
+  //5秒ごとに関数を実行実行
+  setInterval("getComaCount()",5000);
+  </script>
   </body>
 </html>
