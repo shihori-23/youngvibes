@@ -63,6 +63,7 @@
           <div class="text">
                 <label for="canvas-bg-color">選択中の色:</label>
                 <input type="color" value="" id="canvas-bg-color" size="10" />
+                <input type="text" value="5" id="canvas-brush-width"/>
           </div>
 
           <div> 
@@ -72,6 +73,8 @@
 
           <div>
             <button id="draw-button">線を引く</button>
+            <!-- 線の太さを選択 -->
+            <input type="range" min="0" max="100" value="5" id="lineWidth">
               <div id="bgcolor">
                 <button id="bgcolor-button">背景色を変える</button>
                 <p>■</p>
@@ -177,7 +180,9 @@
             <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
             <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
             <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <!-- <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button> -->
+            <button id="stamp_btn5"><img id="stamp5" src="{{asset('/img/fukidashi/fukidashi5.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn6"><img id="stamp6" src="{{asset('/img/fukidashi/fukidashi6.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
           </div>
           
           

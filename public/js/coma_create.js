@@ -1,6 +1,7 @@
 // 現在の色を保持する変数(デフォルトは黒(#000000)とする)
 let currentColor = "#000000"; //線の色
 let bgColor = "#fff"; //背景色
+let brushWidth = 5; //ブラシのサイズ
 
 //fabricjs用のcanvasを定義
 let canvas = new fabric.Canvas("canvas", {
@@ -14,13 +15,24 @@ let ctx = canvas.getContext("2d");
 //戻るボタン用のbuffer
 let undoBuffer = [];
 
+//線の太さを変える
+$("#lineWidth").change(function() {
+  const brushWidthStr = $(this).val();
+  $("#canvas-brush-width").val(brushWidthStr);
+  let brushWidthInt = parseInt(brushWidthStr);
+  brushWidth = brushWidthInt;
+  console.log(brushWidth);
+});
+
 //線を引くボタン
 $("#draw-button").click(function() {
   canvas.isDrawingMode = true; //ここでbloomを切り替える
+  let brushSize = $("#canvas-brush-width").val(); //ブラシのサイズ
+  let brushWidth = parseInt(brushSize);
   //書き込み線設定
   canvas.freeDrawingBrush = new fabric.PencilBrush(canvas); //ブラシ
   canvas.freeDrawingBrush.color = currentColor; //色
-  canvas.freeDrawingBrush.width = 5; //太さ
+  canvas.freeDrawingBrush.width = brushWidth; //太さ
   canvas.freeDrawingBrush.shadowBlur = 0; //影
   canvas.hoverCursor = "move"; //分からん
 });
@@ -101,7 +113,10 @@ $("#clear-button").click(function() {
 //消しゴムモード
 $("#eraser-button").click(function() {
   canvas.isDrawingMode = true;
+  let brushSize = $("#canvas-brush-width").val(); //ブラシのサイズ
+  let brushWidth = parseInt(brushSize);
   canvas.freeDrawingBrush.color = "white"; //白にするだけ
+  canvas.freeDrawingBrush.width = brushWidth; //白にするだけ
 });
 
 //戻る
@@ -200,15 +215,28 @@ $("#stamp3").click(function() {
   canvas.renderAll();
 });
 
-//スタンプの挿入(吹き出しスタンプ4)：辻編集
-const stampImg4 = document.getElementById("stamp4");
-$("#stamp4").click(function() {
+//スタンプの挿入(吹き出しスタンプ5)：辻編集
+const stampImg5 = document.getElementById("stamp5");
+$("#stamp5").click(function() {
   canvas.isDrawingMode = false;
-  const stamp4 = new fabric.Image(stampImg4, {
+  const stamp5 = new fabric.Image(stampImg5, {
     left: 0,
     top: 0
   });
-  canvas.add(stamp4);
+  canvas.add(stamp5);
+  undoBuffer.push(canvas.toDatalessJSON());
+  canvas.renderAll();
+});
+
+//スタンプの挿入(吹き出しスタンプ5)：辻編集
+const stampImg6 = document.getElementById("stamp6");
+$("#stamp6").click(function() {
+  canvas.isDrawingMode = false;
+  const stamp6 = new fabric.Image(stampImg6, {
+    left: 0,
+    top: 0
+  });
+  canvas.add(stamp6);
   undoBuffer.push(canvas.toDatalessJSON());
   canvas.renderAll();
 });
