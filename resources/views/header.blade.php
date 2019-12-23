@@ -1,5 +1,5 @@
     <header>
-      <div class="header-logo"><img class="header_logo_img" src="{{asset('/img/logo/Chumugu_logo.png')}}"></div>
+      <a class="header-logo" href="/top"><img class="header_logo_img" src="{{asset('/img/logo/Chumugu_logo.png')}}"></a>
       <ul class="header-menu">
         <li class="menu">
           <a href="#" class="arrow-mark">コマ</a>
