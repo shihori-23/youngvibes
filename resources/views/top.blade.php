@@ -82,8 +82,8 @@
         for(let i=1;i<=comaCount;i++){
           fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
+            const imgLeft = Math.ceil(Math.random() * 1500);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 766); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
 
             //作成後のコマだけ目立つ（テスト）
@@ -98,8 +98,8 @@
             //   })
             // }else{
               oImg.set({
-              left:800,//leftからの位置
-              top:400,//topからの位置
+              left:50,//leftからの位置
+              top:50,//topからの位置
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
               hasRotatingPoint: false,//回転を制限
               hasControls: false//拡大縮小を制限
@@ -121,14 +121,14 @@
     });
 
     //拡大・縮小
-    let zoom = 100;
-    let zoomStep = 10;
+    let zoom = 200;
+    let zoomStep = 20;
 
     // 拡大
     $('#zoomIn').click(function () {
-        if (zoom < 100) {
+        if (zoom < 500) {
             zoom += zoomStep;
-            area.setZoom(zoom / 100);
+            area.setZoom(zoom / 200);
             $('#zoom').val(zoom + '%');
         }
     });
@@ -136,7 +136,7 @@
     $('#zoomOut').click(function () {
         if (zoom > 50) {
             zoom -= zoomStep;
-            area.setZoom(zoom / 100);
+            area.setZoom(zoom / 200);
             $('#zoom').val(zoom + '%');
         }
 
