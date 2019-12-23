@@ -57,5 +57,21 @@ class ServiceContentController extends Controller
              ]);
         return redirect('/top');     
     }
+
+    //--------テスト-------//
+    public function indextest(Request $request)
+    {
+        $comas = ServiceContent::orderBy('id','dec')->first();
+        return Response::json('coma_create',[
+        'comas' => $comas
+        ]);
+        // return view('coma_create',[
+        // 'comas' => $comas
+        // ]);
+        // $response = array();
+        // $response["status"] = "OK";
+        // $response["message"] = $request;
+        // return Response::json($request);
+    }
     
     }
