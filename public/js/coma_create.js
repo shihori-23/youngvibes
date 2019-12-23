@@ -125,7 +125,7 @@ $("#pev-button").click(function() {
   // console.log(undoBuffer);
 });
 
-//手書きモードの解除 辻編集
+//手書きモードの解除
 $("#select-button").click(function() {
   canvas.isDrawingMode = false; //
 });
@@ -331,4 +331,13 @@ let endElement = document.getElementById("canvas");
 new LeaderLine(startElement, endElement, {
   color: "#001e43",
   endPlug: "behind"
+});
+
+//スタンプコンテイナーをホバーイベントで表示
+$(".stamp_container").hover(function() {
+  $(".stamp_container").toggleClass("none");
+});
+
+$("#fk").hover(function() {
+  $(".stamp_container").toggleClass("none");
 });

@@ -24,7 +24,7 @@
       }
       .content_flex{
         display:flex;
-        margin-top:50px;
+        margin-top:30px;
       }
       .content_flex img{
         width:300px;
@@ -74,104 +74,124 @@
 
 
         <div class="toolvar">
-        <!-- テキスト編集 -->
-          <div class="text">
-                <label for="canvas-bg-color">選択中の色:</label>
-                <input type="color" value="" id="canvas-bg-color" size="10" />
-                <input type="text" value="5" id="canvas-brush-width"/>
+          <!-- 選択ボタン -->
+          <div class="f_tool_var">
+            <div class="tool">
+              <button id="select-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/select.png')}}" alt="選択"></button>
+            </div>
+
+            <div class="tool">
+              <button id="circle-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/circular.png')}}" alt="丸"></button>
+            </div>
+
+            <div class="tool">
+              <button id="triangle-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/triangle.png')}}" alt="三角"></button>
+            </div>
+
+            <div class="tool">
+              <button id="rect-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/square.png')}}" alt="選択"></button>
+            </div>
+
+            <div class="tool" id="fk">
+              <img class="icon_img" src="{{asset('/img/logo/tool_icon/fukidashi_st.png')}}" alt="選択">
+            </div>
+            <div class="stamp_container none">
+              <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+              <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+              <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+              <!-- <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button> -->
+              <button id="stamp_btn5"><img id="stamp5" src="{{asset('/img/fukidashi/fukidashi5.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+              <button id="stamp_btn6"><img id="stamp6" src="{{asset('/img/fukidashi/fukidashi6.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            </div>
+            
+          </div> 
+
+          <div class="s_tool_var">
+            <!-- ペンボタン -->
+            <div class=tool>
+              <button id="draw-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/pen.png')}}" alt="ペン"></button>
+            </div>
+
+            <div class="tool">
+              <button id="text-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/text.png')}}" alt="ペン"></button>
+            </div>
+
+            <div id="t-bgColor" class="tool">
+              <button id="text-bgcolor-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/text2.png')}}" alt="文字背景塗り潰し"></button>
+            </div>  
+
+            <!-- 消しゴム -->
+            <div class="tool">
+              <button id="eraser-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/eraser.png')}}" alt="消しゴム"></button>
+            </div>
+
+            <div id="bgcolor" class="tool">
+            <button id="bgcolor-button"><img class="icon_img" src="{{asset('/img/logo/tool_icon/bucket.png')}}" alt="背景塗り潰し"></button>
           </div>
 
-          <div> 
+          </div>
+             
+            <!-- 線の太さを選択 -->
+          <input type="range" min="0" max="100" value="5" id="lineWidth"><br>
+            <!-- バグあります -->
+            <div class="select_font cp_sl01">
+              <select id="font-family">
+                <option value="" hidden>フォントを選んでください</option>
+                <option value="Meiryo">メイリオ</option>
+                <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
+                <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
+                <option value="Wawati SC">Wawati SC</option>
+                <option value="Andale Mono">Andale Mono</option>
+                <option value="Bradley Hand">BradleyHand</option>
+                <option value="arial">Arial</option>
+                <option value="helvetica">Helvetica</option>
+                <option value="myriad pro">Myriad Pro</option>
+                <option value="delicious">Delicious</option>
+                <option value="verdana">Verdana</option>
+                <option value="georgia">Georgia</option>
+                <option value="courier">Courier</option>
+                <option value="comic sans ms">Comic Sans MS</option>
+                <option value="impact">Impact</option>
+                <option value="monaco">Monaco</option>
+                <option value="optima">Optima</option>
+                <option value="hoefler text">Hoefler Text</option>
+                <option value="plaster">Plaster</option>
+                <option value="engagement">Engagement</option>
+              </select>
+            </div>
+            <!-- 以上バグあり -->
+            
+          
+          <!-- きいてないかも・・・ -->
+          <!-- <div id="t-color">
+            <button id="text-color-button">文字の色を変更</button>
+          </div> -->
+
+          <div class="text">
+                <label class="lb_color" for="canvas-bg-color">選択中の色:</label>
+                <input type="color" value="" id="canvas-bg-color" size="10" />
+                <input type="hidden" value="5" id="canvas-brush-width"/>
+          </div>
           <!-- 色を選択できるカラーパレットを用意する。 -->
+          <div>
             <span id="color-palette"></span>
           </div>
 
-          <div>
-            <button id="draw-button">線を引く</button>
-            <!-- 線の太さを選択 -->
-            <input type="range" min="0" max="100" value="5" id="lineWidth">
-              <div id="bgcolor">
-                <button id="bgcolor-button">背景色を変える</button>
-                <p>■</p>
-              </div>
-
-            <button id="text-button">テキストを挿入</button>
-            <!-- バグあります -->
-            <label for="font-family" style="display:inline-block">フォント:</label>
-            <select id="font-family">
-              <option value="Meiryo">メイリオ</option>
-              <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
-              <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
-              <option value="Wawati SC" selected>Wawati SC</option>
-              <option value="Andale Mono">Andale Mono</option>
-              <option value="Bradley Hand" selected>BradleyHand</option>
-              <option value="arial">Arial</option>
-              <option value="helvetica" selected>Helvetica</option>
-              <option value="myriad pro">Myriad Pro</option>
-              <option value="delicious">Delicious</option>
-              <option value="verdana">Verdana</option>
-              <option value="georgia">Georgia</option>
-              <option value="courier">Courier</option>
-              <option value="comic sans ms">Comic Sans MS</option>
-              <option value="impact">Impact</option>
-              <option value="monaco">Monaco</option>
-              <option value="optima">Optima</option>
-              <option value="hoefler text">Hoefler Text</option>
-              <option value="plaster">Plaster</option>
-              <option value="engagement">Engagement</option>
-            </select>
-            <!-- 以上バグあり -->
-            
-          <div id="t-bgColor">
-            <button id="text-bgcolor-button">文字背景を変更</button>
-            <p>■</p>
-          </div>
-
-          <div id="t-color">
-            <button id="text-color-button">文字の色を変更</button>
-            <p>■</p>
-          </div>
-
-            <button id="pev-button">戻る</button>
-            <button id="next-button">すすむ</button>
-            <button id="clear-button">全消し</button>
-
-        
-          <div>
-            <button id="eraser-button">消しゴムモード</button>
-          </div>
-
-          <div>
-            <button id="circle-button">まるモード</button>
-          </div>
-
-          <div>
-            <button id="triangle-button">三角モード</button>
-          </div>
-
-          <div>
-            <button id="rect-button">四角モード</button>
-          </div>
-
-          <div>
-            <button id="select-button">選択</button>
-          </div>
+          
 
            <!--未実装 <div>
             <button id="inversion-button">反転する</button>
           </div> -->
 
-          <div class="stamp_container">
-            <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <!-- <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button> -->
-            <button id="stamp_btn5"><img id="stamp5" src="{{asset('/img/fukidashi/fukidashi5.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn6"><img id="stamp6" src="{{asset('/img/fukidashi/fukidashi6.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-          </div>
+         <div class="l_tool_container">
+          <button id="pev-button"><img class="icon_img l_icon" src="{{asset('/img/logo/tool_icon/pev2.png')}}" alt="戻る"></button>
+          <!-- <button id="next-button">すすむ</button> -->
+          <button id="clear-button"><img class="icon_img l_icon" src="{{asset('/img/logo/tool_icon/dust.png')}}" alt="戻る"></button>
 
-          <div class="originalFileBtn ">
-            <input type="file" id="file_img_canvas" >
+          <label class="originalFileBtn ">画像を読み込む
+            <input type="file" id="file_img_canvas" style="display:none">
+          </label>
+          <button id="download">コマ編集完了</button>
           </div>
          
 
@@ -213,7 +233,7 @@
         </div>
       </div>
       </div>
-      <button id="download">編集完了</button>
+      
      </div>
      </div>
       </main>
