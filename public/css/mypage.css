@@ -1,5 +1,9 @@
-body {
+body,
+html {
   width: 100%;
+  font-family: "Yu Gothic", YuGothic, Verdana, "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo,
+    sans-serif;
 }
 
 .mypage {
@@ -123,6 +127,12 @@ body {
   justify-content: center;
 }
 
+.name-box {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+}
+
 .user-profile {
   width: 100%;
   height: 100%;
@@ -140,6 +150,10 @@ body {
 }
 
 .profile-menu {
+  padding-top: 10%;
+  width: 70%;
+  text-align: center;
+  height: 60%;
   text-align: center;
   color: #001e43;
   font-size: 1.1rem;
@@ -151,12 +165,22 @@ body {
 }
 
 .profile-menu li {
-  margin-bottom: 10%;
+  height: 25%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  /* margin-bottom: 10%;
   padding-top: 10%;
-  padding-bottom: 10%;
+  padding-bottom: 10%; */
+  /* font-weight: bold; */
   transition: 0.3s all;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
   cursor: pointer;
+  /* transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease; */
 }
 
 .profile-menu li:hover {
@@ -212,4 +236,102 @@ body {
 .return-top:hover {
   opacity: 0.8;
   border: 2px solid #001e43;
+}
+
+/* ボタンの大きさと位置をここで指定 */
+.btn__box {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  line-height: 200px;
+  overflow: hidden;
+}
+.btn__box a {
+  display: block;
+}
+
+/* 線(ボーダー)のスタイル 共通 */
+.btn__box:before,
+.btn__box:after,
+.btn__box a:before,
+.btn__box a:after {
+  content: "";
+  position: absolute;
+  background: #001e43; /*線の色*/
+}
+/* 下のボーダー */
+.btn__box:before {
+  bottom: 0;
+  left: -200px;
+  width: 200px;
+  height: 1px;
+}
+/* 右のボーダー */
+.btn__box:after {
+  bottom: -200px;
+  right: 0;
+  width: 1px;
+  height: 200px;
+}
+/* 上のボーダー */
+.btn__box a:before {
+  top: 0;
+  right: -200px;
+  width: 200px;
+  height: 1px;
+}
+/* 左のボーダー */
+.btn__box a:after {
+  top: -200px;
+  left: 0;
+  width: 1px;
+  height: 200px;
+}
+
+/* ホバー時のアニメーション指定 */
+.btn__box:before {
+  animation: leftAnim 1.5s linear 0s infinite;
+}
+.btn__box:after {
+  animation: bottomAnim 1.5s linear 0.75s infinite;
+}
+.btn__box a:before {
+  animation: rightAnim 1.5s linear 0s infinite;
+}
+.btn__box a:after {
+  animation: topAnim 1.5s linear 0.75s infinite;
+}
+
+/* 各アニメーション */
+@keyframes topAnim {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+@keyframes bottomAnim {
+  0% {
+    bottom: -200px;
+  }
+  100% {
+    bottom: 200px;
+  }
+}
+@keyframes rightAnim {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 200px;
+  }
+}
+@keyframes leftAnim {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 200px;
+  }
 }

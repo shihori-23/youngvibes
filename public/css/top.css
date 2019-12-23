@@ -47,16 +47,37 @@ a {
   left: 50px;
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background: #001e43;
   vertical-align: middle;
   opacity: 1;
   z-index: 6000;
   font-size: 15px;
   color: #fff;
+  box-shadow: 1px 1px 3px #001e43;
 }
 
 .btn_tx {
-  line-height: 100px;
-  padding-left: 10px;
+  position: fixed;
+  top: 120px;
+  left: 160px;
+  display: none;
+  font-size: 14px;
+  color: #001e43;
+  /* background: #001e43; */
+  border-bottom: solid 1px #001e43;
+  padding-bottom: 10px;
+  z-index: 6000;
+}
+
+#longStory_btn:hover {
+  opacity: 0.9;
+}
+
+#longStory_btn:hover + .btn_tx {
+  display: block;
+}
+
+#longStory_btn:hover + .cc_logo-btn {
+  display: none;
 }
