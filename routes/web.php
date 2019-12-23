@@ -114,6 +114,17 @@ Route::get('/story_all', function () {
     return view('story_all');
 });
 
+//story_allにコマデータ送信
+Route::get('/story_all', function(){
+    $comas = ServiceStory::orderBy('id', 'dec')->get();
+    return view('story_all', [
+        'comas' => $comas
+    ]);
+} 
+);
+
+
+
 // Route::get('/coma_create/{testcode}', 'ServiceContentController@indextest');
 Route::get('/get_count', function () {
     return view('get_count');

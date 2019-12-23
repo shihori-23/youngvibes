@@ -72,53 +72,41 @@
 
     <!-- js処理ここから-->
     <script>  
+
+
     //canvas準備
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
 
     //fabricjsで全コマ表示
-    const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
-    console.log(comaCount);
-    let area = new fabric.Canvas('canvas');//canvasにfabricjsを準備
+      //DBからRe:ストーリーのデータを取得
+      const reStory_array = JSON.parse('<?= $comas; ?>');
+      const reStoryCount = reStory_array.length;
+
+      console.log(reStoryCount) ;
+      console.log(reStory_array[0].merge_img_file) ;
+
+    // const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
+    // console.log(comaCount);
+
+    //canvasにfabricjsを準備
+    let area = new fabric.Canvas('canvas');
     //全コマをフォルダから取得してcanvasに表示
     $(function(){
-        for(let i=1;i<=comaCount;i++){
-          fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
+        for(let i=1;i<reStoryCount;i++){
+          fabric.Image.fromURL('img/story/' + reStory_array[i].merge_img_file, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
-
-            //作成後のコマだけ目立つ（テスト）
-            // if(i == comaCount){
-            //   oImg.set({
-            //     left:800,//leftからの位置
-            //     top:400,//topからの位置
-            //     strokeWidth: 50, 
-            //     stroke: 'rgba(255,0,0,1)',
-            //     hasRotatingPoint: false,//回転を制限
-            //     hasControls: false//拡大縮小を制限
-            //   })
-            // }else{
               oImg.set({
-              left:800,//leftからの位置
-              top:400,//topからの位置
+              left:imgLeft,//leftからの位置
+              top:imgTop,//topからの位置
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
               hasRotatingPoint: false,//回転を制限
               hasControls: false//拡大縮小を制限
             });
-            // }
-
             area.add(oImg);//追加
-            //-----アニメーションテスト--- //
-            oImg.animate('left',oImg.left === 300 ? 100 : imgLeft,{
-              duration: 1000,
-              onChange: area.renderAll.bind(area),
-            })
-            oImg.animate('top',oImg.left === 300 ? 100 : imgTop,{
-              duration: 1000,
-              onChange: area.renderAll.bind(area),
-            })
         });
         };
     });
