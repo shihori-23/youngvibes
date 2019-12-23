@@ -24,6 +24,12 @@
         width:100%;
         height:10px;
       }
+      header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+      }
+
     </style>
   </head>
 
@@ -33,7 +39,8 @@
 
       <main>
         <div class="long_story_container">
-          <a href="/long_story" id="longStory_btn"><span class="btn_tx">ALL STORY</span></a>
+          <a href="/long_story" id="longStory_btn"><img class="cc_logo-btn" id="cc_logoBtn" src="{{asset('/img/logo/cc_logo.png')}}" alt="cc_logo" width="100px" height="100px"></a>
+          <p class="btn_tx">つむがれた物語をみる</p>
         </div>
         <div class="zoom_container">
           <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
@@ -48,7 +55,7 @@
         </div>
 
         <div class="main_container">
-          <canvas id="canvas" width="1600" height="886"></canvas>
+          <canvas id="canvas" width="1440" height="800"></canvas>
         </div>
         <!-- ストーリーをクリックしたときに表示されるモーダル※一旦コメントアウト -->
         <!-- <div class="modal">
@@ -82,8 +89,8 @@
         for(let i=1;i<=comaCount;i++){
           fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 1500);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 766); //位置をランダムで指定
+            const imgLeft = Math.ceil(Math.random() * 1440);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 800); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
 
             //作成後のコマだけ目立つ（テスト）
