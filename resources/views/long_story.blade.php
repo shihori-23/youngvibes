@@ -19,6 +19,9 @@
         top: 0;
         right: 0;
       }
+  #slideBtn {
+    margin-top:100px;
+  }
     </style>
   </head>
 
@@ -44,13 +47,14 @@
         <div class="main_container">
         @if (count($comas) > 0)
           <span>現在</span><span>{{(count($comas))}}</span><span>コマ</span>
-          <input type="text" value = "{{($comas[0]->id)}}" id="comaCount">
+          <input type="hidden" value = "{{($comas[0]->id)}}" id="comaCount">
         @endif
+        <!-- 先頭のコマにスライドボタン -->
+        <button id = "slideBtn">>>></button>
+        
         <div id="canvas">
         <canvas id="c" height="886"></canvas>
         </div>
-        <!-- 後で消すかも -->
-          
         </div>
       </main>
       
@@ -69,28 +73,40 @@
     const ctx = can.getContext("2d");
     const canDiv = $("#canvas");
     
-    // -----------テスト中----------- //
-    can.width = 500*comaCount;//350×コマ数をcanvasのwidthに指定
+    can.width = 400*comaCount;//350×コマ数をcanvasのwidthに指定
     
-    //ロード時に右へスクロールさせる
-    // autoScroll();
+    //ボタンクリックで右へスクロールさせる
+    $("#slideBtn").on('click',() =>{
+      let $scrollX = 0;
+      if(scrollX <= can.width/2) {
+        scrollX+= 5;
+        setTimeout( "scroll(scrollX,0)", 1 );
+        // console.log(scrollX)
+        setTimeout( "autoScroll()", 0 );
+      }else{
+        scrollX = 0;
+        return;
+      }
+    })
     function autoScroll() {
       let $scrollX = 0;
-      if(scrollX <= can.width - 2000) {
-        scrollX+= 1;
-        setTimeout( "scroll(scrollX,0)", 10 );
-        console.log(scrollX)
-        setTimeout( "autoScroll()", 1 );
+      if(scrollX <= can.width/2) {
+        scrollX+= 5;
+        setTimeout( "scroll(scrollX,0)", 1 );
+        // console.log(scrollX)
+        setTimeout( "autoScroll()", 0 );
       }else{
+        scrollX = 0;
         return;
       }
     }
-    // -----------テストここまで----------- //
 
 
 
     //fabricjs準備
-    const canvas = this.__canvas = new fabric.Canvas('c');
+    const canvas = this.__canvas = new fabric.Canvas('c',{
+      backgroundColor : "rgb(248, 244, 230)"
+    });
     fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
     //イベントを取得して各関数を実行
@@ -104,7 +120,7 @@
     const comaId_array = JSON.parse('<?= $comas; ?>').reverse();//コマのidを配列で取得して逆順にする
     let preline = null;//コマの前につながってる線の情報をいれる用の変数
     $(function(){
-        for(let i=0,left =200,top=500;i<comaId_array.length;i++,left +=400){//線の上下を判定するために条件分岐
+        for(let i=0,left =200,top=400;i<comaId_array.length;i++,left +=400){//線の上下を判定するために条件分岐
           const comaId = comaId_array[i].id;//コマのid取得
 
           //奇数と偶数で分岐 + 最後のコマ以降に線を引かないようにする
@@ -114,20 +130,20 @@
             //コマ表示
             if(i ==0 ){//最初のコマだけname変える 
               let p1 = comaDisplay(comaId,"p0_f",left,top,line,"p1",null,null);
-            }else{  
+            }else{ 
               let p1 = comaDisplay(comaId,"p0",left,top,line,"p1",null,preline);
             }
 
-            console.log(preline)
+            // console.log(preline)
               //前の線を取得してグローバル変数に格納
               preline = line;
           }
           else if(i%2 == 1 && i != comaId_array.length-1){
             //つむぐ線を表示
-            let line = lineDisplay(top,left,top+400,left+200,left+400,700);
+            let line = lineDisplay(top,left,top+500,left+200,left+400,700);
 
             //コマ表示(name:"p1")
-            let p2 = comaDisplay(comaId,"p2",left,top,null,"p1",line,preline);
+            let p2 = comaDisplay(comaId,"p2",left,top+100,null,"p1",line,preline);
             //前の線を取得してグローバル変数に格納
             preline = line;
           }
@@ -142,9 +158,6 @@
     //表示するコマのパラメータ付与する関数
     function comaDisplay(id,name,left,top,line1,line2,line3,preline){
       fabric.Image.fromURL(`{{asset('/img/coma/c_${id}.png')}}`, function(oImg) {
-            //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
             //パラメータをオブジェクトに格納
             oImg.scaleToWidth(200);//画像の大きさ
             oImg.set({
@@ -164,12 +177,13 @@
             return oImg;
             // console.log(oImg);
             });
+            // console.log(a);
     }
 
     //線を表示する関数(引数:start_top,start_left,curve_top,curve_left,stop_left,curve_point_top)
     const lineObj = null;
     function lineDisplay(top,left,c_top,c_left,s_left,c_p_top){
-      var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '',stroke: 'rgb(25, 51, 82)',strokeWidth: 5, objectCaching: false});
+      var line = new fabric.Path('M 65 0 Q 100, 100, 200, 0', { fill: '',stroke: 'rgb(25, 51, 82)',strokeWidth: 2, objectCaching: false});
             //pathの座標
             line.path[0][1] = left;//start_left
             line.path[0][2] = top;//start_top
@@ -237,7 +251,7 @@
     else if (e.target.name == "p1") {
       var p = e.target;
 
-      //移動後の位置をsetしてる?
+      //移動後の位置をsetしてる
       if (p.line2) {
         p.line2.path[1][1] = p.left;
         p.line2.path[1][2] = p.top - 200;
@@ -245,10 +259,10 @@
     }
     else if (e.target.name == "p0" || e.target.name == "p2") {
       var p = e.target;
-      // p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
-      // p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
-      // p.line3 && p.line3.set({ 'x1': p.left, 'y1': p.top });
-      // p.preline && p.preline.set({ 'x2': p.left, 'y2': p.top });
+      p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
+      p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
+      p.line3 && p.line3.set({ 'x1': p.left, 'y1': p.top });
+      p.preline && p.preline.set({ 'x2': p.left, 'y2': p.top });
     }else if(e.target.name == "p0_f") {
       var p = e.target;
       p.line1.path[0][1] = p.left;//start_left
@@ -293,6 +307,7 @@
   //     activeObject.line2.selectable = true;
   //   }
   // }
+
     </script>
   </body>
 </html>
