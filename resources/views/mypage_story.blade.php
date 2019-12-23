@@ -49,21 +49,21 @@
       
     </section>
 
-    
     <div class="scroll-contents">
-        {{-- <p style="text-align: center">あなたのコマは{{$service_stories->count()}} 回使用されています</p>  --}}
-        @foreach($service_stories as $service_story)
-        <img src='/img/story/{{$service_story->merge_img_file}}' alt="">
-        @endforeach
-      </div>
-  
-      <div class="scroll-contents1">    
-        @foreach($service_stories as $service_story)
-            
-        <img src='/img/story/{{$service_story->merge_img_file}}' alt="">
-        @endforeach
-      </div>
-  
+      {{-- <p style="text-align: center">あなたのコマは{{$service_stories->count()}} 回使用されています</p>  --}}
+      @foreach($merge_files as $merge_file)
+      <img src='/img/story/{{$merge_file}}' alt="">
+      @endforeach
+    </div>
+
+    <div class="scroll-contents1">    
+      @foreach($merge_files as $merge_file)
+          
+      <img src='/img/story/{{$merge_file}}' alt="">
+      @endforeach
+    </div>
+
+    
     
      
     
