@@ -94,6 +94,25 @@
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
 
+
+    //canvasのheightとwidthを画面幅の7割にする
+    const realHeight = window.innerHeight;
+    const header = document.querySelector('header').clientHeight;
+    const canvasHeight = realHeight - header;
+    const realWidth = window.innerWidth;
+    console.log(realHeight);
+    console.log(canvasHeight);
+    console.log(header);
+    can.height = canvasHeight;
+    can.width = realWidth*0.7;
+
+    //div.story_containerのwidthとheightの指定
+    $(function(){
+      $('.story_container').css('height',canvasHeight);
+      $('.story_container').css('width', realWidth*0.3);
+    })
+
+
      // 現在の色を保持する変数(デフォルトは黒(#000000)とする)
     let currentColor = "#000000"; //線の色
     let bgColor = "#fff"; //背景色
