@@ -150,20 +150,19 @@ Route::post('/story_create/save', function (Request $request) {
 
     $img = $request->data; //画像データの取得
     $imgTitle = $request->title_data; // 前ストーリーのidの取得
-    $imgPevNum = $request->id_data; // タイトルの取得
     $imgSelect = $request->coma_data; // 使用されてコマのidを取得
     $imgSelectArray = explode(",", $imgSelect); //使用したコマid文字列を配列にブチ込む
+    $timeStamp = time();
     $insertImgArray = []; //インサートするようの空の配列を用意 
 
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
     $fileData = base64_decode($img);
     //画像保存ファイル名を前のコマのs_idから生成
-    $imgNum = $imgPevNum + 1;
-    $fileName = 'img/story/s_' . $imgNum . '.png';
+    $fileName = 'img/story/s_' . $timeStamp  . '.png';
     file_put_contents($fileName, $fileData);
     //DBに保存するためのファイル名を生成
-    $postImageName = 's_' . $imgNum . '.png';
+    $postImageName = 's_' . $timeStamp . '.png';
 
 
     //ServiceStoryテーブルにファイル名とタイトルを格納

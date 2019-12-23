@@ -74,7 +74,6 @@
               </div>
                 <img src="" alt="確認画面" id="cofimg" height="300px" width="300px;">
             </div>
-            <input id="idData" type="hidden" name="id_data" value="{{ $service_stories->id }}">
             <input id="modalData" type="hidden" name="data" value="">
             <input id="comaData" type="hidden" name="coma_data" value="">
             <div class="conf_btn">
