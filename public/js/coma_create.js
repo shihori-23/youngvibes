@@ -107,6 +107,7 @@ $("#clear-button").click(function() {
   if (ret == true) {
     undoBuffer = [];
     canvas.clear();
+    canvas.backgroundColor = "#fff";//背景色を白に戻す
   }
 });
 
