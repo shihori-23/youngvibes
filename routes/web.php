@@ -18,47 +18,38 @@ use App\ContentsStory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-Route::get('/top', function () {
-    if (Auth::check()) {
-        return view('top');
-    } else {
-        return route('login');
-    }
-});
-
-Route::get('/top', 'ServiceContentsController@index');
-
 Route::get('/mypage_story_all', function () {
     return view('mypage_story_all');
 });
 
-Route::get('/coma_create', function () {
-    return view('coma_create');
-});
-
-
-
 //mypage
 Route::get('/mypage', function () {
-    $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
-    // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
-    return view('mypage', [
-        'service_contents' => $service_contents
-    ]);
+    if (Auth::check()) {
+        $service_contents = ServiceContent::orderBy('id', 'asc')->where('email', Auth::user()->email)->get();
+        // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+        return view('mypage', [
+            'service_contents' => $service_contents
+        ]);
+    } else {
+        return redirect('login');
+    }
 });
 
 //mypage_my_story 自分のコマが使われているコラージュの表示
 Route::get('/mypage/story', function () {
-    $service_stories = DB::table('service_contents')
-        ->join('contents_stories', 'service_contents.id', '=', 'contents_stories.img_file')
-        ->where('email', Auth::user()->email)
-        ->select('contents_stories.merge_img_file')
-        ->get();
-    // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
-    return view('mypage_story', [
-        'service_stories' => $service_stories
-    ]);
+    if (Auth::check()) {
+        $service_stories = DB::table('service_contents')
+            ->join('contents_stories', 'service_contents.id', '=', 'contents_stories.img_file')
+            ->where('email', Auth::user()->email)
+            ->select('contents_stories.merge_img_file')
+            ->get();
+        // $service_contents = ServiceContent::orderBy('id', 'asc')->get();
+        return view('mypage_story', [
+            'service_stories' => $service_stories
+        ]);
+    } else {
+        return redirect('login');
+    }
 });
 
 Route::get('/', function () {
@@ -88,17 +79,9 @@ Route::get('/coma_create', 'ServiceContentController@comaPev');
 Route::post('/coma_create/save', 'ServiceContentController@comaSave');
 
 Auth::routes();
-//long_story.blade.phpのルート定義
-Route::get('/long_story', function () {
-    return view('long_story');
-});
 // Route::get('/home', 'HomeController@index')->name('home');
 //コマの画像をlong_storyに表示
 Route::get('/long_story', 'ServiceContentController@comaGetToLong');
-
-Route::get('/header', function () {
-    return view('header');
-});
 
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
@@ -111,18 +94,22 @@ Route::get('/story_all', function () {
 });
 
 //story_create.blade.phpのルート定義
-Route::get('/story_create', function () {
-    return view('story_create');
-});
+// Route::get('/story_create', function () {
+//     return view('story_create');
+// });
 
 //story_create.blade.phpへ諸々のデータを送る
 Route::get('/story_create', function () {
-    $service_contents = ServiceContent::orderBy('id', 'des')->get();
-    $service_stories = ServiceStory::orderBy('id', 'des')->first();
-    return view('story_create', [
-        'service_contents' => $service_contents,
-        'service_stories' => $service_stories
-    ]);
+    if (Auth::check()) {
+        $service_contents = ServiceContent::orderBy('id', 'des')->get();
+        $service_stories = ServiceStory::orderBy('id', 'des')->first();
+        return view('story_create', [
+            'service_contents' => $service_contents,
+            'service_stories' => $service_stories
+        ]);
+    } else {
+        return redirect('login');
+    }
 });
 
 //story_create.blade.phpからpostデータServiceStoriesControllerで処理する定義
