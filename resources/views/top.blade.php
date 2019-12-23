@@ -24,11 +24,11 @@
         width:100%;
         height:10px;
       }
-      header {
+      /* header {
         position: fixed;
         top: 0px;
         left: 0px;
-      }
+      } */
 
     </style>
   </head>
@@ -79,6 +79,17 @@
     //canvas準備
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
+    
+    //canvasのheightとwidthを画面幅いっぱいにする
+    const realHeight = window.innerHeight;
+    const header = document.querySelector('header').clientHeight;
+    const canvasHeight = realHeight - header;
+    const realWidth = window.innerWidth;
+    console.log(realHeight);
+    console.log(canvasHeight);
+    console.log(header);
+    can.height = canvasHeight;
+    can.width = realWidth;
 
     //fabricjsで全コマ表示
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
