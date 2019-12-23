@@ -43,15 +43,16 @@
           <p class="btn_tx">ストーリーをみる</p>
         </div>
         <div class="zoom_container">
-          <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
-          <button id="zoomOut"><img class="zoomicon" src="{{asset('/img/logo/zoomout.png')}}" alt="zoomout"></button><br>
           <!-- DBからコマ数を取得 -->
-
             @if (count($comas) > 0)
-            <span>現在</span><span>{{(count($comas))}}</span><span>コマ</span>
+            <p class="now_chumugu">これまでに<span>{{(count($comas))}}</span>つむぐ...</p>
             <input type="hidden" value = "{{($comas[0]->id)}}" id="comaCount">
             @endif
-            
+            <div class="icon_container">
+              <button id="zoomIn"><img class="zoomicon" src="{{asset('/img/logo/zoomin.png')}}" alt="zoomin"></button>
+              <button id="zoomOut"><img class="zoomicon" src="{{asset('/img/logo/zoomout.png')}}" alt="zoomout"></button><br>
+          </div>
+          <!-- DBからコマ数を取得 -->
         </div>
 
         <div class="main_container">
