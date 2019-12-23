@@ -77,456 +77,6 @@ main {
 .toolvar {
   padding-left: 30px;
 }
-/* 
-#draw-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#bgcolor-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#text-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#text-bgcolor-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#text-color-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#pev-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#next-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#clear-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#eraser-button {
-  color: #454545;
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #454545;
-  position: relative;
-  margin: 1em;
-  display: inline-block;
-  padding: 0.5em 1em;
-  transition: all 0.3s ease-in-out;
-  text-align: center;
-  font-family: comfortaa;
-  font-weight: bold;
-}
-button:before,
-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-color: #454545;
-  box-sizing: border-box;
-  border-style: solid;
-  width: 1em;
-  height: 1em;
-  transition: all 0.3s ease-in-out;
-}
-button:before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  z-index: 5;
-}
-button:after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-button:hover:before,
-button:hover:after {
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-color: #fff;
-}
-button:hover {
-  color: #353535;
-  background-color: #fff;
-  border-color: #fff;
-}*/
 
 #download {
   color: #454545;
@@ -576,6 +126,82 @@ button:after {
   color: #353535;
   background-color: #fff;
   border-color: #fff;
+}
+
+/* 吹き出し */
+.fukidashi_com {
+  animation-name: fadein;
+  animation-duration: 8s;
+  animation-iteration-count: 1;
+  position: fixed;
+  bottom: 230px;
+  left: 40px;
+  opacity: 0;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    /* transform: translateY(20px); */
+  }
+  30% {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+  70% {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+  100% {
+    opacity: 0;
+    /* transform: translateY(0); */
+  }
+}
+
+.fukidashi_p {
+  line-height: 20px;
+  font-size: 14px;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.balloon2-top {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 20px 10px;
+  min-width: 150px;
+  max-width: 100%;
+  color: #001e43;
+  font-size: 16px;
+  border-top: solid 3px #001e43;
+  box-sizing: border-box;
+}
+
+.balloon2-top:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-bottom: 12px solid #f8f4e6;
+  z-index: 2;
+}
+
+.balloon2-top:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-bottom: 14px solid #001e43;
+  z-index: 1;
+}
+
+.balloon2-top p {
+  margin: 0;
+  padding: 0;
 }
 
 /* 確認画面のモーダル */
