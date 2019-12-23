@@ -31,6 +31,7 @@
         height:300px;
         border:1px solid #000;
         margin-right:50px;
+        position: relative;
       }
       /* 確認画面のモーダルの非表示 */
       .hidden {
@@ -48,7 +49,7 @@
           <div class="content_flex">
             <div>
               <!-- 前のコマを表示させるイメージ要素-->
-              <img id="preComa" src="img/coma/{{ $comas->img_file }}" name="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+                <img id="preComa" src="img/coma/{{ $comas->img_file }}" name="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
               <input type="hidden" id="preComaId" value="{{ $comas->id }}">
               <!-- コマの追加が会った際のfeedin -->
               <div id="changeAlert" style="margin-top:10%;display:none;">
