@@ -15,13 +15,13 @@ let ctx = canvas.getContext("2d");
 //戻るボタン用のbuffer
 let undoBuffer = [];
 
-//線の太さを変える
+//線の太さを変える（バグあり）
 $("#lineWidth").change(function() {
   const brushWidthStr = $(this).val();
   $("#canvas-brush-width").val(brushWidthStr);
   let brushWidthInt = parseInt(brushWidthStr);
   brushWidth = brushWidthInt;
-  console.log(brushWidth);
+  // console.log(brushWidth);
 });
 
 //線を引くボタン
@@ -47,14 +47,14 @@ $("canvas").mouseup(function() {
 //オブジェクトが移動されたらundoBuffer保存
 canvas.observe("object:moved", function() {
   undoBuffer.push(canvas.toDatalessJSON());
-  console.log(undoBuffer);
+  // console.log(undoBuffer);
 });
 
 //テキストを挿入
 let font = $("#font-family").val(); //初期値
 $("#font-family").change(function() {
   font = $("option:selected").val();
-  console.log(font);
+  // console.log(font);
 });
 
 //テキストの背景色変更
@@ -122,7 +122,7 @@ $("#eraser-button").click(function() {
 //戻る
 $("#pev-button").click(function() {
   canvas.loadFromJSON(undoBuffer.pop()).renderAll();
-  console.log(undoBuffer);
+  // console.log(undoBuffer);
 });
 
 //手書きモードの解除 辻編集
@@ -284,3 +284,54 @@ $("#rewrite_btn").click(function() {
   $("#modal").toggleClass("hidden");
   $(".modal_masc").toggleClass("hidden");
 });
+
+//canvas内への画像の読み込み
+$(function() {
+  $("#file_img_canvas").on("change", function(e) {
+    let imageReader = new FileReader();
+    imageReader.onload = function(e) {
+      let image = new Image();
+      image.onload = function() {
+        let fabricImage = new fabric.Image(image); //画像描画の準備
+        let height = fabricImage.height; //描画する際の高さを定義
+        let width = fabricImage.width; //描画する際の幅を定義
+        // // Fabric.jsのImageオブジェクトを作成
+        fabricImage.set({
+          selectable: true, // マウスで動かせるようにする
+          width: width,
+          height: height
+        });
+        // 画像をcanvasに描画する
+        canvas.add(fabricImage);
+        undoBuffer.push(canvas.toDatalessJSON());
+      };
+      image.src = e.target.result;
+    };
+    imageReader.readAsDataURL(e.target.files[0]); // フォームで選択された画像をセット
+    undoBuffer.push(canvas.toDatalessJSON());
+    canvas.renderAll();
+  });
+});
+
+//画像の回転
+//選択しているオブジェクトを取得
+$("#inversion-button").click(function() {
+  if (!canvas.getActiveObject()) {
+    return;
+  }
+
+  let activeObjects = canvas.getActiveObjects();
+  if (!activeObjects) return;
+  console.log(activeObjects);
+});
+
+group.onclick = function() {
+  if (!canvas.getActiveObject()) {
+    return;
+  }
+  if (canvas.getActiveObject().type !== "activeSelection") {
+    return;
+  }
+  canvas.getActiveObject().toGroup();
+  canvas.requestRenderAll();
+};

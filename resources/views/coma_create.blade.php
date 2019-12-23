@@ -58,8 +58,8 @@
             <!-- canvasの描画エリア 未知なのでcanvas要素のみです -->
             <canvas
               id="canvas"
-              width="600px"
-              height="600px"
+              width="300px"
+              height="300px"
               style="border: black solid 1px;"
             ></canvas>
           </div>
@@ -128,6 +128,45 @@
             <button id="next-button">すすむ</button>
             <button id="clear-button">全消し</button>
 
+        
+          <div>
+            <button id="eraser-button">消しゴムモード</button>
+          </div>
+
+          <div>
+            <button id="circle-button">まるモード</button>
+          </div>
+
+          <div>
+            <button id="triangle-button">三角モード</button>
+          </div>
+
+          <div>
+            <button id="rect-button">四角モード</button>
+          </div>
+
+          <div>
+            <button id="select-button">選択</button>
+          </div>
+
+           <!--未実装 <div>
+            <button id="inversion-button">反転する</button>
+          </div> -->
+
+          <div class="stamp_container">
+            <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <!-- <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button> -->
+            <button id="stamp_btn5"><img id="stamp5" src="{{asset('/img/fukidashi/fukidashi5.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+            <button id="stamp_btn6"><img id="stamp6" src="{{asset('/img/fukidashi/fukidashi6.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
+          </div>
+
+          <div class="originalFileBtn ">
+            <input type="file" id="file_img_canvas" >
+          </div>
+         
+
             <!-- 以下未実装 -->
             <!-- <label for="text-font-size">文字サイズ:</label>
             <input
@@ -162,40 +201,10 @@
           取消線 -->
 
           <!-- 未実装ここまで -->
-          </div>
-          <div>
-            <button id="eraser-button">消しゴムモード</button>
-          </div>
-
-          <div>
-            <button id="circle-button">まるモード</button>
-          </div>
-
-          <div>
-            <button id="triangle-button">三角モード</button>
-          </div>
-
-          <div>
-            <button id="rect-button">四角モード</button>
-          </div>
-
-          <div>
-            <button id="select-button">選択</button>
-          </div>
-
-          <div class="stamp_container">
-            <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn3"><img id="stamp3" src="{{asset('/img/fukidashi/fukidashi3.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <!-- <button id="stamp_btn4"><img id="stamp4" src="{{asset('/img/fukidashi/fukidashi4.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button> -->
-            <button id="stamp_btn5"><img id="stamp5" src="{{asset('/img/fukidashi/fukidashi5.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-            <button id="stamp_btn6"><img id="stamp6" src="{{asset('/img/fukidashi/fukidashi6.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
-          </div>
-          
           
         </div>
       </div>
-
+      </div>
       <button id="download">編集完了</button>
      </div>
      </div>
