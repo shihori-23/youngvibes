@@ -101,8 +101,8 @@
         for(let i=1;i<=comaCount;i++){
           fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 1440);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 800); //位置をランダムで指定
+            const imgLeft = Math.ceil(Math.random() * 1640);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * 900); //位置をランダムで指定
             oImg.scaleToWidth(200);//画像の大きさ
 
             //作成後のコマだけ目立つ（テスト）
@@ -142,6 +142,10 @@
     //拡大・縮小
     let zoom = 200;
     let zoomStep = 20;
+
+    //デフォルトで縮小する
+    area.setZoom(150 / 200);
+    $('#zoom').val(100 + '%');
 
     // 拡大
     $('#zoomIn').click(function () {

@@ -94,7 +94,8 @@
     //全コマをフォルダから取得してcanvasに表示
     $(function(){
         for(let i=1;i<reStoryCount;i++){
-          fabric.Image.fromURL('img/story/' + reStory_array[i].merge_img_file, function(oImg) {
+          // setTimeout(() => {
+            fabric.Image.fromURL('img/story/' + reStory_array[i].merge_img_file, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 866); //位置をランダムで指定
@@ -108,6 +109,8 @@
             });
             area.add(oImg);//追加
         });
+          // }, 1000);
+     
         };
     });
 
@@ -115,6 +118,10 @@
     let zoom = 100;
     let zoomStep = 10;
 
+    //デフォルトで縮小する
+    area.setZoom(150 / 200);
+    $('#zoom').val(100 + '%');
+    
     // 拡大
     $('#zoomIn').click(function () {
         if (zoom < 100) {
