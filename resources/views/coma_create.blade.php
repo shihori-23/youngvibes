@@ -191,7 +191,7 @@
           <label class="originalFileBtn ">画像を読み込む
             <input type="file" id="file_img_canvas" style="display:none">
           </label>
-          <button id="download">コマ編集完了</button>
+          <button id="download">つむぐ</button>
           </div>
          
 
@@ -246,7 +246,7 @@
         <form action ="{{ url('coma_create/save') }}" method="POST">
           {{ csrf_field() }}
           <div class="conf_contents">
-            <h1 class="conf_title">こちらの画像を保存しますか？</h1>
+            <h1 class="conf_title">こちらのコマをつむぎますか？</h1>
             <div class="conf_img_container">
               <img src="" alt="確認画面" id="cofimg" height="300px" width="300px;">
             </div>
@@ -254,7 +254,7 @@
             <input type="hidden" name="imgEmail" value="{{ Auth::user()->email }}">
             <input type="hidden" name="imgNamePev" value="{{ $comas->id }}">
             <div class="conf_btn">
-              <input type="submit" value="保存" class="submit_btn"><br>
+              <input type="submit" value="つむぐ" class="submit_btn"><br>
               <span class="rewrite" id="rewrite_btn">×</span>
             </div>
           </div>
