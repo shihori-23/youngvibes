@@ -145,7 +145,7 @@
 
     //デフォルトで縮小する
     area.setZoom(150 / 200);
-    $('#zoom').val(100 + '%');
+    $('#zoom').val(zoom + '%');
 
     // 拡大
     $('#zoomIn').click(function () {
@@ -157,12 +157,15 @@
     });
     // 縮小
     $('#zoomOut').click(function () {
-        if (zoom > 50) {
+      if(zoom == 200){
+        zoom -= zoomStep + 50;
+        area.setZoom(zoom / 200);
+        $('#zoom').val(zoom + '%');
+      }else if(zoom > 50) {
             zoom -= zoomStep;
             area.setZoom(zoom / 200);
             $('#zoom').val(zoom + '%');
         }
-
     });
 
     </script>

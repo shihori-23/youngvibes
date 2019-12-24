@@ -435,7 +435,7 @@ input[type="submit"] {
 /* ボタンを光らせる */
 .light-cover:before {
   /*光るアニメーション用*/
-  animation: shine 3s ease-in-out infinite; /*数字を変更することで光る間隔が変更*/
+  animation: shine 1s ease-in-out infinite; /*数字を変更することで光る間隔が変更*/
   background-color: #fff;
   content: " ";
   height: 100%;
