@@ -104,8 +104,7 @@
     const ctx = can.getContext("2d");
     const canDiv = $("#canvas");
     
-    can.width = 400*comaCount;//350×コマ数をcanvasのwidthに指定
-    
+    can.width = 1000 + 200*comaCount;//350×コマ数をcanvasのwidthに指定
     //ボタンクリックで右へスクロールさせる
     $("#slideBtn").on('click',() =>{
       let $scrollX = 0;
