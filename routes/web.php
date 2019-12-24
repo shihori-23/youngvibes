@@ -115,12 +115,14 @@ Route::get('/story_all', function () {
 });
 
 //story_allにコマデータ送信
-Route::get('/story_all', function(){
-    $comas = ServiceStory::orderBy('id', 'dec')->get();
-    return view('story_all', [
-        'comas' => $comas
-    ]);
-} 
+Route::get(
+    '/story_all',
+    function () {
+        $comas = ServiceStory::orderBy('id', 'dec')->get();
+        return view('story_all', [
+            'comas' => $comas
+        ]);
+    }
 );
 
 
@@ -191,5 +193,5 @@ Route::post('/story_create/save', function (Request $request) {
     }
 
     $stories->insert($insertImgArray);
-    return redirect('/top');
+    return redirect('/story_all');
 });
