@@ -47,7 +47,7 @@
                 <canvas
                   id="canvas_st"
                   class="canvas2"
-                  width="156px"
+                  width="160px"
                   height="600px"
                   style="border: black solid 1px; margin-left:50px;"
                 ></canvas>
