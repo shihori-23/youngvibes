@@ -56,7 +56,9 @@
           <div class="content_flex">
             <div>
               <!-- 前のコマを表示させるイメージ要素-->
+              <div class="light-cover" >
                 <img id="preComa" src="img/coma/{{ $comas->img_file }}" name="{{ $comas->img_file }}" alt="前のコマを表示"  height="100px" width="100px;"/>
+              </div>
               <input type="hidden" id="preComaId" value="{{ $comas->id }}">
                 <!-- コマの追加が会った際のfeedin -->
                 <div id="changeAlert" style="margin-top:10%;display:none;">
@@ -290,14 +292,21 @@
         .done(function(data){ //ajaxの通信に成功した場合
           let id = JSON.parse(data).slice(-1)[0].id;//配列の末尾(最新の追加コマのid)を取得
           if(preComaId !== id){
+            //1000msの間imgをvisibility:hiddenに変える
+            $('#preComa').css('visibility', hidden);
             //前のコマのIDを更新
             $("#preComaId").val(id);
             //imgのsrc部分を作成
             const src = `img/coma/c_${id}.png`;
             //↑を挿入してimgタグを変更
             $("#preComa").attr('src',src);
-            //文字表示
-            changeAlert();
+            setTimeout(function(){
+              $('#preComa').fadeIn('slow');
+              //文字表示
+              changeAlert();
+            },1000);
+            
+            
           }
         })
         .fail(function(data){ //ajaxの通信に失敗した場合
