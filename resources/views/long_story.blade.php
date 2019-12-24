@@ -19,39 +19,70 @@
         top: 0;
         right: 0;
       }
-  #slideBtn {
-    margin-top:100px;
+
+  .slide_btn {
+    position: fixed;
+    top: 120px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #001e43;
+    vertical-align: middle;
+    opacity: 1;
+    z-index: 6000;
+    font-size: 15px;
+    color: #fff;
+    box-shadow: 1px 1px 3px #001e43;
   }
+
+  .slide_btn:hover {
+  animation: hoverShake 0.15s linear 3;
+  opacity: 0.8;
+  }
+
+@keyframes hoverShake {
+  0% {transform: skew(0deg,0deg);}
+  25% {transform: skew(1deg, 1deg);}
+  75% {transform: skew(-1deg, -1deg);}
+  100% {transform: skew(0deg,0deg);}
+  }
+
+  span{
+    font-size:14px;
+  }
+
+  button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    }
+
+    .hidden{
+      display:none;
+    }
+
     </style>
   </head>
 
   <body>
-    {{-- <div id="wapper">
-      <header>
-        <a href="#" class="logo">
-          <img src="" alt="logo" width="180" height="100" />
-        </a>
-        <nav>
-          <ul class="nav_flex">
-            <li><a href="#">トップ（コマ一覧）</a></li>
-            <li><a href="#">作品を見る</a></li>
-            <li><a href="#">作品を作る</a></li>
-            <li><a href="#">コマを作る</a></li>
-            <li><a href="#">マイページ</a></li>
-            <li><a href="#">ログアウト</a></li>
-          </ul>
-        </nav>
-      </header>
-      <main> --}}
+    <div id="wapper">
+  
+      <main>
         @include('header')
         <div class="main_container">
         @if (count($comas) > 0)
-          <span>現在</span><span>{{(count($comas))}}</span><span>コマ</span>
+          <span>これまで</span><span>{{(count($comas))}}</span><span>つむぎ</span>
           <input type="hidden" value = "{{($comas[0]->id)}}" id="comaCount">
         @endif
         <!-- 先頭のコマにスライドボタン -->
-        <button id = "slideBtn">>>></button>
-        
+        <div>
+          <button id="slideBtn" class="slide_btn">>></button>
+        </div>
+
         <div id="canvas">
         <canvas id="c" height="886"></canvas>
         </div>
@@ -274,6 +305,12 @@
       p.preline.path[1][4] = p.top;
     }
 }
+
+  //スライダーボタンの非表示切替
+  $("#slideBtn").click(function(){
+    $("#slideBtn").addClass("hidden");
+  })
+
 
     //-------テストここまで--------//
     //下記必要なさそうなのでコメントアウト中
