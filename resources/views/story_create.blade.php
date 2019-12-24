@@ -41,16 +41,18 @@
           <canvas id="canvas" width="940px" height="900px"></canvas>
             <div class="story_container">
               <div class="content">
-              <h2 class="content_title">ものがたりを紡ごう</h2>
+              <h2 class="content_title">Re:ストーリーをつくろう</h2>
+             <div class="form_flex">
+              <input class="storyTitle" type="text" id="title_h1" value="" placeholder="タイトルを入力してください"><span id="download">つくる</span></div>
                 <canvas
                   id="canvas_st"
                   class="canvas2"
-                  width="400px"
-                  height="400px"
-                  style="border: black solid 1px;"
+                  width="156px"
+                  height="600px"
+                  style="border: black solid 1px; margin-left:50px;"
                 ></canvas>
 
-                <button id="download">確認する</button>
+               
               </div>
             </div>
       
@@ -65,19 +67,19 @@
           {{ csrf_field() }}
           <div class="conf_contents">
             <h1 class="conf_title">Confirm</h1>
-            <h2 class="conf_title2">こちらのものがたりを保存しますか？</h1>
-            <h2 class="conf_title2">タイトルを入力して「保存」を押してください。</h1>
+            <h2 class="conf_title2">こちらのRe:ストーリーでよろしいですか？</h1>
+            <h2 class="conf_title2">タイトルを確認して「つくる」を押してください。</h1>
             <div class="conf_img_container">
               <div class="title_container">
                 <!-- <label class="cof_calm">タイトル</label> -->
-                <input id="titleData" type="text" name="title_data" value="" placeholder="タイトルを入力してください"><br>
+                <input class="storyTitle" id="titleData" type="text" name="title_data" value=""><br>
               </div>
-                <img src="" alt="確認画面" id="cofimg" height="300px" width="300px;">
+                <img src="" alt="確認画面" id="cofimg" height="400px" width="100px;">
             </div>
             <input id="modalData" type="hidden" name="data" value="">
             <input id="comaData" type="hidden" name="coma_data" value="">
             <div class="conf_btn">
-              <input type="submit" value="保存" class="submit_btn"><br>
+              <input type="submit" value="つくる" class="submit_btn"><br>
               <span class="rewrite" id="rewrite_btn">×</span>
             </div>
           </div>
@@ -128,7 +130,7 @@
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 940);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 900); //位置をランダムで指定
-            oImg.scaleToWidth(200);//画像の大きさ
+            oImg.scaleToWidth(150);//画像の大きさ
             oImg.set({
               left:imgLeft,//leftからの位置
               top:imgTop,//topからの位置
@@ -280,6 +282,8 @@
       //base64に変換
       const base64 = canvas_st.toDataURL();
       // console.log(base64);
+      let storyTitleInput = $("#title_h1").val();
+      $("#titleData").val(storyTitleInput); //確認画面へタイトルを代入
       $("#modal").toggleClass("hidden"); //確認画面のモーダルを表示
       $(".modal_masc").toggleClass("hidden"); //確認画面のモーダルを表示
       $("#modalData").val(base64); //POSTするデータの用意
