@@ -409,3 +409,59 @@ input[type="submit"] {
 .none {
   display: none;
 }
+
+#preComa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* visibility: hidden; */
+}
+
+.light-cover {
+  background-color: #f8f4e7; /*背景色の変更*/
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+  position: relative;
+  width: 302px;
+  height: 302px;
+  margin-right: 60px;
+  z-index: 1000;
+}
+.light-cover:hover {
+  color: #fff;
+}
+
+/* ボタンを光らせる */
+.light-cover:before {
+  /*光るアニメーション用*/
+  animation: shine 3s ease-in-out infinite; /*数字を変更することで光る間隔が変更*/
+  background-color: #fff;
+  content: " ";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: -180px;
+  transform: rotate(45deg);
+  width: 30px;
+}
+
+@keyframes shine {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  81% {
+    transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
