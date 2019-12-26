@@ -96,6 +96,7 @@
             <div class="tool" id="fk">
               <img class="icon_img" src="{{asset('/img/logo/tool_icon/fukidashi_st.png')}}" alt="選択">
             </div>
+            
             <div class="stamp_container none">
               <button id="stamp_btn1"><img id="stamp1" src="{{asset('/img/fukidashi/fukidashi1.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
               <button id="stamp_btn2"><img id="stamp2" src="{{asset('/img/fukidashi/fukidashi2.png')}}" alt="吹き出し" srcset="" width="50px" height="auto"></button>
