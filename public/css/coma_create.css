@@ -465,3 +465,8 @@ input[type="submit"] {
     opacity: 0;
   }
 }
+
+/* 使用中のツールの色を変える */
+.use_now {
+  opacity: 0.5;
+}

@@ -341,3 +341,9 @@ $(".stamp_container").hover(function() {
 $("#fk").hover(function() {
   $(".stamp_container").toggleClass("none");
 });
+
+//ツールボタンのクリックイベント
+$(".tool").click(function() {
+  $(".tool").removeClass("use_now");
+  $(this).toggleClass("use_now");
+});
