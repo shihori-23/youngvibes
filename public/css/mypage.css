@@ -16,6 +16,7 @@ html {
   background-repeat: no-repeat; */
   background: linear-gradient(150deg, #f8f4e6, rgb(204, 204, 204));
   /* background: linear-gradient(150deg, #0c032b, rgb(204, 204, 204)); */
+  background: #f8f4e6;
 }
 
 .header {
