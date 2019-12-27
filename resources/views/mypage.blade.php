@@ -13,19 +13,14 @@
     {{-- <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/mypage.css" /> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{asset('/css/header.css')}}" />
+
   </head>
   <body>
     <section class="mypage">
       <div class="header">
-        <div class="header-logo">Chumugu</div>
-        <a class="return-top" href="/top">
-          トップに戻る
-        </a>
-        {{-- <a class="menu-trigger" href="#">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a> --}}
+      @include('header')
+
       </div>
       <div class="main-contents">
         <div class="container">
@@ -38,10 +33,10 @@
                 </div>
                 {{-- <h1 class="user-name">{{$user->name}}</h1> --}}              
                 <ul class="profile-menu">
-                  <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
                   <!-- <li>プロフィールを編集</li> -->
                   <li><a href="/mypage/story">あなたのRe：ストーリーを見る</a></li>
                   <li class='btn__box'><a href="/mypage">あなたのコマを見る</a></li>
+                  <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
                 </ul>
               </div>
             </div>
