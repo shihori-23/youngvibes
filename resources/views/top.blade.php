@@ -86,20 +86,22 @@
     const header = document.querySelector('header').clientHeight;
     const canvasHeight = realHeight - header;
     const realWidth = window.innerWidth;
-    console.log(realHeight);
-    console.log(canvasHeight);
-    console.log(header);
+    // console.log(realHeight);
+    // console.log(canvasHeight);
+    // console.log(header);
     can.height = canvasHeight;
     can.width = realWidth;
 
     //fabricjsで全コマ表示
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
-    console.log(comaCount);
+    // console.log(comaCount);
     let area = new fabric.Canvas('canvas');//canvasにfabricjsを準備
     //全コマをフォルダから取得してcanvasに表示
+    const comaImg_array = JSON.parse('<?= $comas; ?>');
+    console.log(comaImg_array[0].img_file)
     $(function(){
-        for(let i=1;i<=comaCount;i++){
-          fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
+        for(let i=0;i<comaImg_array.length;i++){
+          fabric.Image.fromURL('img/coma/' + comaImg_array[i].img_file, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1640);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * 900); //位置をランダムで指定

@@ -103,8 +103,10 @@
     const can = document.getElementById("c");
     const ctx = can.getContext("2d");
     const canDiv = $("#canvas");
+    // if(comaCount > 5){
+      can.width = 400*comaCount;//350×コマ数をcanvasのwidthに指定
+    // }
     
-    can.width = 1000 + 200*comaCount;//350×コマ数をcanvasのwidthに指定
     //ボタンクリックで右へスクロールさせる
     $("#slideBtn").on('click',() =>{
       let $scrollX = 0;
@@ -148,10 +150,11 @@
 
     //全コマをフォルダから取得してcanvasに表示
     const comaId_array = JSON.parse('<?= $comas; ?>').reverse();//コマのidを配列で取得して逆順にする
+    console.log(comaId_array)
     let preline = null;//コマの前につながってる線の情報をいれる用の変数
     $(function(){
         for(let i=0,left =200,top=400;i<comaId_array.length;i++,left +=400){//線の上下を判定するために条件分岐
-          const comaId = comaId_array[i].id;//コマのid取得
+          const comaId = comaId_array[i].img_file;//コマのid取得
 
           //奇数と偶数で分岐 + 最後のコマ以降に線を引かないようにする
           if(i%2 == 0 && i != comaId_array.length-1){
@@ -187,7 +190,7 @@
 
     //表示するコマのパラメータ付与する関数
     function comaDisplay(id,name,left,top,line1,line2,line3,preline){
-      fabric.Image.fromURL(`{{asset('/img/coma/c_${id}.png')}}`, function(oImg) {
+      fabric.Image.fromURL('img/coma/' + id, function(oImg) {
             //パラメータをオブジェクトに格納
             oImg.scaleToWidth(200);//画像の大きさ
             oImg.set({
@@ -197,6 +200,7 @@
               // selectable:false,
               hasRotatingPoint: false,//回転を制限
               hasControls: false,//拡大縮小を制限
+              selectable:false,
               name:name,
               line1:line1,
               line2:line2,
@@ -205,9 +209,7 @@
             });
             canvas.add(oImg);//追加
             return oImg;
-            // console.log(oImg);
             });
-            // console.log(a);
     }
 
     //線を表示する関数(引数:start_top,start_left,curve_top,curve_left,stop_left,curve_point_top)
@@ -232,8 +234,6 @@
             p1.name = "p1";
             canvas.add(p1);
             return line;
-            // console.log(line);
-            // console.log(lineObj);
     }
 
 
