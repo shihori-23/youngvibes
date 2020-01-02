@@ -93,7 +93,7 @@
     let area = new fabric.Canvas('canvas');
     //全コマをフォルダから取得してcanvasに表示
     $(function(){
-        for(let i=1;i<reStoryCount;i++){
+        for(let i=0;i<reStoryCount;i++){
           // setTimeout(() => {
             fabric.Image.fromURL('img/story/' + reStory_array[i].merge_img_file, function(oImg) {
             //画像をランダム位置で表示
@@ -103,6 +103,7 @@
               oImg.set({
               left:imgLeft,//leftからの位置
               top:imgTop,//topからの位置
+              
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
               hasRotatingPoint: false,//回転を制限
               hasControls: false//拡大縮小を制限
@@ -115,7 +116,7 @@
     });
 
      //拡大・縮小
-     let zoom = 200;
+    let zoom = 200;
     let zoomStep = 20;
 
     //デフォルトで縮小する

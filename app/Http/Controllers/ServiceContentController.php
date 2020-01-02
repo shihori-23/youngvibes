@@ -60,18 +60,18 @@ class ServiceContentController extends Controller
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
         //画像保存ファイル名を前のコマのc_idから生成
+        $timeStamp = time();
         $imgNum = $imgPevNum + 1;
-        $fileName = 'img/coma/c_' . $imgNum . '.png';
+        $fileName = 'img/coma/c_' . $timeStamp . '.png';
         file_put_contents($fileName, $fileData);
 
         //DBにファイル名とユーザーIDをインサート
         $images = new ServiceContent;
-        $postImageName = 'c_' . $imgNum . '.png';
+        $postImageName = 'c_' . $timeStamp . '.png';
         $images->insert([
-
                 'img_file' => $postImageName,
                 'email' => $imgEmail
-             ]);
+            ]);
         return redirect('/top');     
     }
 
