@@ -107,6 +107,10 @@ $("#clear-button").click(function() {
   if (ret == true) {
     undoBuffer = [];
     canvas.clear();
+
+    canvas.backgroundColor = "#fff";
+    undoBuffer.push(canvas.toDatalessJSON());
+    canvas.renderAll();
   }
 });
 

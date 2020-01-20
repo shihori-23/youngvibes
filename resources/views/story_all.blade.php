@@ -69,6 +69,8 @@
     <!-- jquery/fabricjsの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
+    <script src="{{asset('/js/header.js')}}"></script>
+
 
     <!-- js処理ここから-->
     <script>  

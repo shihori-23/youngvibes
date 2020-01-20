@@ -270,6 +270,7 @@
     <script src="{{asset('/js/leader-line.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
     <script src="{{asset('/js/coma_create.js')}}"></script>
+    <script src="{{asset('/js/header.js')}}"></script>
 
   <script>
   //前のコマが更新された場合にimgを変更するエフェクト関数

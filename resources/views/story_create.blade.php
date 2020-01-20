@@ -38,12 +38,13 @@
         </div>
 
         <div class="main_container">
-          <canvas id="canvas" width="940px" height="900px"></canvas>
+          <canvas id="canvas" width="940px" height="800px"></canvas>
             <div class="story_container">
               <div class="content">
-              <h2 class="content_title">Re:ストーリーをつくろう</h2>
-             <div class="form_flex">
-              <input class="storyTitle" type="text" id="title_h1" value="" placeholder="タイトルを入力してください"><span id="download">つくる</span></div>
+              <!-- <h2 class="content_title">Re:ストーリーをつくろう</h2> -->
+              <div class="form_flex">
+                <input class="storyTitle" type="text" id="title_h1" value="" placeholder="Re:ストーリータイトルを入力ください"><span id="download">つくる</span>
+              </div>
                 <canvas
                   id="canvas_st"
                   class="canvas2"
@@ -52,7 +53,6 @@
                   style="border: black solid 1px; margin-left:50px;"
                 ></canvas>
 
-               
               </div>
             </div>
       
@@ -60,7 +60,7 @@
       </main>
     </div>
 
-        <!-- 編集完了後の確認画面モーダル -->
+      <!-- 編集完了後の確認画面モーダル -->
       <div class="modal_masc hidden"></div>
       <div class="hidden" id="modal">
         <form action ="{{ url('story_create/save') }}" method="POST">
@@ -89,6 +89,7 @@
     <!-- jquery/fabricjsの読み込み -->
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('/js/fabric.js')}}"></script>
+    <script src="{{asset('/js/header.js')}}"></script>
 
     <!-- js処理ここから-->
     <script>  
@@ -128,8 +129,8 @@
         for(let i=1;i<=comaCount;i++){
           fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
             //画像をランダム位置で表示
-            const imgLeft = Math.ceil(Math.random() * 940);//位置をランダムで指定 
-            const imgTop = Math.ceil(Math.random() * 900); //位置をランダムで指定
+            const imgLeft = Math.ceil(Math.random() * canvasHeight);//位置をランダムで指定 
+            const imgTop = Math.ceil(Math.random() * realWidth*0.7); //位置をランダムで指定
             oImg.scaleToWidth(150);//画像の大きさ
             oImg.set({
               left:imgLeft,//leftからの位置

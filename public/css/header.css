@@ -35,16 +35,16 @@ header {
 }
 
 .header-menu {
-  width: 40%;
-  padding-right: 3%;
+  width: 50%;
+  padding-left:20% ;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .header-menu li {
   font-size: 12px;
   /* padding-left: 5%; */
-  width: 25%;
+  width: 20%;
   cursor: pointer;
   padding: 5% 0;
   border-bottom: 2px solid rgba(238, 238, 238, 0);
@@ -61,6 +61,13 @@ header {
   border-bottom: 2px solid #001e43;
 }
 
+#helpbtn {
+  margin-right: 50px;
+}
+.header_help_icon{
+  height: 20px;
+  width:20px;
+}
 .nav_s {
   padding: 0 20px;
 }
@@ -114,3 +121,87 @@ header {
   justify-content: center;
   align-items: center;
 }
+
+/* ヘルプボタンを押したときのチュートリアルページ */
+.help_modal_masc {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #696969;
+  opacity: 0.8;
+  z-index: 7000;
+}
+
+#help_modal {
+  position: fixed;
+  width: 40%;
+  height: 400px;
+  top: 70px;
+  left: 30%;
+  right: 30%;
+  padding:20px;
+  background: #fff;
+  z-index: 8000;
+  box-shadow: 1px 1px 4px #b6b5b1;
+  text-align: center;
+}
+
+.help_content1,
+.help_content2,
+.help_content3,
+.help_content4{
+  position: fixed;
+  width: 40%;
+  height: 300px;
+  top: 120px;
+  left: 30%;
+  right: 30%;
+  padding:20px;
+  background: #c3c3c3;
+  
+}
+
+.help_content1{
+  z-index: 9040;
+}
+
+.help_content2{
+  z-index: 9030;
+}
+
+.help_content3{
+  z-index: 9020;
+}
+
+.help_content4{
+  z-index: 9010;
+}
+
+input[type="submit"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 5px 30px;
+  background: #001e43;
+  border: 2px solid #001e43;
+  color: #fff;
+  font-size: 15px;
+  margin: 20px;
+  border-radius: 4px;
+}
+
+.submit_btn:hover {
+  background: #fff;
+  color: #001e43;
+}
+
+.hidden {
+  display: none;
+}
+
