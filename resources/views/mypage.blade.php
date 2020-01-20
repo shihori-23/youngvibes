@@ -65,7 +65,8 @@
             <img src='img/coma/{{$service_content->img_file}}' alt="">
       @endforeach
     </div>
-
+    
+    <script src="{{asset('/js/header.js')}}"></script>
     <script>
       //画面の高さに合わせてheightを可変的に設定
       const realHeight = window.innerHeight;

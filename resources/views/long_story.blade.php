@@ -95,6 +95,8 @@
     <script src="{{asset('/js/jquery-2.1.3.min.js')}}"></script>
     <!-- jsファイルの読み込み -->
     <script src="{{asset('/js/fabric.js')}}"></script>
+    <script src="{{asset('/js/header.js')}}"></script>
+    
     <script>
 
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
