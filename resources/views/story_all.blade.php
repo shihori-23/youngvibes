@@ -84,9 +84,12 @@
       //DBからRe:ストーリーのデータを取得
       const reStory_array = JSON.parse('<?= $comas; ?>');
       const reStoryCount = reStory_array.length;
+      const reStoryTitle = reStory_array[0].story_title;
+      // console.log(reStoryTitle)
 
-      console.log(reStoryCount) ;
-      console.log(reStory_array[0].merge_img_file) ;
+
+      // console.log(reStoryCount) ;
+      // console.log(reStory_array[0].merge_img_file) ;
 
     // const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
     // console.log(comaCount);
@@ -96,7 +99,8 @@
     //全コマをフォルダから取得してcanvasに表示
     $(function(){
         for(let i=0;i<reStoryCount;i++){
-          // setTimeout(() => {
+            const reStoryTitle = reStory_array[i].story_title;
+            console.log(reStoryTitle)
             fabric.Image.fromURL('img/story/' + reStory_array[i].merge_img_file, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * 1600);//位置をランダムで指定 
@@ -105,15 +109,13 @@
               oImg.set({
               left:imgLeft,//leftからの位置
               top:imgTop,//topからの位置
-              
               strokeWidth: 5, stroke: 'rgba(0,0,0,0.1)',
               hasRotatingPoint: false,//回転を制限
-              hasControls: false//拡大縮小を制限
+              hasControls: false,//拡大縮小を制限
+              title:reStoryTitle
             });
             area.add(oImg);//追加
         });
-          // }, 1000);
-     
         };
     });
 
@@ -145,6 +147,37 @@
             $('#zoom').val(zoom + '%');
         }
     });
+
+    //画像にホバーされたらオパシティかけてタイトルを表示する
+    area.on('mouse:over', function(options) {
+      //
+      const selectedObj = options.target;
+      if (selectedObj != null){
+        const title = selectedObj.title
+        const text = new fabric.Text(title, {
+        fontFamily: 'Optima',
+        fontSize: 30,
+        });
+        selectedObj.set("opacity",0.5);
+          text.set("top",selectedObj.top + 300);
+          text.set("left",selectedObj.left + 50);
+          area.add(text)
+        area.renderAll();
+      }
+      });
+
+      //ホバーが外されたらオパシティとタイトルをリセット
+      area.on('mouse:out', function(options) {
+        const selectedObj = options.target;
+        let objs = area.getObjects();
+        for (let i = 0; i < objs.length;i++){
+          if(objs[i].type == 'text')
+          area.remove(objs[i]);
+        }
+        if (selectedObj != null){
+          selectedObj.set("opacity",1);
+        }
+      });
 
     </script>
   </body>
