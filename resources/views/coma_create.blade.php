@@ -282,7 +282,7 @@
   //ajaxでservece_contentsテーブルの最新idを取得する関数
   function getComaCount(){
     let preComaId = $("#preComaId").val();//前のコマのIDをbuttonに隠して取得
-    console.log(preComaId);
+    // console.log(preComaId);
     $(function(){
       $.ajax({
         type: 'get',
@@ -290,16 +290,16 @@
         url: '{{asset('get_count')}}',
         })
         .done(function(data){ //ajaxの通信に成功した場合
-          // console.log(xmlhttp.responseText)
-          console.log(data);
-          let id = JSON.parse(data).slice(-1)[0].id;//配列の末尾(最新の追加コマのid)を取得
+          let img_file = JSON.parse(data).slice(-1)[0].img_file;//配列の末尾(最新の追加コマのimg名)を取得
+          let id = JSON.parse(data).slice(-1)[0].img_file;//配列の末尾(最新の追加コマのid)を取得
+          // console.log(JSON.parse(data))
           if(preComaId !== id){
             //1000msの間imgをvisibility:hiddenに変える
             $('#preComa').css('display', "none");
             //前のコマのIDを更新
             $("#preComaId").val(id);
             //imgのsrc部分を作成
-            const src = `img/coma/c_${id}.png`;
+            const src = `img/coma/${img_file}`;
             //↑を挿入してimgタグを変更
             $("#preComa").attr('src',src);
             setTimeout(function(){

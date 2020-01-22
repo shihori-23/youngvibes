@@ -16,7 +16,8 @@ if($status==false){
 }else{
     while($r = $stmt->fetch(PDO::FETCH_ASSOC)){
     $productList[] = array(
-        'id' => $r['id']
+        'id' => $r['id'],
+        'img_file' => $r['img_file']
     );
 }
 }
