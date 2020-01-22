@@ -100,64 +100,23 @@
     <script>
 
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
-
-    //コマ数に応じてcanvasのwidthを指定
-    const can = document.getElementById("c");
-    const ctx = can.getContext("2d");
-    const canDiv = $("#canvas");
-    // if(comaCount > 5){
-      can.width = 400*comaCount;//350×コマ数をcanvasのwidthに指定
-    // }
-    
-    //ボタンクリックで右へスクロールさせる
-    $("#slideBtn").on('click',() =>{
-      let $scrollX = 0;
-      if(scrollX <= can.width/2) {
-        scrollX+= 5;
-        setTimeout( "scroll(scrollX,0)", 1 );
-        // console.log(scrollX)
-        setTimeout( "autoScroll()", 0 );
-      }else{
-        scrollX = 0;
-        return;
-      }
-    })
-    function autoScroll() {
-      let $scrollX = 0;
-      if(scrollX <= can.width/2) {
-        scrollX+= 5;
-        setTimeout( "scroll(scrollX,0)", 1 );
-        // console.log(scrollX)
-        setTimeout( "autoScroll()", 0 );
-      }else{
-        scrollX = 0;
-        return;
-      }
-    }
-
-
-
-    //fabricjs準備
-    const canvas = this.__canvas = new fabric.Canvas('c',{
-      backgroundColor : "rgb(248, 244, 230)"
-    });
-    fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
-
-    //イベントを取得して各関数を実行
-    canvas.on({
-    // 'object:selected': onObjectSelected,
-    'object:moving': onObjectMoving
-    // 'before:selection:cleared': onBeforeSelectionCleared
-    });
-
-    //全コマをフォルダから取得してcanvasに表示
+   //全コマをフォルダから取得してcanvasに表示
     const comaId_array = JSON.parse('<?= $comas; ?>').reverse();//コマのidを配列で取得して逆順にする
     console.log(comaId_array)
     let preline = null;//コマの前につながってる線の情報をいれる用の変数
+    const can = document.getElementById("c");
+    const ctx = can.getContext("2d");
+    const canDiv = $("#canvas");
+    let lastComaLeft = null;//最後のコマのLeftを入れる用の変数
+
     $(function(){
         for(let i=0,left =200,top=400;i<comaId_array.length;i++,left +=400){//線の上下を判定するために条件分岐
           const comaId = comaId_array[i].img_file;//コマのid取得
-
+          //最後に表示されたコマの位置(left)を取得
+          if(i == comaId_array.length-1){
+            lastComaLeft = left;
+            console.log(lastComaLeft)
+          }
           //奇数と偶数で分岐 + 最後のコマ以降に線を引かないようにする
           if(i%2 == 0 && i != comaId_array.length-1){
             //つむぐ線を表示
@@ -188,8 +147,57 @@
             let p1 = comaDisplay(comaId,"p0_e",left,top,null,"p1",null,preline);
           }
         };//for文終わり
+        // can.width = lastComaLeft;
     });//関数終わり
 
+
+        //コマ数に合わせてcanvasのwidthを指定
+        can.width = comaId_array.length * 400 +200;//canvasのwidthを指定
+    
+    //ボタンクリックで右へスクロールさせる(一瞬で最後のコマの場所に行く)
+    $("#slideBtn").on('click',() =>{
+      scroll(can.width,0);
+      // let $scrollX = 0;
+      // if(scrollX <= can.width/2) {
+      //   scrollX+= 5;
+      //   setTimeout( "scroll(scrollX,0)", 1 );
+      //   // console.log(scrollX)
+      //   setTimeout( "autoScroll()", 0 );
+      // }else{
+      //   scrollX = 0;
+      //   return;
+      // }
+    })
+
+    // function autoScroll() {
+    //   let $scrollX = 0;
+    //   if(scrollX <= can.width/2) {
+    //     scrollX+= 5;
+    //     setTimeout( "scroll(scrollX,0)", 1 );
+    //     // console.log(scrollX)
+    //     setTimeout( "autoScroll()", 0 );
+    //   }else{
+    //     scrollX = 0;
+    //     return;
+    //   }
+    // }
+
+
+
+    //fabricjs準備
+    const canvas = this.__canvas = new fabric.Canvas('c',{
+      backgroundColor : "rgb(248, 244, 230)"
+    });
+    fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+
+    //イベントを取得して各関数を実行
+    canvas.on({
+    // 'object:selected': onObjectSelected,
+    'object:moving': onObjectMoving
+    // 'before:selection:cleared': onBeforeSelectionCleared
+    });
+
+ 
     //表示するコマのパラメータ付与する関数
     function comaDisplay(id,name,left,top,line1,line2,line3,preline){
       fabric.Image.fromURL('img/coma/' + id, function(oImg) {
