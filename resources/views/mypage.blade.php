@@ -69,7 +69,8 @@
     <script src="{{asset('/js/header.js')}}"></script>
     <script>
       //画面の高さに合わせてheightを可変的に設定
-      const realHeight = window.innerHeight;
+      var habaGet = function(){
+        const realHeight = window.innerHeight;
       $(function() {
         $(".mypage").css("height", realHeight);
 
@@ -77,6 +78,10 @@
         $(".outside-circle").css("height", outsideCircle);
         console.log(outsideCircle);
       });
+      }
+      habaGet();
+      setInterval(habaGet(), 5000);
+      
     </script>
   </body>
 </html>

@@ -97,8 +97,8 @@
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
 
-
-    //canvasのheightとwidthを画面幅の7割にする
+    var habaGet = function(){
+      //canvasのheightとwidthを画面幅の7割にする
     const realHeight = window.innerHeight;
     const header = document.querySelector('header').clientHeight;
     const canvasHeight = realHeight - header;
@@ -108,6 +108,10 @@
     console.log(header);
     can.height = canvasHeight;
     can.width = realWidth*0.7;
+    }
+    habaGet();
+    setInterval(habaGet(), 5000);
+    
 
     //div.story_containerのwidthとheightの指定
     $(function(){
