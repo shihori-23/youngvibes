@@ -84,15 +84,18 @@
     const ctx = can.getContext("2d");
     
     //canvasのheightとwidthを画面幅いっぱいにする
-    const realHeight = window.innerHeight;
-    const header = document.querySelector('header').clientHeight;
-    const canvasHeight = realHeight - header;
-    const realWidth = window.innerWidth;
-    // console.log(realHeight);
-    // console.log(canvasHeight);
-    // console.log(header);
-    can.height = canvasHeight;
-    can.width = realWidth;
+    //5秒に一回実行
+    var habaGet = function(){
+      const realHeight = window.innerHeight;
+      const header = document.querySelector('header').clientHeight;
+      const canvasHeight = realHeight - header;
+      const realWidth = window.innerWidth;
+      can.height = canvasHeight;
+      can.width = realWidth;
+    }
+    habaGet();
+    setInterval(habaGet(), 5000);
+    
 
     //fabricjsで全コマ表示
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
