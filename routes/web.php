@@ -74,7 +74,11 @@ Route::get('/mypage/story', function () {
 // });
 
 Route::get('/', function () {
-    return view('auth/login');
+    if (Auth::check()) {
+        redirect('/top');
+    } else {
+        return view('auth/login');
+    }
 });
 
 Route::get('/tutorial', function () {
