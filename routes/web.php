@@ -195,3 +195,15 @@ Route::post('/story_create/save', function (Request $request) {
     $stories->insert($insertImgArray);
     return redirect('/story_all');
 });
+
+
+
+//以下問合せフォーム関連
+//入力ページ
+Route::get('/contact', 'ContactController@index')->name('contact.index');
+
+//確認ページ
+Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
+
+//送信完了ページ
+Route::post('/contact/finish', 'ContactController@send')->name('contact.send');
