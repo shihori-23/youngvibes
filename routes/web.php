@@ -75,7 +75,11 @@ Route::get('/mypage/story', function () {
 
 Route::get('/', function () {
     if (Auth::check()) {
-        redirect('/top');
+        // redirect('/top');
+        $comas = ServiceContent::orderBy('id', 'dec')->get();
+        return view('top', [
+            'comas' => $comas
+        ]); 
     } else {
         return view('auth/login');
     }
