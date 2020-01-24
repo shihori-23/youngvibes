@@ -15,15 +15,6 @@ let ctx = canvas.getContext("2d");
 //戻るボタン用のbuffer
 let undoBuffer = [];
 
-//線の太さを変える（バグあり）
-$("#lineWidth").change(function() {
-  const brushWidthStr = $(this).val();
-  $("#canvas-brush-width").val(brushWidthStr);
-  let brushWidthInt = parseInt(brushWidthStr);
-  brushWidth = brushWidthInt;
-  // console.log(brushWidth);
-});
-
 //線を引くボタン
 $("#draw-button").click(function() {
   canvas.isDrawingMode = true; //ここでbloomを切り替える
@@ -35,6 +26,15 @@ $("#draw-button").click(function() {
   canvas.freeDrawingBrush.width = brushWidth; //太さ
   canvas.freeDrawingBrush.shadowBlur = 0; //影
   canvas.hoverCursor = "move"; //分からん
+});
+
+//線の太さを変える（バグあり）
+$("#lineWidth").change(function() {
+  const brushWidthStr = $(this).val();
+  $("#canvas-brush-width").val(brushWidthStr);
+  let brushWidthInt = parseInt(brushWidthStr);
+  brushWidth = brushWidthInt;
+  // console.log(brushWidth);
 });
 
 //マウスアップの際にundoBuffer保存
