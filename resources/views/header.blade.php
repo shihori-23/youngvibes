@@ -1,3 +1,6 @@
+    <?php
+     $userRole = Auth::user()->role_id;
+    ?>
     <header>
       <a class="header-logo" href="/top"><img class="header_logo_img" src="{{asset('/img/logo/Chumugu_logo.png')}}"></a>
       <ul class="header-menu">
@@ -19,6 +22,11 @@
         <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
       </ul>
       <a id="helpbtn"><img class="header_help_icon" src="{{asset('/img/logo/help.png')}}"></a>
+      
+        @if(Auth::user()->role == 0)
+        <a href="/admin">admin</a>
+        @endif
+
     </header>
 
     <!-- 編集完了後の確認画面モーダル -->
