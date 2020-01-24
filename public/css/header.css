@@ -137,16 +137,58 @@ header {
 #help_modal {
   position: fixed;
   width: 40%;
-  height: 400px;
+  height: 530px;
   top: 70px;
   left: 30%;
   right: 30%;
   padding:20px;
-  background: #fff;
+  background: #001e43;
   z-index: 8000;
   box-shadow: 1px 1px 4px #b6b5b1;
   text-align: center;
 }
+
+.conf_title1,
+.help_title {
+  margin-bottom: 20px;
+}
+
+.conf_title1{
+  color:#fff;
+  font-weight: bold;
+  letter-spacing:5px;
+}
+
+.help_detail1,
+.help_detail2,
+.help_detail3,
+.help_detail4,
+.help_detail{
+  font-size: 14px;
+  text-align: left;
+  line-height: 18px;
+}
+
+.help_detail1{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.help_detail2{
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+.help_detail3{
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+.help_detail4{
+  margin-bottom: 40px;
+
+}
+
 
 .help_content1,
 .help_content2,
@@ -154,13 +196,17 @@ header {
 .help_content4{
   position: fixed;
   width: 40%;
-  height: 300px;
+  height: 480px;
   top: 120px;
   left: 30%;
   right: 30%;
   padding:20px;
-  background: #c3c3c3;
-  
+  background: #fff;
+}
+
+.help_subcontent{
+  width: 90%;
+  margin: 0 auto;
 }
 
 .help_content1{
@@ -178,6 +224,31 @@ header {
 .help_content4{
   z-index: 9010;
 }
+
+.help_img_flex{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.help_img_flex img{
+  height: auto;
+  width: 28%;
+  margin:10px;
+}
+
+.help_img{
+  height: 300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.help_img img { 
+  height: 280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 
 input[type="submit"] {
   border-radius: 0;
