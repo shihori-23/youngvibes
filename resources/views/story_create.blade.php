@@ -97,7 +97,7 @@
     const can = $("#canvas")[0];
     const ctx = can.getContext("2d");
 
-    var habaGet = function(){
+    // var habaGet = function(){
       //canvasのheightとwidthを画面幅の7割にする
     const realHeight = window.innerHeight;
     const header = document.querySelector('header').clientHeight;
@@ -108,9 +108,9 @@
     console.log(header);
     can.height = canvasHeight;
     can.width = realWidth*0.7;
-    }
-    habaGet();
-    setInterval(habaGet(), 5000);
+    // }
+    // habaGet();
+    // setInterval(habaGet(), 5000);
     
 
     //div.story_containerのwidthとheightの指定
@@ -124,14 +124,20 @@
     let currentColor = "#000000"; //線の色
     let bgColor = "#fff"; //背景色
 
+    //
+    const comaImg_array = JSON.parse('<?= $service_contents; ?>');
+    // console.log(comaImg_array)
+
     //fabricjsで全コマ表示
     const comaCount = $("#comaCount").val();//service_contentsテーブルの最後のidを取得
     console.log(comaCount);
     let area = new fabric.Canvas('canvas');//canvasにfabricjsを準備
     //全コマをフォルダから取得してcanvasに表示
     $(function(){
-        for(let i=1;i<=comaCount;i++){
-          fabric.Image.fromURL(`{{asset('/img/coma/c_${i}.png')}}`, function(oImg) {
+        for(let i=0;i<comaImg_array.length;i++){
+          const img_file = comaImg_array[i].img_file
+          console.log(img_file)
+          fabric.Image.fromURL(`{{asset('/img/coma/${img_file}')}}`, function(oImg) {
             //画像をランダム位置で表示
             const imgLeft = Math.ceil(Math.random() * canvasHeight);//位置をランダムで指定 
             const imgTop = Math.ceil(Math.random() * realWidth*0.7); //位置をランダムで指定
