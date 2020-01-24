@@ -215,3 +215,12 @@ Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.conf
 
 //送信完了ページ
 Route::post('/contact/finish', 'ContactController@send')->name('contact.send');
+
+//管理画面の表示
+Route::get('/admin', function () {
+    if (Auth::user()->role == 0){
+        return view('admin');
+    } else {
+        return redirect('top');
+    }
+});
