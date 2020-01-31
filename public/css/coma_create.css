@@ -93,6 +93,7 @@ main {
   animation-duration: 8s;
   animation-iteration-count: 1;
   position: fixed;
+  z-index: 6000;
   bottom: 230px;
   left: 40px;
   opacity: 0;
