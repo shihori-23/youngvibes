@@ -316,9 +316,9 @@
 }
 
   //スライダーボタンの非表示切替
-  $("#slideBtn").click(function(){
-    $("#slideBtn").addClass("hidden");
-  })
+  // $("#slideBtn").click(function(){
+  //   $("#slideBtn").addClass("hidden");
+  // })
 
 
     //-------テストここまで--------//
