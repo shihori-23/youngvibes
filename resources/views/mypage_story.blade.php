@@ -40,8 +40,8 @@
                     <ul class="profile-menu">
                       <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
                       <li>プロフィールを編集</li>
-                      <li class="btn__box"><a href="/mypage/story">あなたのRe：ストーリーを見る</a></li>
-                      <li><a href="/mypage">あなたのコマを見る</a></li>
+                      <li class="btn__box"><a href="/mypage/story">使われたコマ</a></li>
+                      <li><a href="/mypage">あなたのコマ</a></li>
                     </ul>
                   </div>
             </div>
