@@ -139,26 +139,18 @@
             <div class="select_font cp_sl01">
               <select id="font-family">
                 <option value="" hidden>フォントを選んでください</option>
-                <option value="Meiryo">メイリオ</option>
-                <option value="Hiragino Kaku Gothic ProN">ヒラギノ角</option>
                 <option value="TsukuBRdGothic-Regular">筑紫B丸</option>
+                <option value="Terminal">Terminal</option>
                 <option value="Wawati SC">Wawati SC</option>
                 <option value="Andale Mono">Andale Mono</option>
-                <option value="Bradley Hand">BradleyHand</option>
                 <option value="arial">Arial</option>
                 <option value="helvetica">Helvetica</option>
-                <option value="myriad pro">Myriad Pro</option>
-                <option value="delicious">Delicious</option>
                 <option value="verdana">Verdana</option>
-                <option value="georgia">Georgia</option>
                 <option value="courier">Courier</option>
-                <option value="comic sans ms">Comic Sans MS</option>
                 <option value="impact">Impact</option>
                 <option value="monaco">Monaco</option>
                 <option value="optima">Optima</option>
-                <option value="hoefler text">Hoefler Text</option>
                 <option value="plaster">Plaster</option>
-                <option value="engagement">Engagement</option>
               </select>
             </div>
             <!-- 以上バグあり -->
