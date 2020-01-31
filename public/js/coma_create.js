@@ -54,7 +54,6 @@ canvas.observe("object:moved", function() {
 let font = $("#font-family").val(); //初期値
 $("#font-family").change(function() {
   font = $("option:selected").val();
-  // console.log(font);
 });
 
 //テキストの背景色変更
